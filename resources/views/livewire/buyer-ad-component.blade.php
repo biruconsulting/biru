@@ -19,7 +19,7 @@
             <div class="side-bar">
                 <!-- Search Widget -->
                 <div class="input-group side-bar-search mt-3">
-                    <input type="text" class="form-control" placeholder="Search..." aria-label="Search" aria-describedby="side-bar-search">
+                    <input type="text" class="form-control" placeholder="Search...">
                     <span class="input-group-text" id="side-bar-search"><i class="fas fa-search"></i></span>
                 </div>
 

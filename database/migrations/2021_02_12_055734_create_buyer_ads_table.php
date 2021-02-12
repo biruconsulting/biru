@@ -34,7 +34,7 @@ class CreateBuyerAdsTable extends Migration
             $table->string('ad_ex_education_level')->nullable()->comment('For Job Ad');
             $table->string('ad_short_description');
             $table->text('ad_description');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');;
             $table->timestamps();
         });
     }

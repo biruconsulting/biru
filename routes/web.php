@@ -4,6 +4,7 @@ use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
 use App\Http\Livewire\BuyerAdComponent;
 use App\Http\Livewire\ContactUsComponent;
+use App\Http\Livewire\Counter;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\PostAdComponent;
 use App\Http\Livewire\SellerAdComponent;
@@ -30,6 +31,7 @@ Route::get('/buyer_ad', BuyerAdComponent::class)->name('buyer_ad');
 Route::get('/contact_us', ContactUsComponent::class)->name('contact_us');
 
 Route::get('/post_ad', PostAdComponent::class)->name('post_ad');
+
 
 // For Normal User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {

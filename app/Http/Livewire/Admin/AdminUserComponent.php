@@ -80,8 +80,6 @@ class AdminUserComponent extends Component
             ->orWhere('email', 'LIKE', $searchTerm)
             ->paginate(10);
 
-        return view('livewire.admin.admin-user-component', [
-            'users' => $users,
-        ])->layout('layouts.admin');
+        return view('livewire.admin.admin-user-component', ['users' => $users])->layout('layouts.admin');
     }
 }
