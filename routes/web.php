@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\AdminGeneralCategoryComponent;
+use App\Http\Livewire\Admin\AdminJobCategoryComponent;
+use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
 use App\Http\Livewire\BuyerAdComponent;
 use App\Http\Livewire\ContactUsComponent;
@@ -44,4 +47,10 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');
 
     Route::get('/admin/users', AdminUserComponent::class)->name('admin.users');
+
+    Route::get('/admin/categories/general', AdminGeneralCategoryComponent::class)->name('admin.categories.general');
+
+    Route::get('/admin/categories/property', AdminPropertyCategoryComponent::class)->name('admin.categories.property');
+
+    Route::get('/admin/categories/job', AdminJobCategoryComponent::class)->name('admin.categories.job');
 });
