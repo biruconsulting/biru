@@ -99,8 +99,13 @@
                                     <input type="text" class="form-control" name="ad_name" id="seller_general_name" placeholder="Your product name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="seller_general_category" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" name="ad_category" id="seller_general_category" placeholder="Electronics, Bikes, Books, Cloths, Computer, Phones ..." required>
+                                    <label class="form-label">Category Name</label>
+                                    <select class="form-select" name="ad_category" required>
+                                        <option selected>Select general category</option>
+                                        @foreach ($general_categories as $general_category)
+                                            <option value="{{ $general_category->name }}">{{ $general_category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="seller_general_thumbnail" class="form-label">Main Thumbnail Image</label>
@@ -147,8 +152,13 @@
                                     <input type="text" class="form-control" name="ad_name" id="seller_property_name" placeholder="Your Property name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="seller_property_category" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" name="ad_category" id="seller_property_category" placeholder="Home sale, Home rent, Land sale, Land lease ..." required>
+                                    <label class="form-label">Category Name</label>
+                                    <select class="form-select" name="ad_category" required>
+                                        <option selected>Select property category</option>
+                                        @foreach ($property_categories as $property_category)
+                                            <option value="{{ $property_category->name }}">{{ $property_category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="seller_property_thumbnail" class="form-label">Main Thumbnail Image</label>
@@ -191,8 +201,13 @@
                                     <input type="text" class="form-control" name="ad_name" id="seller_job_name" placeholder="Job name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="seller_job_category" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" name="ad_category" id="seller_job_category" placeholder="Accounting, Engineering, Healthcare, Management, Labour ..." required>
+                                    <label class="form-label">Category Name</label>
+                                    <select class="form-select" name="ad_category" required>
+                                        <option selected>Select job category</option>
+                                        @foreach ($job_categories as $job_category)
+                                            <option value="{{ $job_category->name }}">{{ $job_category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <label for="seller_job_thumbnail" class="form-label">Main Thumbnail Image (Work Place / Company Logo ...)</label>
@@ -323,8 +338,13 @@
                                     <input type="text" class="form-control" name="ad_name" id="buyer_general_name" placeholder="Expected product name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="buyer_general_category" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" name="ad_category" id="buyer_general_category" placeholder="Electronics, Bikes, Books, Cloths, Computer, Phones ..." required>
+                                    <label class="form-label">Category Name</label>
+                                    <select class="form-select" name="ad_category" required>
+                                        <option selected>Select general category</option>
+                                        @foreach ($general_categories as $general_category)
+                                            <option value="{{ $general_category->name }}">{{ $general_category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="buyer_general_brand" class="form-label">Brand</label>
@@ -367,8 +387,13 @@
                                     <input type="text" class="form-control" name="ad_name" id="buyer_property_name" placeholder="Expected Property name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="buyer_property_category" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" name="ad_category" id="buyer_property_category" placeholder="Home sale, Home rent, Land sale, Land lease ..." required>
+                                    <label class="form-label">Category Name</label>
+                                    <select class="form-select" name="ad_category" required>
+                                        <option selected>Select property category</option>
+                                        @foreach ($property_categories as $property_category)
+                                            <option value="{{ $property_category->name }}">{{ $property_category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
 
                                 <div class="col-md-6">
@@ -435,8 +460,13 @@
                                     <input type="text" class="form-control" name="ad_name" id="buyer_job_name" placeholder="Expected job name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="buyer_job_category" class="form-label">Category Name</label>
-                                    <input type="text" class="form-control" name="ad_category" id="buyer_job_category" placeholder="Accounting, Engineering, Healthcare, Management, Labour ..." required>
+                                    <label class="form-label">Category Name</label>
+                                    <select class="form-select" name="ad_category" required>
+                                        <option selected>Select job category</option>
+                                        @foreach ($job_categories as $job_category)
+                                            <option value="{{ $job_category->name }}">{{ $job_category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="buyer_job_address" class="form-label">Expected District</label>
@@ -469,17 +499,17 @@
                                         <option value="Vavuniya">Vavuniya</option>
                                     </select>
                                 </div>
-                                <div class="col-md-8">
-                                    <label for="buyer_job_education" class="form-label">Expected Education Level </label>
-                                    <input type="text" class="form-control" name="ad_ex_education_level" id="buyer_job_education" placeholder="Expected Education level" required>
-                                </div>
-                                <div class="col-md-4">
+                                <div class="col-md-6">
                                     <label for="buyer_job_education" class="form-label">Expected Job Type</label>
                                     <select class="form-select" name="ad_ex_job_type" required>
                                         <option selected>Select job type</option>
                                         <option value="Full time">Full time</option>
                                         <option value="Part time">Part time</option>
                                     </select>
+                                </div>
+                                <div class="col-12">
+                                    <label for="buyer_job_education" class="form-label">Expected Education Level </label>
+                                    <input type="text" class="form-control" name="ad_ex_education_level" id="buyer_job_education" placeholder="Expected Education level" required>
                                 </div>
                                 <div class="col-12">
                                     <label for="buyer_job_short_description" class="form-label">Thumbnail Short Description</label>

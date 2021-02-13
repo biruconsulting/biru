@@ -37,20 +37,14 @@
                                 </h2>
                                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlush">
                                     <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Electronics
-                                            </label>
-                                            <span class="badge bg-primary rounded-pill">14</span>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Laptops
-                                            </label>
-                                            <span class="badge bg-primary rounded-pill">2</span>
-                                        </div>
+                                        @foreach ($general_categories as $general_category)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="{{ $general_category->name }}" wire:model="selected_general_category" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    {{ $general_category->name }}
+                                                </label>
+                                            </div>
+                                        @endforeach     
                                     </div>
                                 </div>
                             </div>
@@ -62,20 +56,14 @@
                                 </h2>
                                 <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlush">
                                     <div class="accordion-body">
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Home
-                                            </label>
-                                            <span class="badge bg-primary rounded-pill">5</span>
-                                        </div>
-                                        <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                            <label class="form-check-label" for="flexCheckDefault">
-                                                Land
-                                            </label>
-                                            <span class="badge bg-primary rounded-pill">6</span>
-                                        </div>
+                                        @foreach ($property_categories as $property_category)
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="{{ $property_category->name }}" wire:model="selected_property_category" id="flexCheckDefault">
+                                                <label class="form-check-label" for="flexCheckDefault">
+                                                    {{ $property_category->name }}
+                                                </label>
+                                            </div>
+                                        @endforeach   
                                     </div>
                                 </div>
                             </div>
@@ -88,20 +76,14 @@
                                 <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlush">
                                     <div class="accordion-body">
                                         <div class="accordion-body">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    Accountant
-                                                </label>
-                                                <span class="badge bg-primary rounded-pill">3</span>
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                                <label class="form-check-label" for="flexCheckDefault">
-                                                    Engineer
-                                                </label>
-                                                <span class="badge bg-primary rounded-pill">20</span>
-                                            </div>
+                                            @foreach ($job_categories as $job_category)
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="{{ $job_category->name }}" wire:model="selected_job_category" id="flexCheckDefault">
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                        {{ $job_category->name }}
+                                                    </label>
+                                                </div>
+                                            @endforeach                                         
                                         </div>
                                     </div>
                                 </div>
@@ -114,36 +96,17 @@
                         <h6 class="mb-3">SORT BY</h6>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="latest" wire:model="latestPost" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Latest
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="oldest" wire:model="oldestPost" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Oldest
                             </label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Price: low to high
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                            <label class="form-check-label" for="flexCheckDefault">
-                                Price: high to low
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Price -->
-                    <div class="side-bar-price mt-5">
-                        <h6>PRICE RANGE</h6>
-                        <input type="range" class="form-range" min="0" max="100">
-                        <p><i>Price:</i> Rs. 0 - 100</p>
                     </div>
 
                     <!-- Location -->

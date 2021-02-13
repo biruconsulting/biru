@@ -19,7 +19,7 @@ class AdminPropertyCategoryComponent extends Component
     protected $listeners = ['DeleteCategory'];
 
     protected $rules = [
-        'name' => 'required|max:20|unique:categories'
+        'name' => 'required|max:20'
     ];
 
     public function addCategory() {
