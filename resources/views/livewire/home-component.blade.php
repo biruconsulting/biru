@@ -55,27 +55,38 @@
     <div class="ad-quickview-card-bar">
         <div class="bar-card card">
             <div class="card-header">
-                SELLER AD
+                SELLER ADVERTISEMENTS
             </div>
             <div class="bar-card-body card-body">
-                <div class="owl-carousel owl-theme">
-                    @foreach ($seller_ads as $seller_ad)
-                        <div class="item">
-                            <div class="seller-ad card">
-                                <img src="{{ asset('storage/images/general_ad/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
-                                <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                <div class="card-body">
-                                    <h5 class="card-title"><b>{{ $seller_ad->ad_title }}</b></h5>
-                                    <p class="card-text">{{ $seller_ad->ad_short_description }}</p>
-                                    <h6>Price: <span>{{ $seller_ad->ad_type == 'job' ? 'Rs.'.$seller_ad->ad_salary.'.00' : 'Rs.'.$seller_ad->ad_price.'.00' }}</span></h6>
-                                </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">{{ $seller_ad->created_at->diffForHumans() }}</small>
+                @if (count($seller_ads) > 0)
+                    <div class="owl-carousel owl-theme">
+                        @foreach ($seller_ads as $seller_ad)
+                            <div class="item">
+                                <div class="seller-ad card">
+                                    <img src="{{ asset('storage/images/general_ad/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
+                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                    <div class="card-body">
+                                        <h5 class="card-title"><b>{{ $seller_ad->ad_title }}</b></h5>
+                                        <p class="card-text">{{ $seller_ad->ad_short_description }}</p>
+                                        @if($seller_ad->ad_type == 'job')
+                                            <h6>Salary: <span>{{ 'Rs.'.$seller_ad->ad_salary.'.00' }}</span></h6>
+                                        @else
+                                            <h6>Price: <span>{{ 'Rs.'.$seller_ad->ad_price.'.00' }}</span></h6>
+                                        @endif
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">{{ 'Posted '.$seller_ad->created_at->diffForHumans() }}</small>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @endforeach                 
-                </div>
+                        @endforeach                 
+                    </div>
+                @else
+                    <div class="my-4">
+                        <img src="{{ asset('storage/images/no_post.svg') }}" height="140" alt="empty_post">
+                        <h4 class="mt-3">Currently seller advertisements are not available</h4>
+                    </div>
+                @endif
             </div>
             <div class="card-footer">
                 <a href="{{ route('seller_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
@@ -89,27 +100,36 @@
     <div class="ad-quickview-card-bar">
         <div class="bar-card card">
             <div class="card-header">
-                WANTS AD
+                BUYER ADVERTISEMENTS
             </div>
             <div class="bar-card-body card-body">
-                <div class="owl-carousel owl-theme">
-                    @foreach ($buyer_ads as $buyer_ad)
-                        <div class="item">
-                            <div class="buyer-ad card">
-                                <div class="card-body">
-                                    <h5 class="card-title"><b>{{ $buyer_ad->ad_title }}</b></h5>
-                                    <p class="card-text">{{ $buyer_ad->ad_short_description }}</p>
-                                    <h6 class="price-header">Expected Price</h6>
-                                    <span class="buyer-ad-price">{{ 'Rs.'.$buyer_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_ad->ad_ex_max_price.'.00' }}</span>
+                @if (count($buyer_ads) > 0)
+                    <div class="owl-carousel owl-theme">
+                        @foreach ($buyer_ads as $buyer_ad)
+                            <div class="item">
+                                <div class="buyer-ad card">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><b>{{ $buyer_ad->ad_title }}</b></h5>
+                                        <p class="card-text">{{ $buyer_ad->ad_short_description }}</p>
+                                        @if ($buyer_ad->ad_type != 'job')
+                                            <h6 class="price-header">Expected Price</h6>
+                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_ad->ad_ex_max_price.'.00' }}</span>
+                                        @endif                  
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">{{ $buyer_ad->created_at->diffForHumans() }}</small>
+                                    </div>
+                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                                 </div>
-                                <div class="card-footer">
-                                    <small class="text-muted">{{ $buyer_ad->created_at->diffForHumans() }}</small>
-                                </div>
-                                <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                             </div>
-                        </div>
-                    @endforeach      
-                </div>
+                        @endforeach      
+                    </div>
+                @else 
+                    <div class="my-4">
+                        <img src="{{ asset('storage/images/no_post.svg') }}" height="140" alt="empty_post">
+                        <h4 class="mt-3">Currently buyer advertisements are not available.</h4>
+                    </div>
+                @endif
             </div>
             <div class="card-footer">
                 <a href="{{ route('buyer_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
@@ -147,7 +167,11 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><b>{{ $seller_general_ad->ad_title }}</b></h5>
                                             <p class="card-text">{{ $seller_general_ad->ad_short_description }}</p>
-                                            <h6>Price: <span>{{ $seller_general_ad->ad_type == 'job' ? 'Rs.'.$seller_general_ad->ad_salary.'.00' : 'Rs.'.$seller_general_ad->ad_price.'.00' }}</span></h6>
+                                            @if($seller_general_ad->ad_type == 'job')
+                                                <h6>Salary: <span>{{ 'Rs.'.$seller_general_ad->ad_salary.'.00' }}</span></h6>
+                                            @else
+                                                <h6>Price: <span>{{ 'Rs.'.$seller_general_ad->ad_price.'.00' }}</span></h6>
+                                            @endif
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{ $seller_general_ad->created_at->diffForHumans() }}</small>
@@ -167,7 +191,11 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><b>{{ $seller_property_ad->ad_title }}</b></h5>
                                             <p class="card-text">{{ $seller_property_ad->ad_short_description }}</p>
-                                            <h6>Price: <span>{{ $seller_property_ad->ad_type == 'job' ? 'Rs.'.$seller_property_ad->ad_salary.'.00' : 'Rs.'.$seller_property_ad->ad_price.'.00' }}</span></h6>
+                                            @if($seller_property_ad->ad_type == 'job')
+                                                <h6>Salary: <span>{{ 'Rs.'.$seller_property_ad->ad_salary.'.00' }}</span></h6>
+                                            @else
+                                                <h6>Price: <span>{{ 'Rs.'.$seller_property_ad->ad_price.'.00' }}</span></h6>
+                                            @endif
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{ $seller_property_ad->created_at->diffForHumans() }}</small>
@@ -187,7 +215,11 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><b>{{ $seller_job_ad->ad_title }}</b></h5>
                                             <p class="card-text">{{ $seller_job_ad->ad_short_description }}</p>
-                                            <h6>Price: <span>{{ $seller_job_ad->ad_type == 'job' ? 'Rs.'.$seller_job_ad->ad_salary.'.00' : 'Rs.'.$seller_job_ad->ad_price.'.00' }}</span></h6>
+                                            @if($seller_job_ad->ad_type == 'job')
+                                                <h6>Salary: <span>{{ 'Rs.'.$seller_job_ad->ad_salary.'.00' }}</span></h6>
+                                            @else
+                                                <h6>Price: <span>{{ 'Rs.'.$seller_job_ad->ad_price.'.00' }}</span></h6>
+                                            @endif
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{ $seller_job_ad->created_at->diffForHumans() }}</small>
@@ -233,8 +265,10 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><b>{{ $buyer_general_ad->ad_title }}</b></h5>
                                             <p class="card-text">{{ $buyer_general_ad->ad_short_description }}</p>
-                                            <h6 class="price-header">Expected Price</h6>
-                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_general_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_general_ad->ad_ex_max_price.'.00' }}</span>
+                                            @if ($buyer_general_ad->ad_type != 'job')
+                                                <h6 class="price-header">Expected Price</h6>
+                                                <span class="buyer-ad-price">{{ 'Rs.'.$buyer_general_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_general_ad->ad_ex_max_price.'.00' }}</span>
+                                            @endif  
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{ $buyer_general_ad->created_at->diffForHumans() }}</small>
@@ -253,8 +287,10 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><b>{{ $buyer_property_ad->ad_title }}</b></h5>
                                             <p class="card-text">{{ $buyer_property_ad->ad_short_description }}</p>
-                                            <h6 class="price-header">Expected Price</h6>
-                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_property_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_property_ad->ad_ex_max_price.'.00' }}</span>
+                                            @if ($buyer_property_ad->ad_type != 'job')
+                                                <h6 class="price-header">Expected Price</h6>
+                                                <span class="buyer-ad-price">{{ 'Rs.'.$buyer_property_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_property_ad->ad_ex_max_price.'.00' }}</span>
+                                            @endif  
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{ $buyer_property_ad->created_at->diffForHumans() }}</small>
@@ -273,8 +309,10 @@
                                         <div class="card-body">
                                             <h5 class="card-title"><b>{{ $buyer_job_ad->ad_title }}</b></h5>
                                             <p class="card-text">{{ $buyer_job_ad->ad_short_description }}</p>
-                                            <h6 class="price-header">Expected Price</h6>
-                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_job_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_job_ad->ad_ex_max_price.'.00' }}</span>
+                                            @if ($buyer_job_ad->ad_type != 'job')
+                                                <h6 class="price-header">Expected Price</h6>
+                                                <span class="buyer-ad-price">{{ 'Rs.'.$buyer_job_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_job_ad->ad_ex_max_price.'.00' }}</span>
+                                            @endif  
                                         </div>
                                         <div class="card-footer">
                                             <small class="text-muted">{{ $buyer_job_ad->created_at->diffForHumans() }}</small>

@@ -634,6 +634,10 @@ body {
     opacity: 1;
 }
 
+.ad-quickview-card-bar .bar-card-body .seller-ad .card-body {
+    min-height: 250px;
+}
+
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body h6 {
     font-weight: 600;
 }
@@ -700,6 +704,10 @@ body {
     border-color: #f11712;
 }
 
+.ad-quickview-card-bar .bar-card-body .buyer-ad .card-body{
+    min-height: 240px;
+}
+
 .ad-quickview-card-bar .bar-card-body .buyer-ad:hover .card-body{
     transform: scale(1.1);
     -webkit-transform: scale(1.1);
@@ -731,6 +739,7 @@ body {
 .ad-quickview-card-bar .bar-card-body .buyer-ad .buyer-ad-price {
     color: #f11712;
     font-weight: 600;
+    font-size: 14px;
 }
 
 /* Medium devices (tablets, less than 992px) */
