@@ -18,7 +18,7 @@ class SellerAd extends Model
         'user_district',
         'ad_available',
         'ad_type',
-        'ad_name',
+        'ad_title',
         'ad_category',
         'ad_thumbnail_image',
         'ad_images',

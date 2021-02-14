@@ -23,7 +23,7 @@ class CreateSellerAdsTable extends Migration
             $table->string('user_district');
             $table->boolean('ad_available')->default(true);
             $table->string('ad_type');
-            $table->string('ad_name');
+            $table->string('ad_title');
             $table->string('ad_category');
             $table->string('ad_thumbnail_image');
             $table->text('ad_images')->nullable()->comment('For General Ad, Property Ad');

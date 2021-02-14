@@ -59,108 +59,26 @@
             </div>
             <div class="bar-card-body card-body">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="seller-ad card">
-                            <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">Some quick example text to build on the card title.</p>
-                                <h6>Price: <span>$400.00</span></h6>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="seller-ad card">
-                            <img src="https://c1.wallpaperflare.com/preview/729/690/547/headphone-black-yellow-shadow.jpg" class="card-img-top" alt="...">
-                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">Some quick example text to build on the card title.</p>
-                                <h6>Price: <span>$400.00</span></h6>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
+                    @foreach ($seller_ads as $seller_ad)
+                        <div class="item">
+                            <div class="seller-ad card">
+                                <img src="{{ asset('storage/images/general_ad/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
+                                <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>{{ $seller_ad->ad_title }}</b></h5>
+                                    <p class="card-text">{{ $seller_ad->ad_short_description }}</p>
+                                    <h6>Price: <span>{{ $seller_ad->ad_type == 'job' ? 'Rs.'.$seller_ad->ad_salary.'.00' : 'Rs.'.$seller_ad->ad_price.'.00' }}</span></h6>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">{{ $seller_ad->created_at->diffForHumans() }}</small>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="seller-ad card">
-                            <img src="https://elcopcbonline.com/photos/product/4/176/4.jpg" class="card-img-top" alt="...">
-                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">Some quick example text to build on the card title.</p>
-                                <h6>Price: <span>$400.00</span></h6>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="seller-ad card">
-                            <img src="https://vistapointe.net/images/product-wallpaper-8.jpg" class="card-img-top" alt="...">
-                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">Some quick example text to build on the card title.</p>
-                                <h6>Price: <span>$400.00</span></h6>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="seller-ad card">
-                            <img src="https://fossil.scene7.com/is/image/FossilPartners/FTW4024_main?$sfcc_fos_hi-res$" class="card-img-top" alt="...">
-                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">Some quick example text to build on the card title.</p>
-                                <h6>Price: <span>$400.00</span></h6>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="seller-ad card">
-                            <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">Some quick example text to build on the card title.</p>
-                                <h6>Price: <span>$400.00</span></h6>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="seller-ad card">
-                            <img src="https://pcbonlineshop.com/photos/product/2/174/2.jpg" class="card-img-top" alt="...">
-                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">Some quick example text to build on the card title.</p>
-                                <h6>Price: <span>$400.00</span></h6>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach                 
                 </div>
             </div>
             <div class="card-footer">
-                <a href="seller_ad.html" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
+                <a href="{{ route('seller_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
             </div>
         </div>
     </div>
@@ -175,108 +93,26 @@
             </div>
             <div class="bar-card-body card-body">
                 <div class="owl-carousel owl-theme">
-                    <div class="item">
-                        <div class="buyer-ad card">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">I need samsung mobile phone in good price.</p>
-                                <h6 class="price-header">Expected Price</h6>
-                                <span class="buyer-ad-price">$200.00 - $300.00</span>
+                    @foreach ($buyer_ads as $buyer_ad)
+                        <div class="item">
+                            <div class="buyer-ad card">
+                                <div class="card-body">
+                                    <h5 class="card-title"><b>{{ $buyer_ad->ad_title }}</b></h5>
+                                    <p class="card-text">{{ $buyer_ad->ad_short_description }}</p>
+                                    <h6 class="price-header">Expected Price</h6>
+                                    <span class="buyer-ad-price">{{ 'Rs.'.$buyer_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_ad->ad_ex_max_price.'.00' }}</span>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">{{ $buyer_ad->created_at->diffForHumans() }}</small>
+                                </div>
+                                <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                             </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                            <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                         </div>
-                    </div>
-                    <div class="item">
-                        <div class="buyer-ad card">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">I need samsung mobile phone in good price.</p>
-                                <h6 class="price-header">Expected Price</h6>
-                                <span class="buyer-ad-price">$200.00 - $300.00</span>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                            <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="buyer-ad card">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">I need samsung mobile phone in good price.</p>
-                                <h6 class="price-header">Expected Price</h6>
-                                <span class="buyer-ad-price">$200.00 - $300.00</span>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                            <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="buyer-ad card">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">I need samsung mobile phone in good price.</p>
-                                <h6 class="price-header">Expected Price</h6>
-                                <span class="buyer-ad-price">$200.00 - $300.00</span>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                            <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="buyer-ad card">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">I need samsung mobile phone in good price.</p>
-                                <h6 class="price-header">Expected Price</h6>
-                                <span class="buyer-ad-price">$200.00 - $300.00</span>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                            <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="buyer-ad card">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">I need samsung mobile phone in good price.</p>
-                                <h6 class="price-header">Expected Price</h6>
-                                <span class="buyer-ad-price">$200.00 - $300.00</span>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                            <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="buyer-ad card">
-                            <div class="card-body">
-                                <h5 class="card-title"><b>Card title</b></h5>
-                                <p class="card-text">I need samsung mobile phone in good price.</p>
-                                <h6 class="price-header">Expected Price</h6>
-                                <span class="buyer-ad-price">$200.00 - $300.00</span>
-                            </div>
-                            <div class="card-footer">
-                                <small class="text-muted">Posted 10 days ago</small>
-                            </div>
-                            <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                        </div>
-                    </div>
+                    @endforeach      
                 </div>
             </div>
             <div class="card-footer">
-                <a href="buyer_ad.html" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
+                <a href="{{ route('buyer_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
             </div>
         </div>
     </div>
@@ -303,314 +139,68 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="seller-general" role="tabpanel" aria-labelledby="seller-general-tab">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title 1</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://c1.wallpaperflare.com/preview/729/690/547/headphone-black-yellow-shadow.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
+                            @foreach ($seller_general_ads as $seller_general_ad)
+                                <div class="item">
+                                    <div class="seller-ad card">
+                                        <img src="{{ asset('storage/images/general_ad/'. $seller_general_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_general_ad->ad_title }}">
+                                        <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b>{{ $seller_general_ad->ad_title }}</b></h5>
+                                            <p class="card-text">{{ $seller_general_ad->ad_short_description }}</p>
+                                            <h6>Price: <span>{{ $seller_general_ad->ad_type == 'job' ? 'Rs.'.$seller_general_ad->ad_salary.'.00' : 'Rs.'.$seller_general_ad->ad_price.'.00' }}</span></h6>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">{{ $seller_general_ad->created_at->diffForHumans() }}</small>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://elcopcbonline.com/photos/product/4/176/4.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://vistapointe.net/images/product-wallpaper-8.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://fossil.scene7.com/is/image/FossilPartners/FTW4024_main?$sfcc_fos_hi-res$" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://pcbonlineshop.com/photos/product/2/174/2.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach                       
                         </div>
                     </div>
                     <div class="tab-pane fade" id="seller-properties" role="tabpanel" aria-labelledby="seller-properties-tab">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title 2</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://c1.wallpaperflare.com/preview/729/690/547/headphone-black-yellow-shadow.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
+                            @foreach ($seller_property_ads as $seller_property_ad)
+                                <div class="item">
+                                    <div class="seller-ad card">
+                                        <img src="{{ asset('storage/images/general_ad/'. $seller_property_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_property_ad->ad_title }}">
+                                        <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b>{{ $seller_property_ad->ad_title }}</b></h5>
+                                            <p class="card-text">{{ $seller_property_ad->ad_short_description }}</p>
+                                            <h6>Price: <span>{{ $seller_property_ad->ad_type == 'job' ? 'Rs.'.$seller_property_ad->ad_salary.'.00' : 'Rs.'.$seller_property_ad->ad_price.'.00' }}</span></h6>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">{{ $seller_property_ad->created_at->diffForHumans() }}</small>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://elcopcbonline.com/photos/product/4/176/4.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://vistapointe.net/images/product-wallpaper-8.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://fossil.scene7.com/is/image/FossilPartners/FTW4024_main?$sfcc_fos_hi-res$" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://pcbonlineshop.com/photos/product/2/174/2.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach     
                         </div>
                     </div>
                     <div class="tab-pane fade" id="seller-job" role="tabpanel" aria-labelledby="seller-job-tab">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://c1.wallpaperflare.com/preview/729/690/547/headphone-black-yellow-shadow.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
+                            @foreach ($seller_job_ads as $seller_job_ad)
+                                <div class="item">
+                                    <div class="seller-ad card">
+                                        <img src="{{ asset('storage/images/general_ad/'. $seller_job_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_job_ad->ad_title }}">
+                                        <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b>{{ $seller_job_ad->ad_title }}</b></h5>
+                                            <p class="card-text">{{ $seller_job_ad->ad_short_description }}</p>
+                                            <h6>Price: <span>{{ $seller_job_ad->ad_type == 'job' ? 'Rs.'.$seller_job_ad->ad_salary.'.00' : 'Rs.'.$seller_job_ad->ad_price.'.00' }}</span></h6>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">{{ $seller_job_ad->created_at->diffForHumans() }}</small>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://elcopcbonline.com/photos/product/4/176/4.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://vistapointe.net/images/product-wallpaper-8.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://fossil.scene7.com/is/image/FossilPartners/FTW4024_main?$sfcc_fos_hi-res$" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://www.gizbot.com/images/2020-09/realme-7_1599210621100.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="seller-ad card">
-                                    <img src="https://pcbonlineshop.com/photos/product/2/174/2.jpg" class="card-img-top" alt="...">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">Some quick example text to build on the card title.</p>
-                                        <h6>Price: <span>$400.00</span></h6>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach  
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer">
-                <a href="seller_ad.html" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
+                <a href="{{ route('seller_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
             </div>
         </div>
     </div>
@@ -637,314 +227,68 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="wants-general" role="tabpanel" aria-labelledby="wants-general-tab">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
+                            @foreach ($buyer_general_ads as $buyer_general_ad)
+                                <div class="item">
+                                    <div class="buyer-ad card">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b>{{ $buyer_general_ad->ad_title }}</b></h5>
+                                            <p class="card-text">{{ $buyer_general_ad->ad_short_description }}</p>
+                                            <h6 class="price-header">Expected Price</h6>
+                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_general_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_general_ad->ad_ex_max_price.'.00' }}</span>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">{{ $buyer_general_ad->created_at->diffForHumans() }}</small>
+                                        </div>
+                                        <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                                     </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
+                            @endforeach   
                         </div>
                     </div>
                     <div class="tab-pane fade" id="wants-properties" role="tabpanel" aria-labelledby="wants-properties-tab">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
+                            @foreach ($buyer_property_ads as $buyer_property_ad)
+                                <div class="item">
+                                    <div class="buyer-ad card">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b>{{ $buyer_property_ad->ad_title }}</b></h5>
+                                            <p class="card-text">{{ $buyer_property_ad->ad_short_description }}</p>
+                                            <h6 class="price-header">Expected Price</h6>
+                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_property_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_property_ad->ad_ex_max_price.'.00' }}</span>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">{{ $buyer_property_ad->created_at->diffForHumans() }}</small>
+                                        </div>
+                                        <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                                     </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
+                            @endforeach   
                         </div>
                     </div>
                     <div class="tab-pane fade" id="wants-job" role="tabpanel" aria-labelledby="wants-job-tab">
                         <div class="owl-carousel owl-theme">
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
+                            @foreach ($buyer_job_ads as $buyer_job_ad)
+                                <div class="item">
+                                    <div class="buyer-ad card">
+                                        <div class="card-body">
+                                            <h5 class="card-title"><b>{{ $buyer_job_ad->ad_title }}</b></h5>
+                                            <p class="card-text">{{ $buyer_job_ad->ad_short_description }}</p>
+                                            <h6 class="price-header">Expected Price</h6>
+                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_job_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_job_ad->ad_ex_max_price.'.00' }}</span>
+                                        </div>
+                                        <div class="card-footer">
+                                            <small class="text-muted">{{ $buyer_job_ad->created_at->diffForHumans() }}</small>
+                                        </div>
+                                        <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                                     </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="buyer-ad card">
-                                    <div class="card-body">
-                                        <h5 class="card-title"><b>Card title</b></h5>
-                                        <p class="card-text">I need samsung mobile phone in good price.</p>
-                                        <h6 class="price-header">Expected Price</h6>
-                                        <span class="buyer-ad-price">$200.00 - $300.00</span>
-                                    </div>
-                                    <div class="card-footer">
-                                        <small class="text-muted">Posted 10 days ago</small>
-                                    </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
-                                </div>
-                            </div>
+                            @endforeach   
                         </div>
                     </div>
                 </div>
             </div>
             <div class="card-footer">
-                <a href="buyer_ad.html" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
+                <a href="{{ route('buyer_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
             </div>
         </div>
     </div>

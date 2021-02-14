@@ -2,18 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\SellerAd;
+use App\Models\BuyerAd;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class SellerAdFactory extends Factory
+class BuyerAdFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = SellerAd::class;
+    protected $model = BuyerAd::class;
 
     /**
      * Define the model's default state.
@@ -32,11 +32,13 @@ class SellerAdFactory extends Factory
             'ad_type'=>'job',
             'ad_title'=>$this->faker->unique()->words($nb=2, $asText=true),
             'ad_category'=>$this->faker->text(5),
-            'ad_thumbnail_image'=> 'general_'. $this->faker->unique()->numberBetween(1, 22).'.jpg',
-            'ad_condition'=>$this->faker->text(5),
+            'ad_ex_district'=>$this->faker->text(5),
             'ad_brand'=>$this->faker->text(5),
             'ad_model'=>$this->faker->text(5),
-            'ad_price'=>$this->faker->numberBetween(1000, 20000),
+            'ad_ex_min_price'=>$this->faker->numberBetween(1000, 20000),
+            'ad_ex_max_price'=>$this->faker->numberBetween(20000, 30000),
+            'ad_ex_job_type'=>'full time',
+            'ad_ex_education_level'=>$this->faker->text(5),
             'ad_short_description'=>$this->faker->text(100),
             'ad_description'=>$this->faker->text(500),
         ];

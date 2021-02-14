@@ -22,6 +22,8 @@ class SellerAdComponent extends Component
     public $latestPost;
     public $oldestPost;
 
+    public $selected_location = [];
+
     public function render()
     {
         $general_categories = Category::where('ad_type', 'general')->get();
@@ -36,6 +38,8 @@ class SellerAdComponent extends Component
 
         $latest_post_term = $this->latestPost;
         $oldest_post_term = $this->oldestPost;
+
+        $selected_location_term = $this->selected_location;
 
         if ($general_category_term) 
         {
@@ -57,9 +61,13 @@ class SellerAdComponent extends Component
         {
             $seller_ads = SellerAd::oldest()->paginate(9);
         }
+        elseif ($selected_location_term)
+        {
+            $seller_ads = SellerAd::where('user_district', 'LIKE', $selected_location_term)->paginate(9);
+        }
         else 
         {
-            $seller_ads = SellerAd::where('ad_name', 'LIKE', $searchTerm)                   
+            $seller_ads = SellerAd::where('ad_title', 'LIKE', $searchTerm)                   
                         ->orWhere('ad_brand', 'LIKE', $searchTerm)
                         ->orWhere('ad_category', 'LIKE', $general_category_term)
                         ->orWhere('ad_category', 'LIKE', $property_category_term)
