@@ -70,7 +70,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text" id="category-name"><i class="fas fa-tasks"></i></span>
                     </div>
-                    <input type="text" class="form-control" placeholder="Category Name" aria-describedby="category-name" wire:model.lazy="name" required>
+                    <input type="text" class="form-control" placeholder="Category Name" aria-describedby="category-name" wire:model.defer="name" required>
                 </div> 
                 @error('name') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror 
               </div>

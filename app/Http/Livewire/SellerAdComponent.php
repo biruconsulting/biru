@@ -43,15 +43,15 @@ class SellerAdComponent extends Component
 
         if ($general_category_term) 
         {
-            $seller_ads = SellerAd::where('ad_type', 'general')->where('ad_category', 'LIKE', $general_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'general')->where('ad_category', $general_category_term)->paginate(9);
         } 
         elseif ($property_category_term)
         {
-            $seller_ads = SellerAd::where('ad_type', 'property')->where('ad_category', 'LIKE', $property_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'property')->where('ad_category', $property_category_term)->paginate(9);
         }
         elseif ($job_category_term)
         {
-            $seller_ads = SellerAd::where('ad_type', 'job')->where('ad_category', 'LIKE', $job_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'job')->where('ad_category', $job_category_term)->paginate(9);
         }
         elseif ($latest_post_term)
         {
@@ -69,9 +69,6 @@ class SellerAdComponent extends Component
         {
             $seller_ads = SellerAd::where('ad_title', 'LIKE', $searchTerm)                   
                         ->orWhere('ad_brand', 'LIKE', $searchTerm)
-                        ->orWhere('ad_category', 'LIKE', $general_category_term)
-                        ->orWhere('ad_category', 'LIKE', $property_category_term)
-                        ->orWhere('ad_category', 'LIKE', $job_category_term)
                         ->paginate(9);
         }
 

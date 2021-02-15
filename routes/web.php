@@ -7,7 +7,6 @@ use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
 use App\Http\Livewire\BuyerAdComponent;
 use App\Http\Livewire\ContactUsComponent;
-use App\Http\Livewire\Counter;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\PostAdComponent;
 use App\Http\Livewire\SellerAdComponent;

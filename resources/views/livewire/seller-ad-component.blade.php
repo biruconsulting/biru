@@ -28,7 +28,7 @@
                     <div class="side-bar-categories mt-5">
                         <h6>MAJOR CATEGORIES</h6>
 
-                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                        <div wire:ignore class="accordion accordion-flush" id="accordionFlushExample">
                             <div class="accordion-item">
                                 <h2 class="accordion-header" id="flush-headingOne">
                                     <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
@@ -39,13 +39,13 @@
                                     <div class="accordion-body">
                                         @foreach ($general_categories as $general_category)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="{{ $general_category->name }}" wire:model="selected_general_category" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" value="{{ $general_category->id }}" wire:model="selected_general_category">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     {{ $general_category->name }}
                                                 </label>
-                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_seller_ads_data->where('ad_type', 'general')->where('ad_category', $general_category->name)->count() }}</span>
+                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_seller_ads_data->where('ad_type', 'general')->where('ad_category', $general_category->id)->count() }}</span>
                                             </div>
-                                        @endforeach     
+                                        @endforeach 
                                     </div>
                                 </div>
                             </div>
@@ -59,11 +59,11 @@
                                     <div class="accordion-body">
                                         @foreach ($property_categories as $property_category)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value="{{ $property_category->name }}" wire:model="selected_property_category" id="flexCheckDefault">
+                                                <input class="form-check-input" type="checkbox" value="{{ $property_category->id }}" wire:model="selected_property_category" id="flexCheckDefault">
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     {{ $property_category->name }}
                                                 </label>
-                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_seller_ads_data->where('ad_type', 'property')->where('ad_category', $property_category->name)->count() }}</span>
+                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_seller_ads_data->where('ad_type', 'property')->where('ad_category', $property_category->id)->count() }}</span>
                                             </div>
                                         @endforeach   
                                     </div>
@@ -80,11 +80,11 @@
                                         <div class="accordion-body">
                                             @foreach ($job_categories as $job_category)
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value="{{ $job_category->name }}" wire:model="selected_job_category" id="flexCheckDefault">
+                                                    <input class="form-check-input" type="checkbox" value="{{ $job_category->id }}" wire:model="selected_job_category" id="flexCheckDefault">
                                                     <label class="form-check-label" for="flexCheckDefault">
                                                         {{ $job_category->name }}
                                                     </label>
-                                                    <span class="badge bg-primary rounded-pill">{{ $sidebar_seller_ads_data->where('ad_type', 'job')->where('ad_category', $job_category->name)->count() }}</span>
+                                                    <span class="badge bg-primary rounded-pill">{{ $sidebar_seller_ads_data->where('ad_type', 'job')->where('ad_category', $job_category->id)->count() }}</span>
                                                 </div>
                                             @endforeach                                         
                                         </div>

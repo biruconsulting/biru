@@ -3,10 +3,19 @@
 namespace App\Http\Livewire;
 
 use App\Models\Category;
+use App\Models\SellerAd;
 use Livewire\Component;
 
 class PostAdComponent extends Component
 {
+    public $ad_short_description;
+
+    public function submitAd() {
+        SellerAd::create([
+            'ad_description' => $this->ad_short_description,
+        ]);
+    }
+
     public function render()
     {
         $general_categories = Category::where('ad_type', 'general')->get();
