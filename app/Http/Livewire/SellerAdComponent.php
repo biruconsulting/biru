@@ -75,7 +75,8 @@ class SellerAdComponent extends Component
                         ->paginate(9);
         }
 
+        $sidebar_seller_ads_data = SellerAd::all();
     
-        return view('livewire.seller-ad-component',['seller_ads' => $seller_ads, 'general_categories'=>$general_categories, 'property_categories'=>$property_categories, 'job_categories'=>$job_categories])->layout('layouts.base');
+        return view('livewire.seller-ad-component',['sidebar_seller_ads_data'=>$sidebar_seller_ads_data, 'seller_ads' => $seller_ads, 'general_categories'=>$general_categories, 'property_categories'=>$property_categories, 'job_categories'=>$job_categories])->layout('layouts.base');
     }
 }
