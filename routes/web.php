@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SellerAdPostController;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
 use App\Http\Livewire\Admin\AdminGeneralCategoryComponent;
 use App\Http\Livewire\Admin\AdminJobCategoryComponent;
@@ -31,6 +32,8 @@ Route::get('/seller_ad', SellerAdComponent::class)->name('seller_ad');
 Route::get('/buyer_ad', BuyerAdComponent::class)->name('buyer_ad');
 
 Route::get('/contact_us', ContactUsComponent::class)->name('contact_us');
+
+Route::post('/seller_ad/post', [SellerAdPostController::class, 'store'])->name('seller_ad.post');
 
 Route::get('/post_ad', PostAdComponent::class)->name('post_ad');
 

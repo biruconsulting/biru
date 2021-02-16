@@ -43,15 +43,15 @@ class SellerAdComponent extends Component
 
         if ($general_category_term) 
         {
-            $seller_ads = SellerAd::where('ad_type', 'general')->where('ad_category', $general_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'seller-general')->where('ad_category', $general_category_term)->paginate(9);
         } 
         elseif ($property_category_term)
         {
-            $seller_ads = SellerAd::where('ad_type', 'property')->where('ad_category', $property_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'seller-property')->where('ad_category', $property_category_term)->paginate(9);
         }
         elseif ($job_category_term)
         {
-            $seller_ads = SellerAd::where('ad_type', 'job')->where('ad_category', $job_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'seller-job')->where('ad_category', $job_category_term)->paginate(9);
         }
         elseif ($latest_post_term)
         {

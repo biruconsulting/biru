@@ -222,6 +222,7 @@
     <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
 </body>
 
 </html>

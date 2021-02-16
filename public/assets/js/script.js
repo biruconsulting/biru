@@ -134,8 +134,8 @@ $('#seller-general-summernote').summernote({
       ['color', ['color']],
       ['para', ['ul', 'ol', 'paragraph']],
       ['table', ['table']],
-    ]
-  });
+    ],
+});
 
   $('#seller-property-summernote').summernote({
     tabsize: 2,

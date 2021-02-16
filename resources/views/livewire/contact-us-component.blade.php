@@ -34,7 +34,15 @@
             @error('message') <span class="error text-danger">{{ $message }}</span> @enderror
 
             <div class="form-group mt-5">
-                <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                <div wire:loading.remove wire:target="submitContact">
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                </div>
+                <div wire:loading wire:target="submitContact">
+                    <button class="btn btn-primary btn-lg" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                        Submitting...
+                    </button>
+                </div>
             </div>
         </form>
     </div>
