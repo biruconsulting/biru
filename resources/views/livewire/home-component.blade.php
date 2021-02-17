@@ -63,14 +63,16 @@
                         @foreach ($seller_ads as $seller_ad)
                             <div class="item">
                                 <div class="seller-ad card">
-                                    <img src="{{ asset('storage/images/general_ad/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
-                                    <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                    <img src="{{ asset('storage/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
+                                    <a href="{{ route('seller_ad.details', ['ad_id'=>$seller_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                     <div class="card-body">
                                         <h5 class="card-title"><b>{{ $seller_ad->ad_title }}</b></h5>
                                         <p class="card-text">{{ $seller_ad->ad_short_description }}</p>
-                                        @if($seller_ad->ad_type == 'job')
+                                        @if($seller_ad->ad_type == 'seller-job')
                                             <h6>Salary: <span>{{ 'Rs.'.$seller_ad->ad_salary.'.00' }}</span></h6>
-                                        @else
+                                        @elseif($seller_ad->ad_type == 'seller-property')
+                                            <h6>Amount: <span>{{ 'Rs.'.$seller_ad->ad_price.'.00' }}</span></h6>
+                                        @else 
                                             <h6>Price: <span>{{ 'Rs.'.$seller_ad->ad_price.'.00' }}</span></h6>
                                         @endif
                                     </div>
@@ -165,16 +167,12 @@
                                 @foreach ($seller_general_ads as $seller_general_ad)
                                     <div class="item">
                                         <div class="seller-ad card">
-                                            <img src="{{ asset('storage/images/general_ad/'. $seller_general_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_general_ad->ad_title }}">
-                                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                            <img src="{{ asset('storage/'. $seller_general_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_general_ad->ad_title }}">
+                                            <a href="{{ route('seller_ad.details', ['ad_id'=>$seller_general_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                             <div class="card-body">
                                                 <h5 class="card-title"><b>{{ $seller_general_ad->ad_title }}</b></h5>
                                                 <p class="card-text">{{ $seller_general_ad->ad_short_description }}</p>
-                                                @if($seller_general_ad->ad_type == 'job')
-                                                    <h6>Salary: <span>{{ 'Rs.'.$seller_general_ad->ad_salary.'.00' }}</span></h6>
-                                                @else
-                                                    <h6>Price: <span>{{ 'Rs.'.$seller_general_ad->ad_price.'.00' }}</span></h6>
-                                                @endif
+                                                <h6>Price: <span>{{ 'Rs.'.$seller_general_ad->ad_price.'.00' }}</span></h6>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">{{ $seller_general_ad->created_at->diffForHumans() }}</small>
@@ -197,16 +195,12 @@
                                 @foreach ($seller_property_ads as $seller_property_ad)
                                     <div class="item">
                                         <div class="seller-ad card">
-                                            <img src="{{ asset('storage/images/general_ad/'. $seller_property_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_property_ad->ad_title }}">
-                                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                            <img src="{{ asset('storage/'. $seller_property_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_property_ad->ad_title }}">
+                                            <a href="{{ route('seller_ad.details', ['ad_id'=>$seller_property_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                             <div class="card-body">
                                                 <h5 class="card-title"><b>{{ $seller_property_ad->ad_title }}</b></h5>
                                                 <p class="card-text">{{ $seller_property_ad->ad_short_description }}</p>
-                                                @if($seller_property_ad->ad_type == 'job')
-                                                    <h6>Salary: <span>{{ 'Rs.'.$seller_property_ad->ad_salary.'.00' }}</span></h6>
-                                                @else
-                                                    <h6>Price: <span>{{ 'Rs.'.$seller_property_ad->ad_price.'.00' }}</span></h6>
-                                                @endif
+                                                <h6>Amount: <span>{{ 'Rs.'.$seller_ad->ad_price.'.00' }}</span></h6>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">{{ $seller_property_ad->created_at->diffForHumans() }}</small>
@@ -229,16 +223,12 @@
                                 @foreach ($seller_job_ads as $seller_job_ad)
                                     <div class="item">
                                         <div class="seller-ad card">
-                                            <img src="{{ asset('storage/images/general_ad/'. $seller_job_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_job_ad->ad_title }}">
-                                            <a href="seller_ad_detail.html" class="btn seller-ad-quickview">QuickView</a>
+                                            <img src="{{ asset('storage/'. $seller_job_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_job_ad->ad_title }}">
+                                            <a href="{{ route('seller_ad.details', ['ad_id'=>$seller_job_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                             <div class="card-body">
                                                 <h5 class="card-title"><b>{{ $seller_job_ad->ad_title }}</b></h5>
                                                 <p class="card-text">{{ $seller_job_ad->ad_short_description }}</p>
-                                                @if($seller_job_ad->ad_type == 'job')
-                                                    <h6>Salary: <span>{{ 'Rs.'.$seller_job_ad->ad_salary.'.00' }}</span></h6>
-                                                @else
-                                                    <h6>Price: <span>{{ 'Rs.'.$seller_job_ad->ad_price.'.00' }}</span></h6>
-                                                @endif
+                                                <h6>Salary: <span>{{ 'Rs.'.$seller_job_ad->ad_salary.'.00' }}</span></h6>
                                             </div>
                                             <div class="card-footer">
                                                 <small class="text-muted">{{ $seller_job_ad->created_at->diffForHumans() }}</small>

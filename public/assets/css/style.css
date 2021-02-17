@@ -609,7 +609,7 @@ body {
     transition: .5s ease;
     opacity: 0;
     position: absolute;
-    top: 43%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
@@ -635,7 +635,9 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body {
-    min-height: 250px;
+    min-height: 230px;
+    padding: 0;
+    padding-top: 15px;
 }
 
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body h6 {
@@ -681,7 +683,7 @@ body {
 
     .ad-quickview-card-bar .bar-card-body .seller-ad .seller-ad-quickview {
         opacity: 1;
-        top: 49%;
+        top: 43%;
         left: 50%;
         background-color: #f11712;
         color: #fff;

@@ -11,6 +11,7 @@ use App\Http\Livewire\ContactUsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\PostAdComponent;
 use App\Http\Livewire\SellerAdComponent;
+use App\Http\Livewire\SellerAdDetailsComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,7 +34,7 @@ Route::get('/buyer_ad', BuyerAdComponent::class)->name('buyer_ad');
 
 Route::get('/contact_us', ContactUsComponent::class)->name('contact_us');
 
-Route::post('/seller_ad/post', [SellerAdPostController::class, 'store'])->name('seller_ad.post');
+Route::get('/seller_ad/{ad_id}', SellerAdDetailsComponent::class)->name('seller_ad.details'); 
 
 Route::get('/post_ad', PostAdComponent::class)->name('post_ad');
 

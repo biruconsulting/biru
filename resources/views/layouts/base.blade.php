@@ -204,7 +204,7 @@
     <!-- sweetalert -->
     <script src="{{ asset('assets/lib/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
-    <script>
+    {{-- <script>
         window.livewire.on('alert', param => {
             Swal.fire({
                 position: 'top-end',
@@ -214,7 +214,8 @@
                 timer: 1500
             })  
         });
-    </script>
+    </script> --}}
+
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
@@ -222,7 +223,6 @@
     <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
-
 </body>
 
 </html>

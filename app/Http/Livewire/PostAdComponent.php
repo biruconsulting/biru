@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Category;
 use App\Models\SellerAd;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -79,27 +80,67 @@ class PostAdComponent extends Component
     public $buyer_job_ad_short_description;
     public $buyer_job_ad_description;
 
+    public function clearSellerAdData() {
+        $this->seller_user_first_name = '';
+        $this->seller_user_last_name = '';
+        $this->seller_user_email = '';
+        $this->seller_user_phone_number = '';
+        $this->seller_user_district = '';
+        $this->seller_ad_type = '';
+        $this->seller_general_ad_title = '';
+        $this->seller_general_ad_category = '';
+        $this->seller_general_ad_thumbnail_image = '';
+        $this->seller_general_ad_other_images = '';
+        $this->seller_general_ad_condition = '';
+        $this->seller_general_ad_brand = '';
+        $this->seller_general_ad_model = '';
+        $this->seller_general_ad_price = '';
+        $this->seller_general_ad_short_description = '';
+        $this->seller_general_ad_description = '';
+        $this->seller_property_ad_title = '';
+        $this->seller_property_ad_category = '';
+        $this->seller_property_ad_thumbnail_image = '';
+        $this->seller_property_ad_other_images = '';
+        $this->seller_property_ad_property_address = '';
+        $this->seller_property_ad_condition = '';
+        $this->seller_property_ad_price = '';
+        $this->seller_property_ad_short_description = '';
+        $this->seller_property_ad_description = '';
+        $this->seller_job_ad_title = '';
+        $this->seller_job_ad_category = '';
+        $this->seller_job_ad_thumbnail_image = '';
+        $this->seller_job_ad_job_type = '';
+        $this->seller_job_ad_work_address = '';
+        $this->seller_job_ad_salary = '';
+        $this->seller_job_ad_education_level = '';
+        $this->seller_job_ad_short_description = '';
+        $this->seller_job_ad_description = '';
+    }
+
     public function submitSellerAd(){
 
+        $this->validate([
+            'seller_user_first_name' => 'required|min:2',
+            'seller_user_last_name' => 'required|min:2',
+            'seller_user_email' => 'required|email',
+            'seller_user_phone_number' => 'required|digits:10',
+            'seller_user_district' => 'required',
+            'seller_ad_type' => 'required',
+        ]);
+        
         if ($this->seller_ad_type == 'seller-general') {
 
             $this->validate([
-                'seller_user_first_name' => 'required',
-                'seller_user_last_name' => 'required',
-                'seller_user_email' => 'required',
-                'seller_user_phone_number' => 'required',
-                'seller_user_district' => 'required',
-                'seller_ad_type' => 'required',
-                'seller_general_ad_title' => 'required',
+                'seller_general_ad_title' => 'required|min:5',
                 'seller_general_ad_category' => 'required',
                 'seller_general_ad_thumbnail_image' => 'required|image',
                 'seller_general_ad_other_images.*' => 'required|image',
                 'seller_general_ad_condition' => 'required',
                 'seller_general_ad_brand' => 'required',
                 'seller_general_ad_model' => 'required',
-                'seller_general_ad_price' => 'required',
-                'seller_general_ad_short_description' => 'required',
-                'seller_general_ad_description' => 'required',
+                'seller_general_ad_price' => 'required|numeric',
+                'seller_general_ad_short_description' => 'required|max:130',
+                'seller_general_ad_description' => 'required|min:100',
             ]);
 
             $thumbnail_image = $this->seller_general_ad_thumbnail_image;
@@ -126,12 +167,16 @@ class PostAdComponent extends Component
                 $resize_thumbnail_image = Image::make($thumbnail_image)->resize(300, null, function ($constraint) {
                     $constraint->aspectRatio();
                 })->encode('jpg');
+
                 Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
-                $this->seller_general_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
+
+                $new_seller_general_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
 
 
                 // for other images
-                foreach ($this->seller_general_ad_other_images as $key => $image) {
+                $other_images_array = array();
+
+                foreach ($this->seller_general_ad_other_images as $image) {
                     // Get filename with extension
                     $filenameWithExt_image = $image->getClientOriginalName();
 
@@ -151,14 +196,14 @@ class PostAdComponent extends Component
                     $resize_image = Image::make($image)->resize(300, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })->encode('jpg');
-                    $this->seller_general_ad_other_images[$key] = Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
-                    // $this->seller_general_ad_other_images[$key] = 'images/general_ad/' . $fileNameToStore_image; 
+                    Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
+                    $other_images_array[] = 'images/general_ad/' . $fileNameToStore_image; 
                 }
-                $this->seller_general_ad_other_images = json_encode($this->seller_general_ad_other_images);
+                $new_seller_general_ad_other_images = json_encode($other_images_array);
             }
 
             SellerAd::create([
-                'user_id' => '2',
+                'user_id' => Auth::user()->id,
                 'user_first_name' =>$this->seller_user_first_name,
                 'user_last_name' =>$this->seller_user_last_name,
                 'user_email' =>$this->seller_user_email,
@@ -167,8 +212,8 @@ class PostAdComponent extends Component
                 'ad_type' =>$this->seller_ad_type,
                 'ad_title' =>$this->seller_general_ad_title,
                 'ad_category' =>$this->seller_general_ad_category,
-                'ad_thumbnail_image' =>$this->seller_general_ad_thumbnail_image,
-                'ad_images' =>$this->seller_general_ad_other_images,
+                'ad_thumbnail_image' =>$new_seller_general_ad_thumbnail_image,
+                'ad_images' =>$new_seller_general_ad_other_images,
                 'ad_condition' =>$this->seller_general_ad_condition,
                 'ad_brand' =>$this->seller_general_ad_brand,
                 'ad_model' =>$this->seller_general_ad_model,
@@ -177,13 +222,175 @@ class PostAdComponent extends Component
                 'ad_description' =>$this->seller_general_ad_description,
             ]);
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Advertisement Created Successfully.']);
+            $this->clearSellerAdData();
+
+            $this->emit('alert', ['type' => 'success', 'message' => 'Seller General Advertisement Created Successfully.']);
         } 
-        elseif ($this->seller_ad_type == 'seller-properties') {
-            # code...
+        elseif ($this->seller_ad_type == 'seller-property') {
+
+            $this->validate([
+                'seller_property_ad_title' => 'required|min:5',
+                'seller_property_ad_category' => 'required',
+                'seller_property_ad_thumbnail_image' => 'required|image',
+                'seller_property_ad_other_images.*' => 'required|image',
+                'seller_property_ad_property_address' => 'required|min:5',
+                'seller_property_ad_condition' => 'required',
+                'seller_property_ad_price' => 'required|numeric',
+                'seller_property_ad_short_description' => 'required|max:130',
+                'seller_property_ad_description' => 'required|min:100',
+            ]);
+
+            $thumbnail_image = $this->seller_property_ad_thumbnail_image;
+            $other_images = $this->seller_property_ad_other_images;
+
+            if($thumbnail_image && $other_images)
+            {
+                // for thumbnail image   
+                // Get filename with extension
+                $filenameWithExt_thumbnail_image = $thumbnail_image->getClientOriginalName();
+
+                // Get file path
+                $filename_thumbnail_image = pathinfo($filenameWithExt_thumbnail_image, PATHINFO_FILENAME);
+
+                // Remove unwanted characters
+                $filename_thumbnail_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_thumbnail_image);
+                $filename_thumbnail_image = preg_replace("/\s+/", '-', $filename_thumbnail_image);
+
+                // Get the original image extension
+                $extension_thumbnail_image = $thumbnail_image->getClientOriginalExtension();
+
+                // Create unique file name
+                $fileNameToStore_thumbnail_image = $filename_thumbnail_image . '_' . time() . '.' . $extension_thumbnail_image;
+
+                $resize_thumbnail_image = Image::make($thumbnail_image)->resize(300, null, function ($constraint) {
+                    $constraint->aspectRatio();
+                })->encode('jpg');
+
+                Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
+
+                $new_seller_property_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
+
+
+                // for other images
+                $other_images = array();
+                
+                foreach ($this->seller_property_ad_other_images as $image) {
+                    // Get filename with extension
+                    $filenameWithExt_image = $image->getClientOriginalName();
+
+                    // Get file path
+                    $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
+
+                    // Remove unwanted characters
+                    $filename_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_image);
+                    $filename_image = preg_replace("/\s+/", '-', $filename_image);
+
+                    // Get the original image extension
+                    $extension_image = $image->getClientOriginalExtension();
+
+                    // Create unique file name
+                    $fileNameToStore_image = $filename_image . '_' . time() . '.' . $extension_image;
+
+                    $resize_image = Image::make($image)->resize(300, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->encode('jpg');
+
+                    Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
+
+                    $other_images[] = 'images/general_ad/' . $fileNameToStore_image; 
+                }
+                $new_seller_property_ad_other_images = json_encode($other_images);
+            }
+
+            SellerAd::create([
+                'user_id' => Auth::user()->id,
+                'user_first_name' =>$this->seller_user_first_name,
+                'user_last_name' =>$this->seller_user_last_name,
+                'user_email' =>$this->seller_user_email,
+                'user_phone_number' =>$this->seller_user_phone_number,
+                'user_district' =>$this->seller_user_district,
+                'ad_type' =>$this->seller_ad_type,
+                'ad_title' =>$this->seller_property_ad_title,
+                'ad_category' =>$this->seller_property_ad_category,
+                'ad_thumbnail_image' =>$new_seller_property_ad_thumbnail_image,
+                'ad_images' =>$new_seller_property_ad_other_images,
+                'ad_condition' =>$this->seller_property_ad_condition,
+                'ad_property_address' =>$this->seller_property_ad_property_address,
+                'ad_price' =>$this->seller_property_ad_price,
+                'ad_short_description' =>$this->seller_property_ad_short_description,
+                'ad_description' =>$this->seller_property_ad_description,
+            ]);
+
+            $this->clearSellerAdData();
+
+            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Property Advertisement Created Successfully.']);
         }
         elseif ($this->seller_ad_type == 'seller-job') {
 
+            $this->validate([
+                'seller_job_ad_title' => 'required|min:5',
+                'seller_job_ad_category' => 'required',
+                'seller_job_ad_thumbnail_image' => 'required|image',
+                'seller_job_ad_job_type' => 'required',
+                'seller_job_ad_work_address' => 'required|min:5',
+                'seller_job_ad_salary' => 'required|numeric',
+                'seller_job_ad_education_level' => 'required',
+                'seller_job_ad_short_description' => 'required|max:130',
+                'seller_job_ad_description' => 'required|min:100',
+            ]);
+
+            $thumbnail_image = $this->seller_job_ad_thumbnail_image;
+
+            if ($thumbnail_image) {
+
+                 // for thumbnail image 
+                 // Get filename with extension
+                 $filenameWithExt_thumbnail_image = $thumbnail_image->getClientOriginalName();
+ 
+                 // Get file path
+                 $filename_thumbnail_image = pathinfo($filenameWithExt_thumbnail_image, PATHINFO_FILENAME);
+ 
+                 // Remove unwanted characters
+                 $filename_thumbnail_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_thumbnail_image);
+                 $filename_thumbnail_image = preg_replace("/\s+/", '-', $filename_thumbnail_image);
+ 
+                 // Get the original image extension
+                 $extension_thumbnail_image = $thumbnail_image->getClientOriginalExtension();
+ 
+                 // Create unique file name
+                 $fileNameToStore_thumbnail_image = $filename_thumbnail_image . '_' . time() . '.' . $extension_thumbnail_image;
+ 
+                 $resize_thumbnail_image = Image::make($thumbnail_image)->resize(300, null, function ($constraint) {
+                     $constraint->aspectRatio();
+                 })->encode('jpg');
+
+                 Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
+
+                 $new_seller_job_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
+            }
+
+            SellerAd::create([
+                'user_id' => Auth::user()->id,
+                'user_first_name' =>$this->seller_user_first_name,
+                'user_last_name' =>$this->seller_user_last_name,
+                'user_email' =>$this->seller_user_email,
+                'user_phone_number' =>$this->seller_user_phone_number,
+                'user_district' =>$this->seller_user_district,
+                'ad_type' =>$this->seller_ad_type,
+                'ad_title' =>$this->seller_job_ad_title,
+                'ad_category' =>$this->seller_job_ad_category,
+                'ad_thumbnail_image' =>$new_seller_job_ad_thumbnail_image,
+                'ad_job_type' =>$this->seller_job_ad_job_type,
+                'ad_work_address' =>$this->seller_job_ad_work_address,
+                'ad_salary' =>$this->seller_job_ad_salary,
+                'ad_education_level' =>$this->seller_job_ad_education_level,
+                'ad_short_description' =>$this->seller_job_ad_short_description,
+                'ad_description' =>$this->seller_job_ad_description,
+            ]);
+
+            $this->clearSellerAdData();
+
+            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Job Advertisement Created Successfully.']);
         }
     }
 
@@ -193,6 +400,7 @@ class PostAdComponent extends Component
 
     public function render()
     {
+
         $general_categories = Category::where('ad_type', 'general')->get();
         $property_categories = Category::where('ad_type', 'property')->get();
         $job_categories = Category::where('ad_type', 'job')->get();

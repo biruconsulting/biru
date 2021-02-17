@@ -125,41 +125,41 @@ $(document).ready(function(){
 
 
 // Summernote
-$('#seller-general-summernote').summernote({
-    tabsize: 2,
-    height: 120,
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-    ],
-});
+// $('#seller-general-summernote').summernote({
+//     tabsize: 2,
+//     height: 120,
+//     toolbar: [
+//       ['style', ['style']],
+//       ['font', ['bold', 'underline', 'clear']],
+//       ['color', ['color']],
+//       ['para', ['ul', 'ol', 'paragraph']],
+//       ['table', ['table']],
+//     ],
+// });
 
-  $('#seller-property-summernote').summernote({
-    tabsize: 2,
-    height: 120,
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-    ]
-  });
+//   $('#seller-property-summernote').summernote({
+//     tabsize: 2,
+//     height: 120,
+//     toolbar: [
+//       ['style', ['style']],
+//       ['font', ['bold', 'underline', 'clear']],
+//       ['color', ['color']],
+//       ['para', ['ul', 'ol', 'paragraph']],
+//       ['table', ['table']],
+//     ]
+//   });
 
-  $('#seller-job-summernote').summernote({
-    tabsize: 2,
-    height: 120,
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-    ]
-  });
+//   $('#seller-job-summernote').summernote({
+//     tabsize: 2,
+//     height: 120,
+//     toolbar: [
+//       ['style', ['style']],
+//       ['font', ['bold', 'underline', 'clear']],
+//       ['color', ['color']],
+//       ['para', ['ul', 'ol', 'paragraph']],
+//       ['table', ['table']],
+//     ]
+//   });
 
   $('#buyer-general-summernote').summernote({
     tabsize: 2,
@@ -196,3 +196,14 @@ $('#seller-general-summernote').summernote({
       ['table', ['table']],
     ]
   });
+
+// Success sweet alert
+  window.livewire.on('alert', param => {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: param['message'],
+        showConfirmButton: false,
+        timer: 1500
+    })  
+});
