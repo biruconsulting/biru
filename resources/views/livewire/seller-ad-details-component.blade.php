@@ -68,16 +68,16 @@
                                         <p>{{ $seller_ad->ad_short_description }}</p>
                                         <ul>
                                             @if ($seller_ad->ad_type == 'seller-general')
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Category: <span>{{ $seller_ad->ad_category }}</span></li>
+                                                <li><i class="fas fa-check-circle"></i> &nbsp;Category: <span>{{ $seller_category->name }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Condition: <span>{{ $seller_ad->ad_condition }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Brand: <span>{{ $seller_ad->ad_brand }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Model: <span>{{ $seller_ad->ad_model }}</span></li>
                                             @elseif ($seller_ad->ad_type == 'seller-property')
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Category: <span>{{ $seller_ad->ad_category }}</span></li>
+                                                <li><i class="fas fa-check-circle"></i> &nbsp;Category: <span>{{ $seller_category->name }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Condition: <span>{{ $seller_ad->ad_condition }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Property Address: <span>{{ $seller_ad->ad_property_address }}</span></li>
                                             @elseif ($seller_ad->ad_type == 'seller-job')
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Category: <span>{{ $seller_ad->ad_category }}</span></li>
+                                                <li><i class="fas fa-check-circle"></i> &nbsp;Category: <span>{{ $seller_category->name }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Job Type: <span>{{ $seller_ad->ad_job_type }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Work Address: <span>{{ $seller_ad->ad_work_address }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Education Level: <span>{{ $seller_ad->ad_education_level }}</span></li>

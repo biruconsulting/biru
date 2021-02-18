@@ -7,8 +7,7 @@ use Livewire\Component;
 class HeaderSearchComponent extends Component
 {
     public $selectedCategory;
-    public $header_ad_category;
-    public $header_search;
+    public $headerSearch;
 
     public function render()
     {

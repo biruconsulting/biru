@@ -161,41 +161,41 @@ $(document).ready(function(){
 //     ]
 //   });
 
-  $('#buyer-general-summernote').summernote({
-    tabsize: 2,
-    height: 120,
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-    ]
-  });
+//   $('#buyer-general-summernote').summernote({
+//     tabsize: 2,
+//     height: 120,
+//     toolbar: [
+//       ['style', ['style']],
+//       ['font', ['bold', 'underline', 'clear']],
+//       ['color', ['color']],
+//       ['para', ['ul', 'ol', 'paragraph']],
+//       ['table', ['table']],
+//     ]
+//   });
 
-  $('#buyer-property-summernote').summernote({
-    tabsize: 2,
-    height: 120,
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-    ]
-  });
+//   $('#buyer-property-summernote').summernote({
+//     tabsize: 2,
+//     height: 120,
+//     toolbar: [
+//       ['style', ['style']],
+//       ['font', ['bold', 'underline', 'clear']],
+//       ['color', ['color']],
+//       ['para', ['ul', 'ol', 'paragraph']],
+//       ['table', ['table']],
+//     ]
+//   });
 
-  $('#buyer-job-summernote').summernote({
-    tabsize: 2,
-    height: 120,
-    toolbar: [
-      ['style', ['style']],
-      ['font', ['bold', 'underline', 'clear']],
-      ['color', ['color']],
-      ['para', ['ul', 'ol', 'paragraph']],
-      ['table', ['table']],
-    ]
-  });
+//   $('#buyer-job-summernote').summernote({
+//     tabsize: 2,
+//     height: 120,
+//     toolbar: [
+//       ['style', ['style']],
+//       ['font', ['bold', 'underline', 'clear']],
+//       ['color', ['color']],
+//       ['para', ['ul', 'ol', 'paragraph']],
+//       ['table', ['table']],
+//     ]
+//   });
 
 // Success sweet alert
   window.livewire.on('alert', param => {

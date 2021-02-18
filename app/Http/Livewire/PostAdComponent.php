@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\BuyerAd;
 use App\Models\Category;
 use App\Models\SellerAd;
 use Illuminate\Support\Facades\Auth;
@@ -115,6 +116,37 @@ class PostAdComponent extends Component
         $this->seller_job_ad_education_level = '';
         $this->seller_job_ad_short_description = '';
         $this->seller_job_ad_description = '';
+    }
+
+    public function clearBuyerAdData() {
+        $this->buyer_user_first_name = '';
+        $this->buyer_user_last_name = '';
+        $this->buyer_user_email = '';
+        $this->buyer_user_phone_number = '';
+        $this->buyer_user_district = '';
+        $this->buyer_ad_type = '';
+        $this->buyer_general_ad_title = '';
+        $this->buyer_general_ad_category = '';
+        $this->buyer_general_ad_brand = '';
+        $this->buyer_general_ad_model = '';
+        $this->buyer_general_ad_ex_min_price = '';
+        $this->buyer_general_ad_ex_max_price = '';
+        $this->buyer_general_ad_short_description = '';
+        $this->buyer_general_ad_description = '';
+        $this->buyer_property_ad_title = '';
+        $this->buyer_property_ad_category = '';
+        $this->buyer_property_ad_ex_district = '';
+        $this->buyer_property_ad_ex_min_price = '';
+        $this->buyer_property_ad_ex_max_price = '';
+        $this->buyer_property_ad_short_description = '';
+        $this->buyer_property_ad_description = '';
+        $this->buyer_job_ad_title = '';
+        $this->buyer_job_ad_category = '';
+        $this->buyer_job_ad_ex_district = '';
+        $this->buyer_job_ad_ex_job_type = '';
+        $this->buyer_job_ad_ex_education_level = '';
+        $this->buyer_job_ad_short_description = '';
+        $this->buyer_job_ad_description = '';
     }
 
     public function submitSellerAd(){
@@ -394,8 +426,120 @@ class PostAdComponent extends Component
         }
     }
 
+
     public function submitBuyerAd(){
 
+        $this->validate([
+            'buyer_user_first_name' => 'required|min:2',
+            'buyer_user_last_name' => 'required|min:2',
+            'buyer_user_email' => 'required|email',
+            'buyer_user_phone_number' => 'required|digits:10',
+            'buyer_user_district' => 'required',
+            'buyer_ad_type' => 'required',
+        ]);
+
+        if ($this->buyer_ad_type == 'buyer-general') {
+            
+            $this->validate([
+                'buyer_general_ad_title' => 'required|min:5',
+                'buyer_general_ad_category' => 'required',
+                'buyer_general_ad_brand' => 'required',
+                'buyer_general_ad_model' => 'required',
+                'buyer_general_ad_ex_min_price' => 'required|numeric',
+                'buyer_general_ad_ex_max_price' => 'required|numeric',
+                'buyer_general_ad_short_description' => 'required|max:130',
+                'buyer_general_ad_description' => 'required|min:100',
+            ]);
+
+            BuyerAd::create([
+                'user_id' => Auth::user()->id,
+                'user_first_name' => $this->buyer_user_first_name,
+                'user_last_name' => $this->buyer_user_last_name,
+                'user_email' => $this->buyer_user_email,
+                'user_phone_number' => $this->buyer_user_phone_number,
+                'user_district' => $this->buyer_user_district,
+                'ad_type' => $this->buyer_ad_type,
+                'ad_title' => $this->buyer_general_ad_title,
+                'ad_category' => $this->buyer_general_ad_category,
+                'ad_brand' => $this->buyer_general_ad_brand,
+                'ad_model' => $this->buyer_general_ad_model,
+                'ad_ex_min_price' => $this->buyer_general_ad_ex_min_price,
+                'ad_ex_max_price' => $this->buyer_general_ad_ex_max_price,
+                'ad_short_description' => $this->buyer_general_ad_short_description,
+                'ad_description' => $this->buyer_general_ad_description,
+            ]);
+
+            $this->clearBuyerAdData();
+
+            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer General Advertisement Created Successfully.']);
+        } 
+        elseif ($this->buyer_ad_type == 'buyer-property') 
+        {
+            $this->validate([
+                'buyer_property_ad_title' => 'required|min:5',
+                'buyer_property_ad_category' => 'required',
+                'buyer_property_ad_ex_district' => 'required',
+                'buyer_property_ad_ex_min_price' => 'required|numeric',
+                'buyer_property_ad_ex_max_price' => 'required|numeric',
+                'buyer_property_ad_short_description' => 'required|max:130',
+                'buyer_property_ad_description' => 'required|min:100',
+            ]); 
+            
+            BuyerAd::create([
+                'user_id' => Auth::user()->id,
+                'user_first_name' => $this->buyer_user_first_name,
+                'user_last_name' => $this->buyer_user_last_name,
+                'user_email' => $this->buyer_user_email,
+                'user_phone_number' => $this->buyer_user_phone_number,
+                'user_district' => $this->buyer_user_district,
+                'ad_type' => $this->buyer_ad_type,
+                'ad_title' => $this->buyer_property_ad_title,
+                'ad_category' => $this->buyer_property_ad_category,
+                'ad_ex_district' => $this->buyer_property_ad_ex_district,
+                'ad_ex_min_price' => $this->buyer_property_ad_ex_min_price,
+                'ad_ex_max_price' => $this->buyer_property_ad_ex_max_price,
+                'ad_short_description' => $this->buyer_property_ad_short_description,
+                'ad_description' => $this->buyer_property_ad_description,
+            ]);
+
+            $this->clearBuyerAdData();
+
+            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Property Advertisement Created Successfully.']);
+        }
+        elseif ($this->buyer_ad_type == 'buyer-job') 
+        {
+            $this->validate([
+                'buyer_job_ad_title' => 'required|min:5',
+                'buyer_job_ad_category' => 'required',
+                'buyer_job_ad_ex_district' => 'required',
+                'buyer_job_ad_ex_job_type' => 'required',
+                'buyer_job_ad_ex_education_level' => 'required',
+                'buyer_job_ad_short_description' => 'required|max:130',
+                'buyer_job_ad_description' => 'required|min:100',
+            ]);
+
+            BuyerAd::create([
+                'user_id' => Auth::user()->id,
+                'user_first_name' => $this->buyer_user_first_name,
+                'user_last_name' => $this->buyer_user_last_name,
+                'user_email' => $this->buyer_user_email,
+                'user_phone_number' => $this->buyer_user_phone_number,
+                'user_district' => $this->buyer_user_district,
+                'ad_type' => $this->buyer_ad_type,
+                'ad_title' => $this->buyer_job_ad_title,
+                'ad_category' => $this->buyer_job_ad_category,
+                'ad_ex_district' => $this->buyer_job_ad_ex_district,
+                'ad_ex_job_type' => $this->buyer_job_ad_ex_job_type,
+                'ad_ex_education_level' => $this->buyer_job_ad_ex_education_level,
+                'ad_short_description' => $this->buyer_job_ad_short_description,
+                'ad_description' => $this->buyer_job_ad_description,
+            ]);
+
+            $this->clearBuyerAdData();
+
+            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Job Advertisement Created Successfully.']);
+        }
+        
     }
 
     public function render()

@@ -662,7 +662,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">HOME</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">POST YOUR ADVERTISEMENT</li>
+                    <li class="breadcrumb-item active" aria-current="page">POST ADVERTISEMENT</li>
                 </ol>
             </nav>
         </div>
@@ -670,7 +670,7 @@
 
     <div class="post-ad my-5">
         <div class="container">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <ul class="nav nav-tabs" id="myTab" role="tablist" wire:ignore>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link btn active" id="seller_ad-tab" data-bs-toggle="tab" href="#seller_ad" role="tab" aria-controls="seller_ad" aria-selected="true">SELLER ADVERTISEMENT</a>
                 </li>
@@ -679,7 +679,7 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane pt-3 fade show active" id="seller_ad" role="tabpanel" aria-labelledby="seller_ad-tab">
+                <div wire:ignore.self class="tab-pane pt-3 fade show active" id="seller_ad" role="tabpanel" aria-labelledby="seller_ad-tab">
                     <h2 class="ad-h2">Create Your <span>Seller Advertisement</span></h2>
                     <p class="ad-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero itaque nobis quos iste sapiente possimus aliquam eligendi explicabo minus officia? Nam laborum incidunt earum, consequuntur expedita explicabo? Nisi, laborum minima.</p>
 
@@ -690,31 +690,31 @@
 
                             <div class="col-md-6">
                                 <label for="first_name" class="form-label">First Name</label>
-                                <input type="text" class="form-control" id="first_name" placeholder="Your name" wire:model.defer="seller_user_first_name">
+                                <input type="text" class="form-control" id="first_name" placeholder="Your name" wire:model.defer="seller_user_first_name" required>
                                 @error('seller_user_first_name') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="col-md-6">
                                 <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Your last name" wire:model.defer="seller_user_last_name">
+                                <input type="text" class="form-control" id="last_name" placeholder="Your last name" wire:model.defer="seller_user_last_name" required>
                                 @error('seller_user_last_name') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="col-md-6">
                                 <label for="email_address" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" id="email_address" placeholder="Your email" wire:model.defer="seller_user_email">
+                                <input type="email" class="form-control" id="email_address" placeholder="Your email" wire:model.defer="seller_user_email" required>
                                 @error('seller_user_email') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="col-md-6">
                                 <label for="phone_number" class="form-label">Phone Number</label>
-                                <input type="text" class="form-control" id="phone_number" placeholder="Your phone number" wire:model.defer="seller_user_phone_number">
+                                <input type="text" class="form-control" id="phone_number" placeholder="Your phone number" wire:model.defer="seller_user_phone_number" required>
                                 @error('seller_user_phone_number') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="col-md-6">
                                 <label for="city" class="form-label">Town / City</label>
-                                <select class="form-select" aria-label="City select" id="city" wire:model.defer="seller_user_district">
+                                <select class="form-select" aria-label="City select" id="city" wire:model.defer="seller_user_district" required>
                                     <option selected>Select your district</option>
                                     <option value="Ampara">Ampara</option>
                                     <option value="Anuradhapura">Anuradhapura</option>
@@ -752,13 +752,15 @@
                             <hr>
 
                             <div class="col-md-12">
-                                <label for="advertisement_type" class="form-label">Advertisement Type</label>
-                                <select class="form-select seller-type-select" name="ad_type" id="advertisement_type" wire:model.defer="seller_ad_type" required>
-                                    <option selected>Select Advertisement Type</option>
-                                    <option value="seller-general">General Advertisement</option>
-                                    <option value="seller-property">Properties Advertisement</option>
-                                    <option value="seller-job">Job Advertisement</option>
-                                </select>
+                                <div wire:ignore>
+                                    <label for="advertisement_type" class="form-label">Advertisement Type</label>
+                                    <select class="form-select seller-type-select" name="ad_type" id="advertisement_type" wire:model.defer="seller_ad_type" required>
+                                        <option selected>Select Advertisement Type</option>
+                                        <option value="seller-general">General Advertisement</option>
+                                        <option value="seller-property">Properties Advertisement</option>
+                                        <option value="seller-job">Job Advertisement</option>
+                                    </select>
+                                </div>
                                 @error('seller_ad_type') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
@@ -1028,7 +1030,7 @@
                     </div>
 
                 </div>
-                <div class="tab-pane pt-3 fade" id="buyer-ad" role="tabpanel" aria-labelledby="buyer-ad-tab">
+                <div wire:ignore.self class="tab-pane pt-3 fade" id="buyer-ad" role="tabpanel" aria-labelledby="buyer-ad-tab">
                     <h2 class="ad-h2">Create Your <span>Buyer Advertisement</span></h2>
                     <p class="ad-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero itaque nobis quos iste sapiente possimus aliquam eligendi explicabo minus officia? Nam laborum incidunt earum, consequuntur expedita explicabo? Nisi, laborum minima.</p>
 
@@ -1040,26 +1042,26 @@
                             <div class="col-md-6">
                                 <label for="first_name" class="form-label">First Name</label>
                                 <input type="text" class="form-control" id="first_name" placeholder="Your name" wire:model.defer="buyer_user_first_name" required>
+                                @error('buyer_user_first_name') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
-                            @error('buyer_user_first_name') <span class="error text-danger">{{ $message }}</span> @enderror
 
                             <div class="col-md-6">
                                 <label for="last_name" class="form-label">Last Name</label>
                                 <input type="text" class="form-control" id="last_name" placeholder="Your last name" wire:model.defer="buyer_user_last_name" required>
+                                @error('buyer_user_last_name') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
-                            @error('buyer_user_last_name') <span class="error text-danger">{{ $message }}</span> @enderror
 
                             <div class="col-md-6">
                                 <label for="email_address" class="form-label">Email Address</label>
                                 <input type="email" class="form-control" id="email_address" placeholder="Your email" wire:model.defer="buyer_user_email" required>
+                                @error('buyer_user_email') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
-                            @error('buyer_user_email') <span class="error text-danger">{{ $message }}</span> @enderror
 
                             <div class="col-md-6">
                                 <label for="phone_number" class="form-label">Phone Number</label>
                                 <input type="text" class="form-control" id="phone_number" placeholder="Your phone number" wire:model.defer="buyer_user_phone_number" required>
+                                @error('buyer_user_phone_number') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
-                            @error('buyer_user_phone_number') <span class="error text-danger">{{ $message }}</span> @enderror
 
                             <div class="col-md-6">
                                 <label for="city" class="form-label">Town / City</label>
@@ -1091,8 +1093,8 @@
                                     <option value="Trincomalee">Trincomalee</option>
                                     <option value="Vavuniya">Vavuniya</option>
                                 </select>
+                                @error('buyer_user_district') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
-                            @error('buyer_user_district') <span class="error text-danger">{{ $message }}</span> @enderror
 
                             <h6 class="mt-5">ADVERTISEMENT DETAILS</h6>
                             <small class="text-muted"> General Advertisement - Ex: Electronics, Bikes, Books, Cloths, Computer, Appliance, Phones, Video games ... </small>
@@ -1101,13 +1103,15 @@
                             <hr>
 
                             <div class="col-md-12">
-                                <label for="advertisement_type" class="form-label">Advertisement Type</label>
-                                <select class="form-select buyer-type-select" id="advertisement_type" wire:model.defer="buyer_ad_type" required>
-                                    <option selected>Select Advertisement Type</option>
-                                    <option value="buyer-general">General Advertisement</option>
-                                    <option value="buyer-properties">Properties Advertisement</option>
-                                    <option value="buyer-job">Job Advertisement</option>
-                                </select>
+                                <div wire:ignore>
+                                    <label for="advertisement_type" class="form-label">Advertisement Type</label>
+                                    <select class="form-select buyer-type-select" id="advertisement_type" wire:model.defer="buyer_ad_type" required>
+                                        <option selected>Select Advertisement Type</option>
+                                        <option value="buyer-general">General Advertisement</option>
+                                        <option value="buyer-property">Properties Advertisement</option>
+                                        <option value="buyer-job">Job Advertisement</option>
+                                    </select>
+                                </div>
                                 @error('buyer_ad_type') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
@@ -1158,8 +1162,8 @@
                                             <span class="input-group-text">Rs</span>
                                             <input type="text" class="form-control" id="buyer_general_max_price" placeholder="Maximum price" wire:model.defer="buyer_general_ad_ex_max_price">
                                             <span class="input-group-text">.00</span>
-                                            @error('buyer_general_ad_ex_max_price') <span class="error text-danger">{{ $message }}</span> @enderror
                                         </div>
+                                        @error('buyer_general_ad_ex_max_price') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="col-12">
@@ -1168,15 +1172,17 @@
                                         @error('buyer_general_ad_short_description') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
-                                    <div class="col-12" wire:ignore>
-                                        <label class="form-label">Description</label>
-                                        <textarea type="text" class="form-control seller-general-summernote" id="buyer-general-summernote"  wire:model.defer="buyer_general_ad_description"></textarea>
+                                    <div class="col-12">
+                                        <div wire:ignore>
+                                            <label class="form-label">Description</label>
+                                            <textarea type="text" class="form-control" id="buyer-general-summernote"  wire:model.defer="buyer_general_ad_description"></textarea>
+                                        </div>
                                         @error('buyer_general_ad_description') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                 </div>
                             </div>
-                            <div wire:ignore.self class="buyer-properties box">
+                            <div wire:ignore.self class="buyer-property box">
                                 <div class="row g-3">
                                     <div class="col-md-6">
                                         <label for="buyer_property_name" class="form-label">Title</label>
@@ -1255,8 +1261,10 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Description</label>
-                                        <textarea class="form-control" id="buyer-property-summernote" wire:model.defer="buyer_property_ad_description"></textarea>
+                                        <div wire:ignore>
+                                            <label class="form-label">Description</label>
+                                            <textarea class="form-control" id="buyer-property-summernote" wire:model.defer="buyer_property_ad_description"></textarea>
+                                        </div>
                                         @error('buyer_property_ad_description') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
@@ -1284,7 +1292,7 @@
                                     <div class="col-md-6">
                                         <label for="buyer_job_address" class="form-label">Expected District</label>
                                         <select class="form-select" id="buyer_job_address" wire:model.defer="buyer_job_ad_ex_district">
-                                            <option selected>Select your district</option>
+                                            <option selected>Choose ecpected district</option>
                                             <option value="Ampara">Ampara</option>
                                             <option value="Anuradhapura">Anuradhapura</option>
                                             <option value="Badulla">Badulla</option>
@@ -1337,8 +1345,10 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label class="form-label">Description</label>
-                                        <textarea class="form-control" id="buyer-job-summernote" wire:model.defer="buyer_job_ad_description"></textarea>
+                                        <div wire:ignore>
+                                            <label class="form-label">Description</label>
+                                            <textarea class="form-control" id="buyer-job-summernote" wire:model.defer="buyer_job_ad_description"></textarea>
+                                        </div>
                                         @error('buyer_job_ad_description') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
@@ -1346,7 +1356,15 @@
                             </div>
 
                             <div class="mt-5 d-flex justify-content-md-end justify-content-center">
-                                <button class="btn btn-primary post-ad-btn" type="submit">Post Advertisement</button>
+                                <div wire:loading.remove wire:target="submitBuyerAd">
+                                    <button class="btn btn-primary post-ad-btn" type="submit">Post Advertisement</button>
+                                </div>
+                                <div wire:loading wire:target="submitBuyerAd">
+                                    <button class="btn btn-primary post-ad-btn" type="button" disabled>
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                        Posting Advertisement
+                                    </button>
+                                </div>
                             </div>
 
                         </form>
@@ -1409,15 +1427,66 @@
                 }
             }
         });
+
     })
 </script>
 
-{{-- <script>
+ <script>
     document.addEventListener('livewire:load', function () {
-    
+        $('#buyer-general-summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('buyer_general_ad_description', contents);
+                }
+            }
+        });
+
+        $('#buyer-property-summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('buyer_property_ad_description', contents);
+                }
+            }
+        });
+
+        $('#buyer-job-summernote').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('buyer_job_ad_description', contents);
+                }
+            }
+        });
     })
 </script>
 
+{{--
 <script>
     document.addEventListener('livewire:load', function () {
     

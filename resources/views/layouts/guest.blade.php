@@ -102,27 +102,7 @@
                         <img src="{{ asset('storage/images/logo.png') }}" alt="" height="50">
                     </div>
                     <div class="d-flex justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
-                        <form action="#">
-                            <div class="header-search-bar input-group">
-                                <div class="search-dropdown">
-                                    <select class="form-select" aria-label="Default select example">
-                                        <option selected>Categories</option>
-                                        <optgroup label="Seller Advertisement">
-                                            <option value="1">General</option>
-                                            <option value="2">Properties</option>
-                                            <option value="3">Job</option>
-                                        </optgroup>
-                                        <optgroup label="Buyer Advertisement">
-                                            <option value="1">General</option>
-                                            <option value="2">Properties</option>
-                                            <option value="3">Job</option>
-                                        </optgroup>
-                                    </select>
-                                </div>
-                                <input type="text" class="search-bar-input form-control" placeholder="Search by Name, Location...">
-                                <button type="submit" class="btn btn-primary search-bar-btn"><i class="fas fa-search"></i></button>
-                            </div>
-                        </form>
+                        @livewire('header-search-component')
                     </div>
                     <div class="d-flex justify-content-lg-end justify-content-center col-lg-3 col-12 right-mid-section">
                         <a href="{{ route('post_ad') }}" class="btn-grad"><b>POST YOUR AD</b></a>
@@ -246,8 +226,8 @@
 
     @livewireScripts
 
-    <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    {{-- <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script> --}}
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>

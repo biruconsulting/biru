@@ -43,7 +43,7 @@
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     {{ $general_category->name }}
                                                 </label>
-                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('ad_type', 'general')->where('ad_category', $general_category->id)->count() }}</span>
+                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('ad_type', 'buyer-general')->where('ad_category', $general_category->id)->count() }}</span>
                                             </div>
                                         @endforeach     
                                     </div>
@@ -63,7 +63,7 @@
                                                 <label class="form-check-label" for="flexCheckDefault">
                                                     {{ $property_category->name }}
                                                 </label>
-                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('ad_type', 'property')->where('ad_category', $property_category->id)->count() }}</span>
+                                                <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('ad_type', 'buyer-property')->where('ad_category', $property_category->id)->count() }}</span>
                                             </div>
                                         @endforeach   
                                     </div>
@@ -84,7 +84,7 @@
                                                     <label class="form-check-label" for="flexCheckDefault">
                                                         {{ $job_category->name }}
                                                     </label>
-                                                    <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('ad_type', 'job')->where('ad_category', $job_category->id)->count() }}</span>
+                                                    <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('ad_type', 'buyer-job')->where('ad_category', $job_category->id)->count() }}</span>
                                                 </div>
                                             @endforeach                                         
                                         </div>
@@ -121,175 +121,175 @@
                             <label class="form-check-label" for="flexCheckDefault">
                                 Jaffna
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'jaffna')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Jaffna')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="kilinochchi" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Kilinochchi
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'kilinochchi')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Kilinochchi')->count() }}</span>
                         </div>
                         <div class="form-check ">
                             <input class="form-check-input" type="checkbox" value="mannar" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Mannar
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'mannar')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Mannar')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="mullaitivu" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Mullaitivu
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'mullaitivu')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Mullaitivu')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="vavuniya" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Vavuniya
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'vavuniya')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Vavuniya')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="puttalam" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Puttalam
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'puttalam')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Puttalam')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="kurunegala" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Kurunegala
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'kurunegala')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Kurunegala')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="gampaha" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Gampaha
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'gampaha')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Gampaha')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="colombo" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Colombo
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'colombo')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Colombo')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="kalutara" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Kalutara
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'kalutara')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Kalutara')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="anuradhapura" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Anuradhapura
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'anuradhapura')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Anuradhapura')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="polonnaruwa" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Polonnaruwa
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'polonnaruwa')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Polonnaruwa')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="matale" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Matale
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'matale')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Matale')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="kandy" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Kandy
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'kandy')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Kandy')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="nuwara eliya" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Nuwara Eliya
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'nuwara eliya')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Nuwara Eliya')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="kegalle" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Kegalle
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'kegalle')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Kegalle')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="ratnapura" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Ratnapura
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'ratnapura')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Ratnapura')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="trincomalee" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Trincomalee
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'trincomalee')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Trincomalee')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="batticaloa" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Batticaloa
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'batticaloa')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Batticaloa')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="ampara" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Ampara
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'ampara')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Ampara')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="badulla" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Badulla
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'badulla')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Badulla')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="monaragala" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Monaragala
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'monaragala')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Monaragala')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="hambantota" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Hambantota
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'hambantota')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Hambantota')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="matara" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Matara
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'matara')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Matara')->count() }}</span>
                         </div>
                         <div class="form-check">
                             <input class="form-check-input" type="checkbox" value="galle" wire:model="selected_location" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">
                                 Galle
                             </label>
-                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'galle')->count() }}</span>
+                            <span class="badge bg-primary rounded-pill">{{ $sidebar_buyer_ads_data->where('user_district', 'Galle')->count() }}</span>
                         </div>
 
 
@@ -307,15 +307,20 @@
                                     <div class="card-body">
                                         <h5 class="card-title"><b>{{ $buyer_ad->ad_title }}</b></h5>
                                         <p class="card-text">{{ $buyer_ad->ad_short_description }}</p>
-                                        @if ($buyer_ad->ad_type != 'job')
-                                            <h6 class="price-header">Expected Price</h6>
-                                            <span class="buyer-ad-price">{{ 'Rs.'.$buyer_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_ad->ad_ex_max_price.'.00' }}</span>
+                                        @if ($buyer_ad->ad_type != 'buyer-job')
+                                            @if ($buyer_ad->ad_type == 'buyer-property')
+                                                <h6 class="price-header">Expected Amount</h6>
+                                                <span class="buyer-ad-price">{{ 'Rs.'.$buyer_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_ad->ad_ex_max_price.'.00' }}</span>
+                                            @else
+                                                <h6 class="price-header">Expected Price</h6>
+                                                <span class="buyer-ad-price">{{ 'Rs.'.$buyer_ad->ad_ex_min_price.'.00'.' - '.'Rs.'.$buyer_ad->ad_ex_max_price.'.00' }}</span>
+                                            @endif  
                                         @endif  
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">{{ 'Posted '.$buyer_ad->created_at->diffForHumans() }}</small>
                                     </div>
-                                    <a href="buyer_ad_detail.html" class="btn buyer-ad-quickview">QuickView</a>
+                                    <a href="{{ route('buyer_ad.details',['buyer_ad_id'=>$buyer_ad->id]) }}" class="btn buyer-ad-quickview">QuickView</a>
                                 </div>
                             </div>
                         @endforeach

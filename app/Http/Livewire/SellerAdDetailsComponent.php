@@ -2,21 +2,23 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Category;
 use App\Models\SellerAd;
 use Livewire\Component;
 
 class SellerAdDetailsComponent extends Component
 {
-    public $ad_id;
+    public $seller_ad_id;
 
-    public function mount($ad_id)
+    public function mount($seller_ad_id)
     { 
-        $this->ad_id = $ad_id;
+        $this->seller_ad_id = $seller_ad_id;
     }
 
     public function render()
     {
-        $seller_ad = SellerAd::where('id', $this->ad_id)->first();
-        return view('livewire.seller-ad-details-component', ['seller_ad'=>$seller_ad])->layout('layouts.base');
+        $seller_ad = SellerAd::where('id', $this->seller_ad_id)->first();
+        $seller_category = Category::where('id', $seller_ad->ad_category)->first();
+        return view('livewire.seller-ad-details-component', ['seller_ad'=>$seller_ad, 'seller_category'=>$seller_category])->layout('layouts.base');
     }
 }

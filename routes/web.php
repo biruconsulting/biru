@@ -7,6 +7,7 @@ use App\Http\Livewire\Admin\AdminJobCategoryComponent;
 use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
 use App\Http\Livewire\BuyerAdComponent;
+use App\Http\Livewire\BuyerAdDetailsComponent;
 use App\Http\Livewire\ContactUsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\PostAdComponent;
@@ -34,7 +35,9 @@ Route::get('/buyer_ad', BuyerAdComponent::class)->name('buyer_ad');
 
 Route::get('/contact_us', ContactUsComponent::class)->name('contact_us');
 
-Route::get('/seller_ad/{ad_id}', SellerAdDetailsComponent::class)->name('seller_ad.details'); 
+Route::get('/seller_ad/{seller_ad_id}', SellerAdDetailsComponent::class)->name('seller_ad.details'); 
+
+Route::get('/buyer_ad/{buyer_ad_id}', BuyerAdDetailsComponent::class)->name('buyer_ad.details');
 
 Route::get('/post_ad', PostAdComponent::class)->name('post_ad');
 
