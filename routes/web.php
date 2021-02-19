@@ -8,11 +8,13 @@ use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
 use App\Http\Livewire\BuyerAdComponent;
 use App\Http\Livewire\BuyerAdDetailsComponent;
+use App\Http\Livewire\BuyerAdHeaderSearchComponent;
 use App\Http\Livewire\ContactUsComponent;
 use App\Http\Livewire\HomeComponent;
 use App\Http\Livewire\PostAdComponent;
 use App\Http\Livewire\SellerAdComponent;
 use App\Http\Livewire\SellerAdDetailsComponent;
+use App\Http\Livewire\SellerAdHeaderSearchComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +40,10 @@ Route::get('/contact_us', ContactUsComponent::class)->name('contact_us');
 Route::get('/seller_ad/{seller_ad_id}', SellerAdDetailsComponent::class)->name('seller_ad.details'); 
 
 Route::get('/buyer_ad/{buyer_ad_id}', BuyerAdDetailsComponent::class)->name('buyer_ad.details');
+
+Route::get('/search/buyer_ad', BuyerAdHeaderSearchComponent::class)->name('search.buyer_ad');
+
+Route::get('/search/seller_ad', SellerAdHeaderSearchComponent::class)->name('search.seller_ad');
 
 Route::get('/post_ad', PostAdComponent::class)->name('post_ad');
 

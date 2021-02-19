@@ -43,27 +43,27 @@ class BuyerAdComponent extends Component
 
         if ($general_category_term) 
         {
-            $buyer_ads = BuyerAd::where('ad_type', 'buyer-general')->where('ad_category', 'LIKE', $general_category_term)->paginate(9);
+            $buyer_ads = BuyerAd::where('ad_type', 'buyer-general')->where('ad_category', 'LIKE', $general_category_term)->paginate(12);
         } 
         elseif ($property_category_term)
         {
-            $buyer_ads = BuyerAd::where('ad_type', 'buyer-property')->where('ad_category', 'LIKE', $property_category_term)->paginate(9);
+            $buyer_ads = BuyerAd::where('ad_type', 'buyer-property')->where('ad_category', 'LIKE', $property_category_term)->paginate(12);
         }
         elseif ($job_category_term)
         {
-            $buyer_ads = BuyerAd::where('ad_type', 'buyer-job')->where('ad_category', 'LIKE', $job_category_term)->paginate(9);
+            $buyer_ads = BuyerAd::where('ad_type', 'buyer-job')->where('ad_category', 'LIKE', $job_category_term)->paginate(12);
         }
         elseif ($latest_post_term)
         {
-            $buyer_ads = BuyerAd::latest()->paginate(9);
+            $buyer_ads = BuyerAd::latest()->paginate(12);
         }
         elseif ($oldest_post_term)
         {
-            $buyer_ads = BuyerAd::oldest()->paginate(9);
+            $buyer_ads = BuyerAd::oldest()->paginate(12);
         }
         elseif ($selected_location_term)
         {
-            $buyer_ads = BuyerAd::where('user_district', $selected_location_term)->paginate(9);
+            $buyer_ads = BuyerAd::where('user_district', $selected_location_term)->paginate(12);
         }
         else 
         {

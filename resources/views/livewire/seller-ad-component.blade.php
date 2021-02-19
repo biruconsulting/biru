@@ -305,7 +305,7 @@
                             @foreach ($seller_ads as $seller_ad)
                                     <div class="col d-flex justify-content-center p-3">
                                         <div class="seller-ad card">
-                                            <img src="{{ asset('storage/images/general_ad/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
+                                            <img src="{{ asset('storage/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
                                             <a href="{{ route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                             <div class="card-body">
                                                 <h5 class="card-title"><b>{{ $seller_ad->ad_title }}</b></h5>

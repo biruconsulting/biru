@@ -1312,6 +1312,10 @@ body {
         grid-template-columns: repeat(2, 1fr);
         grid-gap: 1.5rem;
     }
+    .main-detail .product-detail .product-detail-left .card-wrapper .buyer_ad_detail_card {
+        display: flex;
+    }
+
     .main-detail .product-detail .product-detail-left .card-wrapper .card-wrapper {
         height: 100vh;
         display: flex;

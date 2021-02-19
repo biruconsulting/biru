@@ -18,7 +18,7 @@
                 <div class="col-12 col-lg-9">
                     <div class="product-detail-left">
                         <div class="card-wrapper">
-                            <div class="card">
+                            <div class="card buyer_ad_detail_card">
                                 <div class="product-content">
                                     <h2 class="product-title">{{ $buyer_ad->ad_title }}</h2>
                                     <p><i>{{ 'Posted '.$buyer_ad->created_at->diffForHumans() }}, {{ 'From '.$buyer_ad->user_district }}</i></p>
@@ -47,7 +47,7 @@
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Job Type: <span>{{ $buyer_ad->ad_ex_job_type }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Work District: <span>{{ $buyer_ad->ad_ex_district }}</span></li>
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Expected Education Level: <span>{{ $buyer_ad->ad_education_level }}</span></li>
+                                                <li><i class="fas fa-check-circle"></i> &nbsp;Expected Education Level: <span>{{ $buyer_ad->ad_ex_education_level }}</span></li>
                                             @endif
                                         </ul>
                                     </div>
