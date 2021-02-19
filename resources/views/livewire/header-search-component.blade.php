@@ -1,9 +1,9 @@
 <div>
-    <form action="{{ route('search.buyer_ad') }}">
+    <form @if ($selectedCategory == 'seller-general' || $selectedCategory == 'seller-property' || $selectedCategory == 'seller-job' ) action="{{ route('search.seller_ad') }}" @else action="{{ route('search.buyer_ad') }}" @endif>
         <div class="header-search-bar input-group">
             <div class="search-dropdown">
-                <select class="form-select" name="selectedCategory" value="{{ $selectedCategory }}" required>
-                    <option selected>Categories</option>
+                <select class="form-select" name="selectedCategory" wire:model.lazy="selectedCategory" required>
+                    <option value="">Categories</option>
                     <optgroup label="Seller Advertisement">
                         <option value="seller-general">General</option>
                         <option value="seller-property">Properties</option>
@@ -16,7 +16,7 @@
                     </optgroup>
                 </select>
             </div>
-            <input type="text" class="search-bar-input form-control" placeholder="Search by Name, Location..." value="{{ $headerSearch }}" name="headerSearch">
+            <input type="text" class="search-bar-input form-control" placeholder="Search..." name="headerSearch" wire:model.lazy="headerSearch">
             <button type="submit" class="btn btn-primary search-bar-btn"><i class="fas fa-search"></i></button>
         </div>
     </form>
