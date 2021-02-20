@@ -21,7 +21,7 @@ class BuyerAd extends Model
         'ad_title',
         'ad_category',
         'ad_ex_district',
-        'ad_brand',
+        'ad_brand', 
         'ad_model',
         'ad_ex_min_price',
         'ad_ex_max_price',

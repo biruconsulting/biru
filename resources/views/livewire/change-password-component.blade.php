@@ -21,22 +21,31 @@
                                 Update Password
                             </div>
                             <div class="card-body change-pass-body">
-                                <form method="POST" action="{{ route('password.email') }}">
-                                    @csrf
-                        
-                                    <h2>Change Password</h2>
-                                    <p>Need to change your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.</p>
-                                    <hr>
+
+                                <form wire:submit.prevent="updatePassword">
                                     <div class="input-group flex-nowrap mt-4">
-                                        <span class="input-group-text" id="email-address"><i class="fas fa-envelope"></i></span>
-                                        <input type="email" class="form-control" placeholder="Email Address" aria-label="Email Address" aria-describedby="email-address" name="email" :value="old('email')" required autofocus>
+                                        <span class="input-group-text" id="current_password"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" placeholder="Current Password" aria-label="current_password" wire:model.defer="state.current_password" autocomplete="current-password" >
                                     </div>
-                                    {!! $errors->first('email', '<p class="help-block text-danger">:message</p>') !!}
-                        
+                                    {!! $errors->first('current_password', '<p class="help-block text-danger">:message</p>') !!}
+
+                                    <div class="input-group flex-nowrap mt-4">
+                                        <span class="input-group-text" id="password"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" placeholder="New Password" aria-label="Password" wire:model.defer="state.password" autocomplete="new-password" >
+                                    </div>
+                                    {!! $errors->first('password', '<p class="help-block text-danger">:message</p>') !!}
+
+                                    <div class="input-group flex-nowrap mt-4">
+                                        <span class="input-group-text" id="password_confirmation"><i class="fas fa-lock"></i></span>
+                                        <input type="password" class="form-control" placeholder="Confirm Password" aria-label="password_confirmation" wire:model.defer="state.password_confirmation" autocomplete="new-password" >
+                                    </div>
+                                    {!! $errors->first('password_confirmation', '<p class="help-block text-danger">:message</p>') !!}
+
                                     <div class="form-group mt-4">
-                                        <button type="submit" class="btn btn-primary">Email Password Reset Link</button>
+                                        <button type="submit" class="btn btn-primary">Update Password</button>
                                     </div>
                                 </form>
+
                             </div>
                         </div>
                     </div>
