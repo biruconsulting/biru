@@ -390,49 +390,6 @@
     <!-- sweetalert -->
     <script src="{{ asset('assets/lib/sweetalert2/sweetalert2.all.min.js') }}"></script>
 
-    <script>
-        window.livewire.on('alert', param => {
-            Swal.fire({
-                position: 'top-end',
-                icon: 'success',
-                title: param['message'],
-                showConfirmButton: false,
-                timer: 1500
-            })  
-        });
-    </script>
-
-    <script>    
-        const SwalConfirm = (icon, title, html, confirmButtonText, method, params, callback) => {
-            Swal.fire({
-                icon,
-                title,
-                html,
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText,
-                reverseButtons: true,
-            }).then(result => {
-                if (result.value) {
-                    return livewire.emit(method, params)
-                }
-
-                if (callback) {
-                    return livewire.emit(callback)
-                }
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', () => { 
-            
-            this.livewire.on('swal:confirm', data => {
-                SwalConfirm(data.icon, data.title, data.text, data.confirmText, data.method, data.params, data.callback)
-            })
-
-        })
-   </script>
-
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -442,6 +399,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/admin/js/admin.min.js') }}"></script>
+    <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
 
     <!-- Chart scripts -->
     <script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script>

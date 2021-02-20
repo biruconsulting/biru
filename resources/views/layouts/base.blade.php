@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/lib/summernote/summernote-lite.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/lib/toastr/toastr.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     @livewireStyles
@@ -30,7 +31,7 @@
                             @if (Auth::user()->user_type === 'ADM')
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        MY ACCOUNT ({{ Auth::user()->name }})
+                                        MY ACCOUNT ({{ strtoupper(Auth::user()->name) }})
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                         <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt"></i> &nbsp;Dashboard</a></li>
@@ -45,7 +46,7 @@
                             @else
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        MY ACCOUNT ({{ Auth::user()->name }})
+                                        MY ACCOUNT ({{ strtoupper(Auth::user()->name) }})
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
                                         <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user"></i> &nbsp;My Profile</a></li>
@@ -209,7 +210,15 @@
     <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
+    <script src="{{ asset('assets/lib/toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
+    <script>
+        @if (Session::has('message'))
+            toastr.success("{!! Session::get('message') !!}");
+        @endif
+    </script>
+    
 </body>
 
 </html>

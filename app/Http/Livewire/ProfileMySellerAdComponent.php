@@ -2,18 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Category;
 use App\Models\SellerAd;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithPagination;
 
-class SellerAdDetailsComponent extends Component
+class ProfileMySellerAdComponent extends Component
 {
-    public $seller_ad_id;
+    use WithPagination;
 
-    public function mount($seller_ad_id)
-    { 
-        $this->seller_ad_id = $seller_ad_id;
-    }
+    protected $paginationTheme = 'bootstrap';
 
     protected $listeners = ['DeleteSellerAd'];
 
@@ -35,16 +33,16 @@ class SellerAdDetailsComponent extends Component
             $seller_ad = SellerAd::where('id', $seller_ad_id);
             $seller_ad->delete();
 
-            session()->flash('message', 'Your Seller Advertisement Deleted Successfully.');
-
-            return redirect()->route('home');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Your Seller Advertisement Deleted Successfully.']);
         }
     }
 
     public function render()
     {
-        $seller_ad = SellerAd::where('id', $this->seller_ad_id)->first();
-        $seller_category = Category::where('id', $seller_ad->ad_category)->first();
-        return view('livewire.seller-ad-details-component', ['seller_ad'=>$seller_ad, 'seller_category'=>$seller_category])->layout('layouts.base');
+        $user_id = Auth::user()->id;
+
+        $user_seller_ads = SellerAd::where('user_id', $user_id)->paginate(5);
+        
+        return view('livewire.profile-my-seller-ad-component', ['user_seller_ads'=>$user_seller_ads]);
     }
 }

@@ -65,7 +65,12 @@
                                 <li class="list-group-item"><a href="{{ route('profile') }}">My Posts</a></li>
                                 <li class="list-group-item"><b>Change Password</b></li>
                             </ul>
-                            <button type="button" class="btn btn-danger m-2">Logout</button>
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+
+                                <a type="button" class="btn btn-danger m-2" title="Logout" href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();">Logout</a>
+                            </form>
                         </div>
                     </div>
                 </div>

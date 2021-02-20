@@ -228,7 +228,9 @@ class PostAdComponent extends Component
                     $resize_image = Image::make($image)->resize(300, null, function ($constraint) {
                         $constraint->aspectRatio();
                     })->encode('jpg');
+
                     Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
+                    
                     $other_images_array[] = 'images/general_ad/' . $fileNameToStore_image; 
                 }
                 $new_seller_general_ad_other_images = json_encode($other_images_array);
@@ -256,7 +258,10 @@ class PostAdComponent extends Component
 
             $this->clearSellerAdData();
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Seller General Advertisement Created Successfully.']);
+            session()->flash('message', 'Seller General Advertisement Created Successfully.');
+
+            return redirect()->route('home');
+
         } 
         elseif ($this->seller_ad_type == 'seller-property') {
 
@@ -355,7 +360,10 @@ class PostAdComponent extends Component
 
             $this->clearSellerAdData();
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Property Advertisement Created Successfully.']);
+            session()->flash('message', 'Seller Property Advertisement Created Successfully.');
+
+            return redirect()->route('home');
+
         }
         elseif ($this->seller_ad_type == 'seller-job') {
 
@@ -422,7 +430,10 @@ class PostAdComponent extends Component
 
             $this->clearSellerAdData();
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Job Advertisement Created Successfully.']);
+            session()->flash('message', 'Seller Job Advertisement Created Successfully.');
+
+            return redirect()->route('home');
+
         }
     }
 
@@ -471,7 +482,9 @@ class PostAdComponent extends Component
 
             $this->clearBuyerAdData();
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer General Advertisement Created Successfully.']);
+            session()->flash('message', 'Buyer General Advertisement Created Successfully.');
+
+            return redirect()->route('home');
         } 
         elseif ($this->buyer_ad_type == 'buyer-property') 
         {
@@ -504,7 +517,9 @@ class PostAdComponent extends Component
 
             $this->clearBuyerAdData();
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Property Advertisement Created Successfully.']);
+            session()->flash('message', 'Buyer Property Advertisement Created Successfully.');
+
+            return redirect()->route('home');
         }
         elseif ($this->buyer_ad_type == 'buyer-job') 
         {
@@ -537,7 +552,9 @@ class PostAdComponent extends Component
 
             $this->clearBuyerAdData();
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Job Advertisement Created Successfully.']);
+            session()->flash('message', 'Buyer Job Advertisement Created Successfully.');
+
+            return redirect()->route('home');
         }
         
     }
