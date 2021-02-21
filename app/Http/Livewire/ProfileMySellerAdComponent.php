@@ -30,16 +30,19 @@ class ProfileMySellerAdComponent extends Component
 
     public function DeleteSellerAd($seller_ad_id) {
         if($seller_ad_id){
-            $seller_ad = SellerAd::where('id', $seller_ad_id);
+
+            $seller_ad = SellerAd::where('id', $seller_ad_id)->first();
 
             $thumbnail_image = $seller_ad->ad_thumbnail_image;
 
             $other_images = $seller_ad->ad_images;
 
-            unlink('storage/' . $thumbnail_image);
+            if ($thumbnail_image) {
+                unlink('storage/' . $thumbnail_image);
+            }
 
             if ($other_images) {
-                foreach ($other_images as $image) {
+                foreach (json_decode($other_images) as $image) {
                     unlink('storage/' . $image);
                 }
             }

@@ -198,7 +198,7 @@ $(document).ready(function(){
 //   });
 
 // Success sweet alert
-  window.livewire.on('alert', param => {
+window.livewire.on('alert', param => {
     Swal.fire({
         position: 'top-end',
         icon: 'success',
@@ -236,3 +236,29 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 })
+
+
+// Clear summernote
+window.livewire.on('seller-general-summernote', param => {
+    $('#seller-general-summernote').summernote('code', null);
+});
+
+window.livewire.on('seller-property-summernote', param => {
+    $('#seller-property-summernote').summernote('code', null);
+});
+
+window.livewire.on('seller-job-summernote', param => {
+    $('#seller-job-summernote').summernote('code', null);
+});
+
+window.livewire.on('buyer-general-summernote', param => {
+    $('#buyer-general-summernote').summernote('code', null);
+});
+
+window.livewire.on('buyer-property-summernote', param => {
+    $('#buyer-property-summernote').summernote('code', null);
+});
+
+window.livewire.on('buyer-job-summernote', param => {
+    $('#buyer-job-summernote').summernote('code', null);
+});

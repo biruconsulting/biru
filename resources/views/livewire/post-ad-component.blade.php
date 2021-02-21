@@ -1292,7 +1292,7 @@
                                     <div class="col-md-6">
                                         <label for="buyer_job_address" class="form-label">Expected District</label>
                                         <select class="form-select" id="buyer_job_address" wire:model.defer="buyer_job_ad_ex_district">
-                                            <option selected>Choose ecpected district</option>
+                                            <option selected>Choose expected district</option>
                                             <option value="Ampara">Ampara</option>
                                             <option value="Anuradhapura">Anuradhapura</option>
                                             <option value="Badulla">Badulla</option>
@@ -1333,8 +1333,8 @@
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="buyer_job_education" class="form-label">Expected Education Level </label>
-                                        <input type="text" class="form-control" id="buyer_job_education" placeholder="Expected Education level" wire:model.defer="buyer_job_ad_ex_education_level">
+                                        <label for="buyer_job_education" class="form-label">Education Level </label>
+                                        <input type="text" class="form-control" id="buyer_job_education" placeholder="Education level" wire:model.defer="buyer_job_ad_ex_education_level">
                                         @error('buyer_job_ad_ex_education_level') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 

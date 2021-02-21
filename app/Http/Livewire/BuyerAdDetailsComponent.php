@@ -32,7 +32,9 @@ class BuyerAdDetailsComponent extends Component
 
     public function DeleteBuyerAd($buyer_ad_id) {
         if($buyer_ad_id){
-            $buyer_ad = BuyerAd::where('id', $buyer_ad_id);
+            
+            $buyer_ad = BuyerAd::where('id', $buyer_ad_id)->first();
+
             $buyer_ad->delete();
 
             session()->flash('message', 'Your Buyer Advertisement Deleted Successfully.');

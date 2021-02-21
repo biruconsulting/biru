@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/lib/summernote/summernote-lite.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/lib/toastr/toastr.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/lib/toastr/toastr.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     @livewireStyles
@@ -210,12 +210,20 @@
     <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
-    <script src="{{ asset('assets/lib/toastr/toastr.min.js') }}"></script>
+    {{-- <script src="{{ asset('assets/lib/toastr/toastr.min.js') }}"></script> --}}
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <script>
         @if (Session::has('message'))
-            toastr.success("{!! Session::get('message') !!}");
+            // toastr.success("{!! Session::get('message') !!}");
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '{!! Session::get('message') !!}',
+                showConfirmButton: false,
+                timer: 1500
+            })  
+
         @endif
     </script>
     

@@ -326,13 +326,13 @@
                             @endforeach
                         </div>
                     @else 
-                    <div class="h-100 w-100 text-center d-flex align-items-center justify-content-center">
-                        <div class="my-4">
-                            <img src="{{ asset('storage/images/no_post.svg') }}" height="240" alt="empty_post">
-                            <h4 class="mt-3">Currently seller advertisements are not available.</h4>
-                            <p>Make your advertisement <a href="{{ route('post_ad') }}">here</a>.</p>
+                        <div class="h-100 w-100 text-center d-flex align-items-center justify-content-center">
+                            <div class="my-4">
+                                <img src="{{ asset('storage/images/no_post.svg') }}" height="240" alt="empty_post">
+                                <h4 class="mt-3">Currently seller advertisements are not available.</h4>
+                                <p>Make your advertisement <a href="{{ route('post_ad') }}">here</a>.</p>
+                            </div>
                         </div>
-                    </div>
                     @endif 
                     <hr>
                     <div class="row mt-4">

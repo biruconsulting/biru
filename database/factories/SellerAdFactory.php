@@ -29,7 +29,7 @@ class SellerAdFactory extends Factory
             'user_email'=>$this->faker->unique()->safeEmail,
             'user_phone_number'=>'0764524354',
             'user_district'=>$this->faker->text(5),
-            'ad_type'=>'seller-property',
+            'ad_type'=>'seller-general',
             'ad_title'=>$this->faker->unique()->words($nb=2, $asText=true),
             'ad_category'=>$this->faker->numberBetween(1, 20),
             'ad_thumbnail_image'=> 'images/general_ad/general_'. $this->faker->unique()->numberBetween(1, 22).'.jpg',

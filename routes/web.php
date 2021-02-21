@@ -48,19 +48,18 @@ Route::get('/search/buyer_ad', BuyerAdHeaderSearchComponent::class)->name('searc
 
 Route::get('/search/seller_ad', SellerAdHeaderSearchComponent::class)->name('search.seller_ad');
 
-Route::get('/profile', ProfileComponent::class)->name('profile');
 
-Route::get('/profile/change_password', ChangePasswordComponent::class)->name('profile.change_password');
-
-Route::get('/post_ad', PostAdComponent::class)->name('post_ad');
-
-
-// For Normal User
+// For logged Normal User
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
-    //
+    
+    Route::get('/profile', ProfileComponent::class)->name('profile');
+
+    Route::get('/profile/change_password', ChangePasswordComponent::class)->name('profile.change_password');
+
+    Route::get('/post_ad', PostAdComponent::class)->name('post_ad');
 });
 
-// For Admin
+// For logged Admin
 Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () {
     
     Route::get('/admin/dashboard', AdminDashboardComponent::class)->name('admin.dashboard');

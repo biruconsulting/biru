@@ -258,9 +258,9 @@ class PostAdComponent extends Component
 
             $this->clearSellerAdData();
 
-            session()->flash('message', 'Seller General Advertisement Created Successfully.');
+            $this->emit('seller-general-summernote');
 
-            return redirect()->route('home');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Seller General Advertisement Created Successfully.']);
 
         } 
         elseif ($this->seller_ad_type == 'seller-property') {
@@ -360,9 +360,9 @@ class PostAdComponent extends Component
 
             $this->clearSellerAdData();
 
-            session()->flash('message', 'Seller Property Advertisement Created Successfully.');
+            $this->emit('seller-property-summernote');
 
-            return redirect()->route('home');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Property Advertisement Created Successfully.']);
 
         }
         elseif ($this->seller_ad_type == 'seller-job') {
@@ -430,9 +430,9 @@ class PostAdComponent extends Component
 
             $this->clearSellerAdData();
 
-            session()->flash('message', 'Seller Job Advertisement Created Successfully.');
+            $this->emit('seller-job-summernote');
 
-            return redirect()->route('home');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Job Advertisement Created Successfully.']);
 
         }
     }
@@ -482,9 +482,10 @@ class PostAdComponent extends Component
 
             $this->clearBuyerAdData();
 
-            session()->flash('message', 'Buyer General Advertisement Created Successfully.');
+            $this->emit('buyer-general-summernote');
 
-            return redirect()->route('home');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer General Advertisement Created Successfully.']);
+
         } 
         elseif ($this->buyer_ad_type == 'buyer-property') 
         {
@@ -517,9 +518,10 @@ class PostAdComponent extends Component
 
             $this->clearBuyerAdData();
 
-            session()->flash('message', 'Buyer Property Advertisement Created Successfully.');
+            $this->emit('buyer-property-summernote');
 
-            return redirect()->route('home');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Property Advertisement Created Successfully.']);
+
         }
         elseif ($this->buyer_ad_type == 'buyer-job') 
         {
@@ -552,9 +554,10 @@ class PostAdComponent extends Component
 
             $this->clearBuyerAdData();
 
-            session()->flash('message', 'Buyer Job Advertisement Created Successfully.');
+            $this->emit('buyer-job-summernote');
 
-            return redirect()->route('home');
+            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Job Advertisement Created Successfully.']);
+
         }
         
     }
