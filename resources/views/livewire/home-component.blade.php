@@ -3,41 +3,23 @@
         <!-- carousel -->
         <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
             <ol class="carousel-indicators">
-                <li data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></li>
-                <li data-bs-target="#myCarousel" data-bs-slide-to="1"></li>
-                <li data-bs-target="#myCarousel" data-bs-slide-to="2"></li>
+                @foreach ($carousel_sliders as $carousel_slider)
+                    <li data-bs-target="#myCarousel" data-bs-slide-to="{{ $loop->index }}" @if ($loop->first) class="active" @endif></li>
+                @endforeach
             </ol>
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://static.livebooks.com/abc61dbc6e9c403b917975eb48d2d97d/i/f2c81f819c994f5eb2312f9948520c2a/1/4SoifmQp7LJ6yDtMuFY2x/Swan-Optic-22089.jpg" width="100%" height="100%" alt="">
-                    <div class="container">
-                        <div class="carousel-caption text-start">
-                            <h1>Example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <a class="btn btn-lg btn-primary" href="seller_ad_detail.html" role="button">See more</a>
+                @foreach ($carousel_sliders as $carousel_slider)
+                    <div class="carousel-item @if ($loop->first) active @endif">
+                        <img src="{{ asset('storage/'.$carousel_slider->image) }}" width="100%" height="100%" alt="">
+                        <div class="container">
+                            <div class="carousel-caption @if ($loop->iteration == 1) text-start @elseif($loop->iteration == 2) text-end @endif">
+                                <h1>{{ $carousel_slider->title }}</h1>
+                                <p>{{ $carousel_slider->description }}</p>
+                                <a class="btn btn-lg btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixid=MXwxMjA3fDB8MHxzZWFyY2h8OXx8cHJvZHVjdHxlbnwwfHwwfA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80" width="100%" height="100%" alt="">
-                    <div class="container">
-                        <div class="carousel-caption">
-                            <h1>Example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <a class="btn btn-lg btn-primary" href="seller_ad_detail.html" role="button">See more</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://neilpatel.com/wp-content/uploads/2018/05/ecommerce-product-images.jpg" width="100%" height="100%" alt="">
-                    <div class="container">
-                        <div class="carousel-caption text-end">
-                            <h1>Example headline.</h1>
-                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                            <a class="btn btn-lg btn-primary" href="seller_ad_detail.html" role="button">See more</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -63,7 +45,7 @@
                             @foreach ($seller_ads as $seller_ad)
                                 <div class="item">
                                     <div class="seller-ad card">
-                                        <img src="{{ asset('storage/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_ad->ad_title }}">
+                                        <img data-src="{{ asset('storage/'. $seller_ad->ad_thumbnail_image) }}" class="card-img-top owl-lazy" alt="{{ $seller_ad->ad_title }}">
                                         <a href="{{ route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                         <div class="card-body">
                                             <h5 class="card-title"><b>{{ $seller_ad->ad_title }}</b></h5>
@@ -172,7 +154,7 @@
                                     @foreach ($seller_general_ads as $seller_general_ad)
                                         <div class="item">
                                             <div class="seller-ad card">
-                                                <img src="{{ asset('storage/'. $seller_general_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_general_ad->ad_title }}">
+                                                <img data-src="{{ asset('storage/'. $seller_general_ad->ad_thumbnail_image) }}" class="card-img-top owl-lazy" alt="{{ $seller_general_ad->ad_title }}">
                                                 <a href="{{ route('seller_ad.details', ['seller_ad_id'=>$seller_general_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                                 <div class="card-body">
                                                     <h5 class="card-title"><b>{{ $seller_general_ad->ad_title }}</b></h5>
@@ -200,7 +182,7 @@
                                     @foreach ($seller_property_ads as $seller_property_ad)
                                         <div class="item">
                                             <div class="seller-ad card">
-                                                <img src="{{ asset('storage/'. $seller_property_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_property_ad->ad_title }}">
+                                                <img data-src="{{ asset('storage/'. $seller_property_ad->ad_thumbnail_image) }}" class="card-img-top owl-lazy" alt="{{ $seller_property_ad->ad_title }}">
                                                 <a href="{{ route('seller_ad.details', ['seller_ad_id'=>$seller_property_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                                 <div class="card-body">
                                                     <h5 class="card-title"><b>{{ $seller_property_ad->ad_title }}</b></h5>
@@ -228,7 +210,7 @@
                                     @foreach ($seller_job_ads as $seller_job_ad)
                                         <div class="item">
                                             <div class="seller-ad card">
-                                                <img src="{{ asset('storage/'. $seller_job_ad->ad_thumbnail_image) }}" class="card-img-top" alt="{{ $seller_job_ad->ad_title }}">
+                                                <img data-src="{{ asset('storage/'. $seller_job_ad->ad_thumbnail_image) }}" class="card-img-top owl-lazy" alt="{{ $seller_job_ad->ad_title }}">
                                                 <a href="{{ route('seller_ad.details', ['seller_ad_id'=>$seller_job_ad->id]) }}" class="btn seller-ad-quickview">QuickView</a>
                                                 <div class="card-body">
                                                     <h5 class="card-title"><b>{{ $seller_job_ad->ad_title }}</b></h5>

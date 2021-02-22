@@ -327,7 +327,7 @@
                             @endforeach
                         </div>
                     @else 
-                    <div class="h-100 w-100 text-center d-flex align-items-center justify-content-center">
+                    <div class="h-100 w-100 text-center d-flex justify-content-center">
                         <div class="my-4">
                             <img src="{{ asset('storage/images/no_post.svg') }}" height="240" alt="empty_post">
                             <h4 class="mt-3">Sorry, Your searched seller Ad currently not available.</h4>

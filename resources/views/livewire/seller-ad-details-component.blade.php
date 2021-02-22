@@ -99,18 +99,18 @@
                 <!-- right-side -->
                 <div class="col-12 col-lg-3">
                     <div class="product-detail-right">
-
-                        @if ($seller_ad->user_id == Auth::user()->id)
-                            <div class="text-center mb-3">
-                                <a href="#" class="btn btn-danger btn-icon-split" wire:click.prevent="sellerAdDeleteConfirmation({{ $seller_ad->id }})" title="Delete">
-                                    <span class="icon text-white-50">
-                                    <i class="fas fa-trash"></i>
-                                    </span>
-                                    <span class="text"><b>Delete Advertisement</b></span>
-                                </a>
-                            </div>
-                        @endif
-
+                        @auth
+                            @if ($seller_ad->user_id == Auth::user()->id)
+                                <div class="text-center mb-3">
+                                    <a href="#" class="btn btn-danger btn-icon-split" wire:click.prevent="sellerAdDeleteConfirmation({{ $seller_ad->id }})" title="Delete">
+                                        <span class="icon text-white-50">
+                                        <i class="fas fa-trash"></i>
+                                        </span>
+                                        <span class="text"><b>Delete Advertisement</b></span>
+                                    </a>
+                                </div>
+                            @endif
+                        @endauth
                         <div class="card">
                             <div class="card-header">
                                 Seller Details

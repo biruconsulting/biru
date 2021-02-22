@@ -437,7 +437,7 @@ body {
 .auth-form .fa-check {
 	color: #fff;
 	left: 18px;
-	top: 20px;
+	top: 19px;
 	font-size: 8px;
 	position: absolute;
 }
@@ -707,7 +707,7 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card-body .buyer-ad .card-body{
-    min-height: 250px;
+    min-height: 260px;
 }
 
 .ad-quickview-card-bar .bar-card-body .buyer-ad:hover .card-body{
