@@ -262,3 +262,4 @@ window.livewire.on('buyer-property-summernote', param => {
 window.livewire.on('buyer-job-summernote', param => {
     $('#buyer-job-summernote').summernote('code', null);
 });
+

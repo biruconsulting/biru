@@ -41,7 +41,7 @@ class AdminUserComponent extends Component
 
     public function MakeAdmin($user_id) {
         if($user_id){
-            $user = User::where('id', $user_id);
+            $user = User::where('id', $user_id)->first();
             $user->update([
                 'user_type'=>'ADM'
             ]);

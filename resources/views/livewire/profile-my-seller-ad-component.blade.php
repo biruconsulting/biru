@@ -14,7 +14,7 @@
                 <tbody>
                     @foreach ($user_seller_ads as $user_seller_ad)
                         <tr>
-                            <th><img src="{{ asset('storage/'.$user_seller_ad->ad_thumbnail_image) }}" height="50" alt="{{ $user_seller_ad->ad_title }}"> </th>
+                            <th><img src="{{ asset('storage/'.$user_seller_ad->ad_thumbnail_image) }}" height="50" alt="{{ $user_seller_ad->ad_title }}"></th>
                             <td>{{ $user_seller_ad->ad_title }}</td>
                             <td>{{ $user_seller_ad->ad_type }}</td>
                             <td>{{ $user_seller_ad->created_at->diffForHumans() }}</td>

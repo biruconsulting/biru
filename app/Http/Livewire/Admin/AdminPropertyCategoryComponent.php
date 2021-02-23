@@ -32,6 +32,8 @@ class AdminPropertyCategoryComponent extends Component
 
         $this->name = '';
 
+        $this->emit('addCategory');
+
         $this->emit('alert', ['type' => 'success', 'message' => 'Category Created Successfully.']);
 
     }
@@ -51,7 +53,7 @@ class AdminPropertyCategoryComponent extends Component
 
     public function DeleteCategory($category_id) {
         if($category_id){
-            $category = Category::where('id', $category_id);
+            $category = Category::where('id', $category_id)->first();
             $category->delete();
 
             $this->emit('alert', ['type' => 'success', 'message' => 'Category Deleted Successfully.']);

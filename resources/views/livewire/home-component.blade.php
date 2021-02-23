@@ -12,9 +12,9 @@
                     <div class="carousel-item @if ($loop->first) active @endif">
                         <img src="{{ asset('storage/'.$carousel_slider->image) }}" width="100%" height="100%" alt="">
                         <div class="container">
-                            <div class="carousel-caption @if ($loop->iteration == 1) text-start @elseif($loop->iteration == 2) text-end @endif">
+                            <div class="carousel-caption">
                                 <h1>{{ $carousel_slider->title }}</h1>
-                                <p>{{ $carousel_slider->description }}</p>
+                                <p>{!! $carousel_slider->description !!}</p>
                                 <a class="btn btn-lg btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
                             </div>
                         </div>

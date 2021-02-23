@@ -1486,9 +1486,3 @@
     })
 </script>
 
-{{--
-<script>
-    document.addEventListener('livewire:load', function () {
-    
-    })
-</script> --}}

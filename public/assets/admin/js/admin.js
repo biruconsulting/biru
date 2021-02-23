@@ -88,3 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
 })
+
+// Close modal
+window.livewire.on('addCarouselSlider', param => {
+  $('#addCarouselSlider').modal('hide');
+  // Clear summernote
+  $('#carousel_description').summernote('code', null);
+});
+
+window.livewire.on('addCategory', param => {
+  $('#addCategory').modal('hide');
+});
+
+

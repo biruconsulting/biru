@@ -18,6 +18,9 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/admin/css/admin.min.css') }}" rel="stylesheet">
 
+    <!-- summer note -->
+    <link rel="stylesheet" href="{{ asset('assets/lib/summernote/summernote-lite.css') }}">
+
     @livewireStyles
 
 </head>
@@ -71,11 +74,11 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCategories" aria-expanded="true" aria-controls="collapseCategories">
                     <i class="fas fa-tasks"></i>
                     <span>Categories</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseCategories" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Category Components:</h6>
                         <a class="collapse-item" href="{{ route('admin.categories.general') }}">General Category</a>
@@ -83,6 +86,14 @@
                         <a class="collapse-item" href="{{ route('admin.categories.job') }}">Job Category</a>
                     </div>
                 </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.carousel_sliders') }}">
+                    <i class="fas fa-arrows-alt-h"></i>
+                    <span>Carousel Sliders</span>
+                </a>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
@@ -401,6 +412,9 @@
     <script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/demo/chart-area.js') }}"></script>
     <script src="{{ asset('assets/admin/js/demo/chart-pie.js') }}"></script>
+
+    <!-- summer note -->
+    <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
 
 </body>
 

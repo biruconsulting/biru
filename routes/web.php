@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\SellerAdPostController;
+use App\Http\Livewire\Admin\AdminCarouselSlidersComponent;
+use App\Http\Livewire\Admin\AdminCreateCarouselSlidersComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
+use App\Http\Livewire\Admin\AdminEditCarouselSlidersComponent;
 use App\Http\Livewire\Admin\AdminGeneralCategoryComponent;
 use App\Http\Livewire\Admin\AdminJobCategoryComponent;
 use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
@@ -18,6 +21,7 @@ use App\Http\Livewire\ResetPasswordComponent;
 use App\Http\Livewire\SellerAdComponent;
 use App\Http\Livewire\SellerAdDetailsComponent;
 use App\Http\Livewire\SellerAdHeaderSearchComponent;
+use App\Models\CarouselSlider;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -71,4 +75,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/categories/property', AdminPropertyCategoryComponent::class)->name('admin.categories.property');
 
     Route::get('/admin/categories/job', AdminJobCategoryComponent::class)->name('admin.categories.job');
+
+    Route::get('/admin/carousel_sliders', AdminCarouselSlidersComponent::class)->name('admin.carousel_sliders');
+
 });
