@@ -88,14 +88,6 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.carousel_sliders') }}">
-                    <i class="fas fa-arrows-alt-h"></i>
-                    <span>Carousel Sliders</span>
-                </a>
-            </li>
-
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSellerAd" aria-expanded="true" aria-controls="collapseSellerAd">
@@ -121,11 +113,27 @@
                 <div id="collapseBuyerAd" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Buyer AD Components:</h6>
-                        <a class="collapse-item" href="utilities-color.html">General Advertisements</a>
-                        <a class="collapse-item" href="utilities-border.html">Property Advertisements</a>
-                        <a class="collapse-item" href="utilities-animation.html">Job Advertisements</a>
+                        <a class="collapse-item" href="{{ route('admin.buyer_ad.general_ad') }}">General Advertisements</a>
+                        <a class="collapse-item" href="{{ route('admin.buyer_ad.property_ad') }}">Property Advertisements</a>
+                        <a class="collapse-item" href="{{ route('admin.buyer_ad.job_ad') }}">Job Advertisements</a>
                     </div>
                 </div>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.carousel_sliders') }}">
+                    <i class="fas fa-arrows-alt-h"></i>
+                    <span>Carousel Sliders</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.contact_us') }}">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Messages</span>
+                </a>
             </li>
 
             <!-- Divider -->

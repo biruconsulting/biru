@@ -37,14 +37,20 @@
                                         <p>{{ $buyer_ad->ad_short_description }}</p>
                                         <ul>
                                             @if ($buyer_ad->ad_type == 'buyer-general')
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
+                                                @if ($buyer_category)
+                                                    <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
+                                                @endif
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Brand: <span>{{ $buyer_ad->ad_brand }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Model: <span>{{ $buyer_ad->ad_model }}</span></li>
                                             @elseif ($buyer_ad->ad_type == 'buyer-property')
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
+                                                @if ($buyer_category)
+                                                    <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
+                                                @endif
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Property District: <span>{{ $buyer_ad->ad_ex_district }}</span></li>
                                             @elseif ($buyer_ad->ad_type == 'buyer-job')
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
+                                                @if ($buyer_category)
+                                                    <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
+                                                @endif
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Job Type: <span>{{ $buyer_ad->ad_ex_job_type }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Work District: <span>{{ $buyer_ad->ad_ex_district }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Education Level: <span>{{ $buyer_ad->ad_ex_education_level }}</span></li>
