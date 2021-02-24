@@ -9,6 +9,9 @@ use App\Http\Livewire\Admin\AdminGeneralCategoryComponent;
 use App\Http\Livewire\Admin\AdminJobCategoryComponent;
 use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
+use App\Http\Livewire\Admin\SellerAd\AdminGeneralAdComponent;
+use App\Http\Livewire\Admin\SellerAd\AdminJobAdComponent;
+use App\Http\Livewire\Admin\SellerAd\AdminPropertyAdComponent;
 use App\Http\Livewire\BuyerAdComponent;
 use App\Http\Livewire\BuyerAdDetailsComponent;
 use App\Http\Livewire\BuyerAdHeaderSearchComponent;
@@ -77,5 +80,11 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/categories/job', AdminJobCategoryComponent::class)->name('admin.categories.job');
 
     Route::get('/admin/carousel_sliders', AdminCarouselSlidersComponent::class)->name('admin.carousel_sliders');
+
+    Route::get('/admin/seller_ad/general_ad', AdminGeneralAdComponent::class)->name('admin.seller_ad.general_ad');
+
+    Route::get('/admin/seller_ad/property_ad', AdminPropertyAdComponent::class)->name('admin.seller_ad.property_ad');
+
+    Route::get('/admin/seller_ad/job_ad', AdminJobAdComponent::class)->name('admin.seller_ad.job_ad');
 
 });

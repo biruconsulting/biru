@@ -98,17 +98,32 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseSellerAd" aria-expanded="true" aria-controls="collapseSellerAd">
+                    <i class="fas fa-ad"></i>
+                    <span>Seller Advertisements</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                <div id="collapseSellerAd" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
+                        <h6 class="collapse-header">Seller AD Components:</h6>
+                        <a class="collapse-item" href="{{ route('admin.seller_ad.general_ad') }}">General Advertisements</a>
+                        <a class="collapse-item" href="{{ route('admin.seller_ad.property_ad') }}">Property Advertisements</a>
+                        <a class="collapse-item" href="{{ route('admin.seller_ad.job_ad') }}">Job Advertisements</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBuyerAd" aria-expanded="true" aria-controls="collapseBuyerAd">
+                    <i class="fas fa-ad"></i>
+                    <span>Buyer Advertisements</span>
+                </a>
+                <div id="collapseBuyerAd" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Buyer AD Components:</h6>
+                        <a class="collapse-item" href="utilities-color.html">General Advertisements</a>
+                        <a class="collapse-item" href="utilities-border.html">Property Advertisements</a>
+                        <a class="collapse-item" href="utilities-animation.html">Job Advertisements</a>
                     </div>
                 </div>
             </li>
