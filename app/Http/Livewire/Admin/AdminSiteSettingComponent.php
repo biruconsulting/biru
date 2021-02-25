@@ -39,6 +39,7 @@ class AdminSiteSettingComponent extends Component
     }
 
     public function submitSiteSetting() {
+        
         $this->validate();
         
         $site_setting = SiteSetting::find($this->site_setting_id);

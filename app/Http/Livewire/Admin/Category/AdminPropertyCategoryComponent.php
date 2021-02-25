@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Category;
 
 use App\Models\Category;
 use Livewire\Component;
@@ -68,6 +68,6 @@ class AdminPropertyCategoryComponent extends Component
                 ->where('name', 'LIKE', $searchTerm)
                 ->paginate(10);
 
-        return view('livewire.admin.admin-property-category-component', ['property_categories'=>$property_categories])->layout('layouts.admin');
+        return view('livewire.admin.category.admin-property-category-component', ['property_categories'=>$property_categories])->layout('layouts.admin');
     }
 }

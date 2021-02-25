@@ -136,12 +136,19 @@
                 </a>
             </li>
 
-            <!-- Nav Item - Charts -->
+            <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.site_setting') }}">
-                    <i class="fas fa-cogs"></i>
-                    <span>Site Setting</span>
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOthers" aria-expanded="true" aria-controls="collapseOthers">
+                    <i class="fas fa-cog"></i>
+                    <span>Others</span>
                 </a>
+                <div id="collapseOthers" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Other Components:</h6>
+                        <a class="collapse-item" href="{{ route('admin.site_setting') }}">Site Setting</a>
+                        <a class="collapse-item" href="{{ route('admin.seo_setting') }}">Seo Setting</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Divider -->

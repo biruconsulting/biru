@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Livewire\Admin;
+namespace App\Http\Livewire\Admin\Category;
 
 use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminGeneralCategoryComponent extends Component
+class AdminJobCategoryComponent extends Component
 {
     use WithPagination;
 
@@ -27,7 +27,7 @@ class AdminGeneralCategoryComponent extends Component
 
         Category::create([
             'name'=>$this->name,
-            'ad_type'=>'general',
+            'ad_type'=>'job',
         ]);
 
         $this->name = '';
@@ -64,10 +64,10 @@ class AdminGeneralCategoryComponent extends Component
     {
         $searchTerm = '%'.$this->Search.'%';
 
-        $general_categories = Category::where('ad_type', 'general')
+        $job_categories = Category::where('ad_type', 'job')
                 ->where('name', 'LIKE', $searchTerm)
                 ->paginate(10);
 
-        return view('livewire.admin.admin-general-category-component', ['general_categories'=>$general_categories])->layout('layouts.admin');
+        return view('livewire.admin.category.admin-job-category-component', ['job_categories'=>$job_categories])->layout('layouts.admin');
     }
 }

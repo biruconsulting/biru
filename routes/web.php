@@ -3,17 +3,18 @@
 use App\Http\Livewire\Admin\AdminCarouselSlidersComponent;
 use App\Http\Livewire\Admin\AdminContactUsComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
-use App\Http\Livewire\Admin\AdminGeneralCategoryComponent;
-use App\Http\Livewire\Admin\AdminJobCategoryComponent;
-use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
+use App\Http\Livewire\Admin\AdminSeoSettingComponent;
+use App\Http\Livewire\Admin\Category\AdminGeneralCategoryComponent;
+use App\Http\Livewire\Admin\Category\AdminJobCategoryComponent;
+use App\Http\Livewire\Admin\Category\AdminPropertyCategoryComponent;
 use App\Http\Livewire\Admin\AdminSiteSettingComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
-use App\Http\Livewire\Admin\BuyerAd\AdminGeneralAdComponent as BuyerAdAdminGeneralAdComponent;
-use App\Http\Livewire\Admin\BuyerAd\AdminJobAdComponent as BuyerAdAdminJobAdComponent;
-use App\Http\Livewire\Admin\BuyerAd\AdminPropertyAdComponent as BuyerAdAdminPropertyAdComponent;
-use App\Http\Livewire\Admin\SellerAd\AdminGeneralAdComponent;
-use App\Http\Livewire\Admin\SellerAd\AdminJobAdComponent;
-use App\Http\Livewire\Admin\SellerAd\AdminPropertyAdComponent;
+use App\Http\Livewire\Admin\BuyerAd\AdminBuyerGeneralAdComponent;
+use App\Http\Livewire\Admin\BuyerAd\AdminBuyerJobAdComponent;
+use App\Http\Livewire\Admin\BuyerAd\AdminBuyerPropertyAdComponent;
+use App\Http\Livewire\Admin\SellerAd\AdminSellerGeneralAdComponent;
+use App\Http\Livewire\Admin\SellerAd\AdminSellerJobAdComponent;
+use App\Http\Livewire\Admin\SellerAd\AdminSellerPropertyAdComponent;
 use App\Http\Livewire\Home\BuyerAd\BuyerAdComponent;
 use App\Http\Livewire\Home\BuyerAd\BuyerAdDetailsComponent;
 use App\Http\Livewire\Home\BuyerAd\BuyerAdHeaderSearchComponent;
@@ -81,20 +82,22 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
 
     Route::get('/admin/carousel_sliders', AdminCarouselSlidersComponent::class)->name('admin.carousel_sliders');
 
-    Route::get('/admin/seller_ad/general_ad', AdminGeneralAdComponent::class)->name('admin.seller_ad.general_ad');
+    Route::get('/admin/seller_ad/general_ad', AdminSellerGeneralAdComponent::class)->name('admin.seller_ad.general_ad');
 
-    Route::get('/admin/seller_ad/property_ad', AdminPropertyAdComponent::class)->name('admin.seller_ad.property_ad');
+    Route::get('/admin/seller_ad/property_ad', AdminSellerPropertyAdComponent::class)->name('admin.seller_ad.property_ad');
 
-    Route::get('/admin/seller_ad/job_ad', AdminJobAdComponent::class)->name('admin.seller_ad.job_ad');
+    Route::get('/admin/seller_ad/job_ad', AdminSellerJobAdComponent::class)->name('admin.seller_ad.job_ad');
 
-    Route::get('/admin/buyer_ad/general_ad', BuyerAdAdminGeneralAdComponent::class)->name('admin.buyer_ad.general_ad');
+    Route::get('/admin/buyer_ad/general_ad', AdminBuyerGeneralAdComponent::class)->name('admin.buyer_ad.general_ad');
 
-    Route::get('/admin/buyer_ad/property_ad', BuyerAdAdminPropertyAdComponent::class)->name('admin.buyer_ad.property_ad');
+    Route::get('/admin/buyer_ad/property_ad', AdminBuyerPropertyAdComponent::class)->name('admin.buyer_ad.property_ad');
 
-    Route::get('/admin/buyer_ad/job_ad', BuyerAdAdminJobAdComponent::class)->name('admin.buyer_ad.job_ad');
+    Route::get('/admin/buyer_ad/job_ad', AdminBuyerJobAdComponent::class)->name('admin.buyer_ad.job_ad');
 
     Route::get('/admin/contact_us', AdminContactUsComponent::class)->name('admin.contact_us');
 
     Route::get('/admin/site_setting', AdminSiteSettingComponent::class)->name('admin.site_setting');
+
+    Route::get('/admin/seo_setting', AdminSeoSettingComponent::class)->name('admin.seo_setting');
 
 });

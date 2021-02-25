@@ -6,7 +6,7 @@ use App\Models\SellerAd;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class AdminPropertyAdComponent extends Component
+class AdminSellerPropertyAdComponent extends Component
 {
     use WithPagination;
 
@@ -46,6 +46,6 @@ class AdminPropertyAdComponent extends Component
                             ->where('ad_title', 'LIKE', $searchTerm)
                             ->paginate(10);
 
-        return view('livewire.admin.seller-ad.admin-property-ad-component', ['seller_property_ads'=>$seller_property_ads])->layout('layouts.admin');
+        return view('livewire.admin.seller-ad.admin-seller-property-ad-component', ['seller_property_ads'=>$seller_property_ads])->layout('layouts.admin');
     }
 }
