@@ -1,27 +1,6 @@
-{{-- <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
-
-        <title>{{ config('app.name', 'Laravel') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
-    </head>
-    <body>
-        <div class="font-sans text-gray-900 antialiased">
-            {{ $slot }}
-        </div>
-    </body>
-</html> --}}
+@php
+    $site_setting = DB::table('site_settings')->first();
+@endphp
 
 <!DOCTYPE html>
 <html lang="en">
@@ -36,6 +15,7 @@
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/lib/summernote/summernote-lite.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('assets/lib/toastr/toastr.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     @livewireStyles
@@ -55,11 +35,12 @@
                             @if (Auth::user()->user_type === 'ADM')
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        MY ACCOUNT ({{ Auth::user()->name }})
+                                        MY ACCOUNT ({{ strtoupper(Auth::user()->name) }})
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}">Dashboard</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt"></i> &nbsp;Dashboard</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user"></i> &nbsp;My Profile</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> &nbsp;Logout</a></li>
 
                                         <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                             @csrf
@@ -69,11 +50,11 @@
                             @else
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        MY ACCOUNT ({{ Auth::user()->name }})
+                                        MY ACCOUNT ({{ strtoupper(Auth::user()->name) }})
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDarkDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="#">Profile</a></li>
-                                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('profile') }}"><i class="fas fa-user"></i> &nbsp;My Profile</a></li>
+                                        <li><a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i> &nbsp;Logout</a></li>
 
                                         <form id="logout-form" method="POST" action="{{ route('logout') }}">
                                             @csrf
@@ -99,10 +80,10 @@
             <div class="header-mid-section">
                 <div class="row">
                     <div class="d-flex justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">
-                        <img src="{{ asset('storage/images/logo.png') }}" alt="" height="50">
+                        <img src="{{ asset('storage/'. $site_setting->site_logo) }}" alt="" height="50">
                     </div>
                     <div class="d-flex justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
-                        @livewire('header-search-component')
+                        @livewire('home.header-search-component')
                     </div>
                     <div class="d-flex justify-content-lg-end justify-content-center col-lg-3 col-12 right-mid-section">
                         <a href="{{ route('post_ad') }}" class="btn-grad"><b>POST YOUR AD</b></a>
@@ -158,7 +139,7 @@
             <div class="row">
                 <div class="footer-aboutus col-md-6 mt-md-0 mt-3">
                     <h5 class="text-uppercase"><span class="footer-aboutus-us">About</span> US</h5>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni non pariatur aliquid quod? Voluptate voluptatum dolores, delectus debitis temporibus quos fugit. Culpa deleniti id commodi veniam praesentium fugit unde exercitationem.</p>
+                    <p>{{ $site_setting->site_about_us }}</p>
                 </div>
 
                 <div class="footer-quicklinks col-md-3 mb-md-0 mb-3">
@@ -186,16 +167,13 @@
                     <h6 class="text-uppercase">Contact US</h6>
                     <ul class="list-unstyled">
                         <li>
-                            <span><i class="fas fa-phone-square-alt"></i> &nbsp;+9477282818</span>
+                            <span><i class="fas fa-phone-square-alt"></i> &nbsp;{{ $site_setting->site_contact_num }}</span>
                         </li>
                         <li>
-                            <span><i class="fas fa-envelope"></i> &nbsp;user@user.com</span>
+                            <span><i class="fas fa-envelope"></i> &nbsp;{{ $site_setting->site_email }}</span>
                         </li>
                         <li>
-                            <span><i class="fas fa-road"></i> &nbsp;user road,</span>
-                        </li>
-                        <li>
-                            <span><i class="fas fa-address-card"></i> &nbsp;Jaffna, Sri Lanka.</span>
+                            <span><i class="fas fa-address-card"></i> &nbsp;{{ $site_setting->site_location }}</span>
                         </li>
                     </ul>
                 </div>
@@ -226,15 +204,30 @@
 
     @livewireScripts
 
-    {{-- <!-- Scripts -->
-    <script src="{{ mix('js/app.js') }}" defer></script> --}}
-
+    <!-- sweetalert -->
+    <script src="{{ asset('assets/lib/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
     <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
+    {{-- <script src="{{ asset('assets/lib/toastr/toastr.min.js') }}"></script> --}}
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
+    <script>
+        @if (Session::has('message'))
+            // toastr.success("{!! Session::get('message') !!}");
+            Swal.fire({
+                position: 'top-end',
+                icon: 'success',
+                title: '{!! Session::get('message') !!}',
+                showConfirmButton: false,
+                timer: 1500
+            })  
+
+        @endif
+    </script>
+    
 </body>
 
 </html>

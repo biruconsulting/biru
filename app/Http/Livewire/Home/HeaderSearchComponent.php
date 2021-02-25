@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home;
 
 use Livewire\Component;
 use phpDocumentor\Reflection\Types\Boolean;
@@ -17,6 +17,6 @@ class HeaderSearchComponent extends Component
 
     public function render()
     {
-        return view('livewire.header-search-component');
+        return view('livewire.home.header-search-component');
     }
 }

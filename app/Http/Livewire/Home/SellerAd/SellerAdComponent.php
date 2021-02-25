@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home\SellerAd;
 
-use App\Models\BuyerAd;
 use App\Models\Category;
+use App\Models\SellerAd;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class BuyerAdComponent extends Component
+class SellerAdComponent extends Component
 {
     use WithPagination;
 
@@ -43,37 +43,37 @@ class BuyerAdComponent extends Component
 
         if ($general_category_term) 
         {
-            $buyer_ads = BuyerAd::where('ad_type', 'buyer-general')->where('ad_category', 'LIKE', $general_category_term)->paginate(12);
+            $seller_ads = SellerAd::where('ad_type', 'seller-general')->where('ad_category', $general_category_term)->paginate(9);
         } 
         elseif ($property_category_term)
         {
-            $buyer_ads = BuyerAd::where('ad_type', 'buyer-property')->where('ad_category', 'LIKE', $property_category_term)->paginate(12);
+            $seller_ads = SellerAd::where('ad_type', 'seller-property')->where('ad_category', $property_category_term)->paginate(9);
         }
         elseif ($job_category_term)
         {
-            $buyer_ads = BuyerAd::where('ad_type', 'buyer-job')->where('ad_category', 'LIKE', $job_category_term)->paginate(12);
+            $seller_ads = SellerAd::where('ad_type', 'seller-job')->where('ad_category', $job_category_term)->paginate(9);
         }
         elseif ($latest_post_term)
         {
-            $buyer_ads = BuyerAd::latest()->paginate(12);
+            $seller_ads = SellerAd::latest()->paginate(9);
         }
         elseif ($oldest_post_term)
         {
-            $buyer_ads = BuyerAd::oldest()->paginate(12);
+            $seller_ads = SellerAd::oldest()->paginate(9);
         }
         elseif ($selected_location_term)
         {
-            $buyer_ads = BuyerAd::where('user_district', $selected_location_term)->paginate(12);
+            $seller_ads = SellerAd::where('user_district', 'LIKE', $selected_location_term)->paginate(9);
         }
         else 
         {
-            $buyer_ads = BuyerAd::where('ad_title', 'LIKE', $searchTerm)                   
+            $seller_ads = SellerAd::where('ad_title', 'LIKE', $searchTerm)                   
                         ->orWhere('ad_brand', 'LIKE', $searchTerm)
-                        ->paginate(12);
+                        ->paginate(9);
         }
 
-        $sidebar_buyer_ads_data = BuyerAd::all();
-
-        return view('livewire.buyer-ad-component', ['sidebar_buyer_ads_data'=>$sidebar_buyer_ads_data , 'buyer_ads'=>$buyer_ads, 'general_categories'=>$general_categories, 'property_categories'=>$property_categories, 'job_categories'=>$job_categories])->layout('layouts.base');
+        $sidebar_seller_ads_data = SellerAd::all();
+    
+        return view('livewire.home.seller-ad.seller-ad-component',['sidebar_seller_ads_data'=>$sidebar_seller_ads_data, 'seller_ads' => $seller_ads, 'general_categories'=>$general_categories, 'property_categories'=>$property_categories, 'job_categories'=>$job_categories])->layout('layouts.base');
     }
 }

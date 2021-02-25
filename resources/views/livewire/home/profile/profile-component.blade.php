@@ -29,10 +29,10 @@
                                   </nav>
                                   <div class="tab-content" id="nav-tabContent">
                                     <div wire:ignore.self class="tab-pane fade show active" id="nav-seller-ad" role="tabpanel" aria-labelledby="nav-seller-ad-tab">
-                                        @livewire('profile-my-seller-ad-component')
+                                        @livewire('home.profile.profile-my-seller-ad-component')
                                     </div>
                                     <div wire:ignore.self class="tab-pane fade" id="nav-buyer-ad" role="tabpanel" aria-labelledby="nav-buyer-ad-tab">
-                                        @livewire('profile-my-buyer-ad-component')
+                                        @livewire('home.profile.profile-my-buyer-ad-component')
                                     </div>
                                   </div>
                             </div>

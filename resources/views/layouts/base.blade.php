@@ -1,3 +1,7 @@
+@php
+    $site_setting = DB::table('site_settings')->first();
+@endphp
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -76,10 +80,10 @@
             <div class="header-mid-section">
                 <div class="row">
                     <div class="d-flex justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">
-                        <img src="{{ asset('storage/images/logo.png') }}" alt="" height="50">
+                        <img src="{{ asset('storage/'. $site_setting->site_logo) }}" alt="" height="50">
                     </div>
                     <div class="d-flex justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
-                        @livewire('header-search-component')
+                        @livewire('home.header-search-component')
                     </div>
                     <div class="d-flex justify-content-lg-end justify-content-center col-lg-3 col-12 right-mid-section">
                         <a href="{{ route('post_ad') }}" class="btn-grad"><b>POST YOUR AD</b></a>
@@ -135,7 +139,7 @@
             <div class="row">
                 <div class="footer-aboutus col-md-6 mt-md-0 mt-3">
                     <h5 class="text-uppercase"><span class="footer-aboutus-us">About</span> US</h5>
-                    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Magni non pariatur aliquid quod? Voluptate voluptatum dolores, delectus debitis temporibus quos fugit. Culpa deleniti id commodi veniam praesentium fugit unde exercitationem.</p>
+                    <p>{{ $site_setting->site_about_us }}</p>
                 </div>
 
                 <div class="footer-quicklinks col-md-3 mb-md-0 mb-3">
@@ -163,16 +167,13 @@
                     <h6 class="text-uppercase">Contact US</h6>
                     <ul class="list-unstyled">
                         <li>
-                            <span><i class="fas fa-phone-square-alt"></i> &nbsp;+9477282818</span>
+                            <span><i class="fas fa-phone-square-alt"></i> &nbsp;{{ $site_setting->site_contact_num }}</span>
                         </li>
                         <li>
-                            <span><i class="fas fa-envelope"></i> &nbsp;user@user.com</span>
+                            <span><i class="fas fa-envelope"></i> &nbsp;{{ $site_setting->site_email }}</span>
                         </li>
                         <li>
-                            <span><i class="fas fa-road"></i> &nbsp;user road,</span>
-                        </li>
-                        <li>
-                            <span><i class="fas fa-address-card"></i> &nbsp;Jaffna, Sri Lanka.</span>
+                            <span><i class="fas fa-address-card"></i> &nbsp;{{ $site_setting->site_location }}</span>
                         </li>
                     </ul>
                 </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home\Profile;
 
 use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Contracts\UpdatesUserPasswords;
@@ -52,6 +52,6 @@ class ChangePasswordComponent extends Component
     
     public function render()
     {
-        return view('livewire.change-password-component')->layout('layouts.base');
+        return view('livewire.home.profile.change-password-component')->layout('layouts.base');
     }
 }

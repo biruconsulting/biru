@@ -136,6 +136,14 @@
                 </a>
             </li>
 
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.site_setting') }}">
+                    <i class="fas fa-cogs"></i>
+                    <span>Site Setting</span>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 

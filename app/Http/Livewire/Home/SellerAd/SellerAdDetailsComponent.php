@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home\SellerAd;
 
 use App\Models\Category;
 use App\Models\SellerAd;
@@ -61,6 +61,6 @@ class SellerAdDetailsComponent extends Component
     {
         $seller_ad = SellerAd::where('id', $this->seller_ad_id)->first();
         $seller_category = Category::where('id', $seller_ad->ad_category)->first();
-        return view('livewire.seller-ad-details-component', ['seller_ad'=>$seller_ad, 'seller_category'=>$seller_category])->layout('layouts.base');
+        return view('livewire.home.seller-ad.seller-ad-details-component', ['seller_ad'=>$seller_ad, 'seller_category'=>$seller_category])->layout('layouts.base');
     }
 }

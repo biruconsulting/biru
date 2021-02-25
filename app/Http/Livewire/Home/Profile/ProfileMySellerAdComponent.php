@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home\Profile;
 
 use App\Models\SellerAd;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +59,6 @@ class ProfileMySellerAdComponent extends Component
 
         $user_seller_ads = SellerAd::where('user_id', $user_id)->paginate(5);
         
-        return view('livewire.profile-my-seller-ad-component', ['user_seller_ads'=>$user_seller_ads]);
+        return view('livewire.home.profile.profile-my-seller-ad-component', ['user_seller_ads'=>$user_seller_ads]);
     }
 }

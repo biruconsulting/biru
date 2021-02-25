@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home;
 
 use App\Models\ContactUs;
 use Livewire\Component;
@@ -36,6 +36,6 @@ class ContactUsComponent extends Component
 
     public function render()
     {
-        return view('livewire.contact-us-component')->layout('layouts.base');
+        return view('livewire.home.contact-us-component')->layout('layouts.base');
     }
 }

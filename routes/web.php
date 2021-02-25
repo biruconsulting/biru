@@ -1,14 +1,12 @@
 <?php
 
-use App\Http\Controllers\SellerAdPostController;
 use App\Http\Livewire\Admin\AdminCarouselSlidersComponent;
 use App\Http\Livewire\Admin\AdminContactUsComponent;
-use App\Http\Livewire\Admin\AdminCreateCarouselSlidersComponent;
 use App\Http\Livewire\Admin\AdminDashboardComponent;
-use App\Http\Livewire\Admin\AdminEditCarouselSlidersComponent;
 use App\Http\Livewire\Admin\AdminGeneralCategoryComponent;
 use App\Http\Livewire\Admin\AdminJobCategoryComponent;
 use App\Http\Livewire\Admin\AdminPropertyCategoryComponent;
+use App\Http\Livewire\Admin\AdminSiteSettingComponent;
 use App\Http\Livewire\Admin\AdminUserComponent;
 use App\Http\Livewire\Admin\BuyerAd\AdminGeneralAdComponent as BuyerAdAdminGeneralAdComponent;
 use App\Http\Livewire\Admin\BuyerAd\AdminJobAdComponent as BuyerAdAdminJobAdComponent;
@@ -16,19 +14,17 @@ use App\Http\Livewire\Admin\BuyerAd\AdminPropertyAdComponent as BuyerAdAdminProp
 use App\Http\Livewire\Admin\SellerAd\AdminGeneralAdComponent;
 use App\Http\Livewire\Admin\SellerAd\AdminJobAdComponent;
 use App\Http\Livewire\Admin\SellerAd\AdminPropertyAdComponent;
-use App\Http\Livewire\BuyerAdComponent;
-use App\Http\Livewire\BuyerAdDetailsComponent;
-use App\Http\Livewire\BuyerAdHeaderSearchComponent;
-use App\Http\Livewire\ChangePasswordComponent;
-use App\Http\Livewire\ContactUsComponent;
-use App\Http\Livewire\HomeComponent;
-use App\Http\Livewire\PostAdComponent;
-use App\Http\Livewire\ProfileComponent;
-use App\Http\Livewire\ResetPasswordComponent;
-use App\Http\Livewire\SellerAdComponent;
-use App\Http\Livewire\SellerAdDetailsComponent;
-use App\Http\Livewire\SellerAdHeaderSearchComponent;
-use App\Models\CarouselSlider;
+use App\Http\Livewire\Home\BuyerAd\BuyerAdComponent;
+use App\Http\Livewire\Home\BuyerAd\BuyerAdDetailsComponent;
+use App\Http\Livewire\Home\BuyerAd\BuyerAdHeaderSearchComponent;
+use App\Http\Livewire\Home\Profile\ChangePasswordComponent;
+use App\Http\Livewire\Home\ContactUsComponent;
+use App\Http\Livewire\Home\Profile\ProfileComponent;
+use App\Http\Livewire\Home\HomeComponent;
+use App\Http\Livewire\Home\PostAdComponent;
+use App\Http\Livewire\Home\SellerAd\SellerAdComponent;
+use App\Http\Livewire\Home\SellerAd\SellerAdDetailsComponent;
+use App\Http\Livewire\Home\SellerAd\SellerAdHeaderSearchComponent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -98,5 +94,7 @@ Route::middleware(['auth:sanctum', 'verified', 'authadmin'])->group(function () 
     Route::get('/admin/buyer_ad/job_ad', BuyerAdAdminJobAdComponent::class)->name('admin.buyer_ad.job_ad');
 
     Route::get('/admin/contact_us', AdminContactUsComponent::class)->name('admin.contact_us');
+
+    Route::get('/admin/site_setting', AdminSiteSettingComponent::class)->name('admin.site_setting');
 
 });

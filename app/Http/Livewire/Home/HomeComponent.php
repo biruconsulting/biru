@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home;
 
 use App\Models\BuyerAd;
 use App\Models\CarouselSlider;
@@ -24,6 +24,6 @@ class HomeComponent extends Component
 
         $carousel_sliders = CarouselSlider::all();
 
-        return view('livewire.home-component', ['seller_ads'=>$seller_ads, 'buyer_ads'=>$buyer_ads, 'seller_general_ads'=>$seller_general_ads, 'seller_property_ads'=>$seller_property_ads, 'seller_job_ads'=>$seller_job_ads, 'buyer_general_ads'=>$buyer_general_ads, 'buyer_property_ads'=>$buyer_property_ads, 'buyer_job_ads'=>$buyer_job_ads, 'carousel_sliders'=>$carousel_sliders])->layout('layouts.base');
+        return view('livewire.home.home-component', ['seller_ads'=>$seller_ads, 'buyer_ads'=>$buyer_ads, 'seller_general_ads'=>$seller_general_ads, 'seller_property_ads'=>$seller_property_ads, 'seller_job_ads'=>$seller_job_ads, 'buyer_general_ads'=>$buyer_general_ads, 'buyer_property_ads'=>$buyer_property_ads, 'buyer_job_ads'=>$buyer_job_ads, 'carousel_sliders'=>$carousel_sliders])->layout('layouts.base');
     }
 }

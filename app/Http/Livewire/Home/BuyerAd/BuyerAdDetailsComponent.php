@@ -1,17 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home\BuyerAd;
 
 use App\Models\BuyerAd;
-use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 use Livewire\Component;
-use Livewire\WithPagination;
 
-class ProfileMyBuyerAdComponent extends Component
+class BuyerAdDetailsComponent extends Component
 {
-    use WithPagination;
+    public $buyer_ad_id;
 
-    protected $paginationTheme = 'bootstrap';
+    public function mount($buyer_ad_id)
+    { 
+        $this->buyer_ad_id = $buyer_ad_id;
+    }
 
     protected $listeners = ['DeleteBuyerAd'];
 
@@ -30,19 +32,23 @@ class ProfileMyBuyerAdComponent extends Component
 
     public function DeleteBuyerAd($buyer_ad_id) {
         if($buyer_ad_id){
+            
             $buyer_ad = BuyerAd::where('id', $buyer_ad_id)->first();
+
             $buyer_ad->delete();
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Your Buyer Advertisement Deleted Successfully.']);
+            session()->flash('message', 'Your Buyer Advertisement Deleted Successfully.');
+
+            return redirect()->route('home');
+
         }
     }
 
+    
     public function render()
     {
-        $user_id = Auth::user()->id;
-
-        $user_buyer_ads = BuyerAd::where('user_id', $user_id)->paginate(5);
-        
-        return view('livewire.profile-my-buyer-ad-component', ['user_buyer_ads'=>$user_buyer_ads]);
+        $buyer_ad = BuyerAd::where('id', $this->buyer_ad_id)->first();
+        $buyer_category = Category::where('id', $buyer_ad->ad_category)->first();
+        return view('livewire.home.buyer-ad.buyer-ad-details-component', ['buyer_ad'=>$buyer_ad , 'buyer_category'=>$buyer_category])->layout('layouts.base');
     }
 }

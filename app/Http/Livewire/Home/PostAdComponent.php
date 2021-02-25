@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\Home;
 
 use App\Models\BuyerAd;
 use App\Models\Category;
@@ -569,6 +569,6 @@ class PostAdComponent extends Component
         $property_categories = Category::where('ad_type', 'property')->get();
         $job_categories = Category::where('ad_type', 'job')->get();
 
-        return view('livewire.post-ad-component', ['general_categories'=>$general_categories, 'property_categories'=>$property_categories, 'job_categories'=>$job_categories])->layout('layouts.base');
+        return view('livewire.home.post-ad-component', ['general_categories'=>$general_categories, 'property_categories'=>$property_categories, 'job_categories'=>$job_categories])->layout('layouts.base');
     }
 }
