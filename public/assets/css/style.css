@@ -505,10 +505,6 @@ body {
     border: none;
 }
 
-.carousel-item .carousel-caption p {
-    font-size: 25px;
-}
-
 .carousel-item .carousel-caption a:hover{
     background-color: #0099f7;
     border: none;
