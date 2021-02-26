@@ -1,5 +1,6 @@
 @php
     $site_setting = DB::table('site_settings')->first();
+    $seo_setting = DB::table('seo_settings')->first();
 @endphp
 
 <!DOCTYPE html>
@@ -8,14 +9,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Classic</title>
+    {{-- Title --}}
+    <title>{{ $seo_setting->meta_title }}</title>
+    {{-- Meta Description --}}
+    <meta name="description" content="{{ $seo_setting->meta_description }}" >
+    {{-- Meta Keywords --}}
+    <meta name="keywords" content="{{ $seo_setting->meta_keywords }}">
+    {{-- Meta Author --}}
+    <meta name="author" content="{{ $seo_setting->meta_author }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/lib/fontawesome/css/all.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.carousel.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/lib/owlcarousel/owl.theme.default.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/lib/summernote/summernote-lite.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('assets/lib/toastr/toastr.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}" />
 
     @livewireStyles
@@ -79,8 +86,8 @@
         <div class="container">
             <div class="header-mid-section">
                 <div class="row">
-                    <div class="d-flex justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">
-                        <img src="{{ asset('storage/'. $site_setting->site_logo) }}" alt="" height="50">
+                    <div class="d-flex justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">   
+                        <img src="{{ asset('storage/'. $site_setting->site_logo) }}" alt="Logo" height="50">
                     </div>
                     <div class="d-flex justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
                         @livewire('home.header-search-component')
@@ -139,26 +146,28 @@
             <div class="row">
                 <div class="footer-aboutus col-md-6 mt-md-0 mt-3">
                     <h5 class="text-uppercase"><span class="footer-aboutus-us">About</span> US</h5>
-                    <p>{{ $site_setting->site_about_us }}</p>
+                    @if ($site_setting->site_about_us) 
+                        <p>{{ $site_setting->site_about_us }}</p>
+                    @endif
                 </div>
 
                 <div class="footer-quicklinks col-md-3 mb-md-0 mb-3">
                     <h6 class="text-uppercase">Quick Links</h6>
                     <ul class="list-unstyled">
                         <li>
-                            <a href="post_ad.html">Post Advertisement</a>
+                            <a href="{{ route('post_ad') }}">Post Advertisement</a>
                         </li>
                         <li>
-                            <a href="index.html">Home Page</a>
+                            <a href="{{ route('home') }}">Home Page</a>
                         </li>
                         <li>
-                            <a href="seller_ad.html">Seller Advertisement</a>
+                            <a href="{{ route('seller_ad') }}">Seller Advertisement</a>
                         </li>
                         <li>
-                            <a href="buyer_ad.html">Buyer Advertisement</a>
+                            <a href="{{ route('buyer_ad') }}">Buyer Advertisement</a>
                         </li>
                         <li>
-                            <a href="contact_us.html">Contact Us</a>
+                            <a href="{{ route('contact_us') }}">Contact Us</a>
                         </li>
                     </ul>
                 </div>
@@ -211,12 +220,10 @@
     <script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
     <script src="{{ asset('assets/js/jquery.waypoints.min.js') }}"></script>
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
-    {{-- <script src="{{ asset('assets/lib/toastr/toastr.min.js') }}"></script> --}}
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
     <script>
         @if (Session::has('message'))
-            // toastr.success("{!! Session::get('message') !!}");
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',

@@ -10,18 +10,15 @@ class AdminSeoSettingComponent extends Component
     public $seo_setting_id;
     public $seo_meta_title;
     public $seo_meta_author;
-    public $seo_meta_tag;
+    public $seo_meta_keywords;
     public $seo_meta_description;
-    public $seo_google_analytics;
-    public $seo_bing_analytics;
+
 
     protected $rules = [
-        'seo_meta_title' => 'required|min:50|max:60',
+        'seo_meta_title' => 'required|max:60',
         'seo_meta_author' => 'required',
-        'seo_meta_tag' => 'required',
+        'seo_meta_keywords' => 'required',
         'seo_meta_description' => 'required|max:160',
-        'seo_google_analytics' => 'required',
-        'seo_bing_analytics' => 'required',
     ];
 
     public function mount() {
@@ -30,10 +27,8 @@ class AdminSeoSettingComponent extends Component
         $this->seo_setting_id = $seo_setting->id;
         $this->seo_meta_title = $seo_setting->meta_title;
         $this->seo_meta_author = $seo_setting->meta_author;
-        $this->seo_meta_tag = $seo_setting->meta_tag;
+        $this->seo_meta_keywords = $seo_setting->meta_keywords;
         $this->seo_meta_description = $seo_setting->meta_description;
-        $this->seo_google_analytics = $seo_setting->google_analytics;
-        $this->seo_bing_analytics = $seo_setting->bing_analytics;
     }
 
 
@@ -46,10 +41,8 @@ class AdminSeoSettingComponent extends Component
         $seo_setting->update([
             'meta_title' => $this->seo_meta_title,
             'meta_author' => $this->seo_meta_author,
-            'meta_tag' => $this->seo_meta_tag,
+            'meta_keywords' => $this->seo_meta_keywords,
             'meta_description' => $this->seo_meta_description,
-            'google_analytics' => $this->seo_google_analytics,
-            'bing_analytics' => $this->seo_bing_analytics,
         ]);
 
         $this->emit('alert', ['type' => 'success', 'message' => 'Seo Setting Updated Successfully.']);

@@ -12,9 +12,7 @@ class SeoSetting extends Model
     protected $fillable = [
         'meta_title',
         'meta_author',
-        'meta_tag',
+        'meta_keywords',
         'meta_description',
-        'google_analytics',
-        'bing_analytics',
     ];
 }
