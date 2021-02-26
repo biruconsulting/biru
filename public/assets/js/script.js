@@ -37,39 +37,41 @@ $(".footer .footer-copyright .scroll-to-top-button a").on('click', function(e) {
  
  // owl carousel
  $(document).ready(function(){
-    $(".owl-carousel").owlCarousel({
-        autoplay: true,
-        autoplayHoverPause: true,
-        nav: true,
-        dots: false,
-        loop: false,
-        rewind: true,
-        margin: 10,
-        lazyLoad: true,
-        smartSpeed: 450,
-        stagePadding: 5,
-        responsiveClass:true,
-        responsive: {
-            0: {
-                items: 1,
-                nav: false,
-                autoplay: false,
-                rewind: false,
-            },
-            480: {
-                items: 2
-            },
-            768: {
-                items: 3
-            },
-            992: {
-                items: 4
-            },
-            1200: {
-                items: 5
+    $(".owl-carousel").each(function(){
+        $(this).owlCarousel({
+            autoplay: true,
+            autoplayHoverPause: true,
+            nav: true,
+            dots: false,
+            loop: false,
+            rewind: true,
+            margin: 10,
+            lazyLoad: true,
+            smartSpeed: 450,
+            stagePadding: 5,
+            responsiveClass:true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: false,
+                    autoplay: false,
+                    rewind: false,
+                },
+                480: {
+                    items: 2
+                },
+                768: {
+                    items: 3
+                },
+                992: {
+                    items: 4
+                },
+                1200: {
+                    items: 5
+                }
             }
-        }
-    });
+        });
+      });
   });
 
 // Product detail image slider

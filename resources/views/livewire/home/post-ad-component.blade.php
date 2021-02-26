@@ -1030,7 +1030,7 @@
                     </div>
 
                 </div>
-                <div wire:ignore.self class="tab-pane pt-3 fade" id="buyer-ad" role="tabpanel" aria-labelledby="buyer-ad-tab">
+                <div wire:ignore.self class="tab-pane fade" id="buyer-ad" role="tabpanel" aria-labelledby="buyer-ad-tab">
                     <h2 class="ad-h2">Create Your <span>Buyer Advertisement</span></h2>
                     <p class="ad-p">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Libero itaque nobis quos iste sapiente possimus aliquam eligendi explicabo minus officia? Nam laborum incidunt earum, consequuntur expedita explicabo? Nisi, laborum minima.</p>
 

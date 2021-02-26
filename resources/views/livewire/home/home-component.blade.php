@@ -41,7 +41,7 @@
                 </div>
                 <div class="bar-card-body card-body">
                     @if (count($seller_ads) > 0)
-                        <div class="owl-carousel owl-theme">
+                        <div id="seller_ad_owl" class="owl-carousel owl-theme">
                             @foreach ($seller_ads as $seller_ad)
                                 <div class="item">
                                     <div class="seller-ad card">
@@ -89,7 +89,7 @@
                 </div>
                 <div class="bar-card-body card-body">
                     @if (count($buyer_ads) > 0)
-                        <div class="owl-carousel owl-theme">
+                        <div id="buyer_ad_owl" class="owl-carousel owl-theme">
                             @foreach ($buyer_ads as $buyer_ad)
                                 <div class="item">
                                     <div class="buyer-ad card">
@@ -150,7 +150,7 @@
                     <div class="tab-content" id="myTabContent">
                         <div class="tab-pane fade show active" id="seller-general" role="tabpanel" aria-labelledby="seller-general-tab">
                             @if(count($seller_general_ads) > 0)
-                                <div class="owl-carousel owl-theme">
+                                <div id="seller_general_owl" class="owl-carousel owl-theme">
                                     @foreach ($seller_general_ads as $seller_general_ad)
                                         <div class="item">
                                             <div class="seller-ad card">
@@ -178,7 +178,7 @@
                         </div>
                         <div class="tab-pane fade" id="seller-properties" role="tabpanel" aria-labelledby="seller-properties-tab">
                             @if(count($seller_property_ads) > 0)
-                                <div class="owl-carousel owl-theme">
+                                <div id="seller_property_owl" class="owl-carousel owl-theme">
                                     @foreach ($seller_property_ads as $seller_property_ad)
                                         <div class="item">
                                             <div class="seller-ad card">
@@ -206,7 +206,7 @@
                         </div>
                         <div class="tab-pane fade" id="seller-job" role="tabpanel" aria-labelledby="seller-job-tab">
                             @if(count($seller_job_ads) > 0)
-                                <div class="owl-carousel owl-theme">
+                                <div id="seller_job_owl" class="owl-carousel owl-theme">
                                     @foreach ($seller_job_ads as $seller_job_ad)
                                         <div class="item">
                                             <div class="seller-ad card">
