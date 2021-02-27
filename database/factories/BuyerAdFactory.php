@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\BuyerAd;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class BuyerAdFactory extends Factory
@@ -41,6 +42,7 @@ class BuyerAdFactory extends Factory
             'ad_ex_education_level'=>$this->faker->text(5),
             'ad_short_description'=>$this->faker->text(100),
             'ad_description'=>$this->faker->text(500),
+            'expired_at'=> Carbon::now()->addMinutes(1),
         ];
     }
 }

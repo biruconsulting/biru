@@ -29,6 +29,7 @@ class BuyerAd extends Model
         'ad_ex_education_level',
         'ad_short_description',
         'ad_description',
+        'expired_at',
     ];
 
     public function user()

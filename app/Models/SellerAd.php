@@ -33,6 +33,7 @@ class SellerAd extends Model
         'ad_education_level',
         'ad_short_description',
         'ad_description',
+        'expired_at',
     ];
 
     public function user()
