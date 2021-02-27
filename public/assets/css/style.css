@@ -584,6 +584,15 @@ body {
     background-color: transparent;
 }
 
+.home-tab-content .tab-pane {
+    display: block;
+    height: 0;
+}
+
+.home-tab-content .active {
+    height: auto;
+}
+
 /* OWL - carousel for seller ad */
 
 .ad-quickview-card-bar .bar-card-body .seller-ad {

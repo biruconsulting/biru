@@ -47,6 +47,11 @@ class AdminSiteSettingComponent extends Component
         $update_site_logo = $this->site_logo;
 
         if ($update_site_logo) {
+
+            if ($this->existing_site_logo) {
+                Storage::disk('public')->delete($this->existing_site_logo);
+            }
+
             // for thumbnail image 
             // Get filename with extension
             $filenameWithExt_site_logo = $update_site_logo->getClientOriginalName();

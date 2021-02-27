@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Home\Profile;
 
 use App\Models\SellerAd;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -38,12 +39,12 @@ class ProfileMySellerAdComponent extends Component
             $other_images = $seller_ad->ad_images;
 
             if ($thumbnail_image) {
-                unlink('storage/' . $thumbnail_image);
+                Storage::disk('public')->delete($thumbnail_image);
             }
 
             if ($other_images) {
                 foreach (json_decode($other_images) as $image) {
-                    unlink('storage/' . $image);
+                    Storage::disk('public')->delete($image);
                 }
             }
 

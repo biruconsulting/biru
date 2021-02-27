@@ -1,35 +1,39 @@
 <div class="container">
     <div wire:ignore>
         <!-- carousel -->
-        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-            <ol class="carousel-indicators">
-                @foreach ($carousel_sliders as $carousel_slider)
-                    <li data-bs-target="#myCarousel" data-bs-slide-to="{{ $loop->index }}" @if ($loop->first) class="active" @endif></li>
-                @endforeach
-            </ol>
-            <div class="carousel-inner">
-                @foreach ($carousel_sliders as $carousel_slider)
-                    <div class="carousel-item @if ($loop->first) active @endif">
-                        <img src="{{ asset('storage/'.$carousel_slider->image) }}" width="100%" height="100%" alt="">
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <h1>{{ $carousel_slider->title }}</h1>
-                                <p>{!! $carousel_slider->description !!}</p>
-                                <a class="btn btn-lg btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
+        @if(count($carousel_sliders) > 0)
+            <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+                <ol class="carousel-indicators">
+                    @foreach ($carousel_sliders as $carousel_slider)
+                        <li data-bs-target="#myCarousel" data-bs-slide-to="{{ $loop->index }}" @if ($loop->first) class="active" @endif></li>
+                    @endforeach
+                </ol>
+                <div class="carousel-inner">
+                    @foreach ($carousel_sliders as $carousel_slider)
+                        <div class="carousel-item @if ($loop->first) active @endif">
+                            <img src="{{ asset('storage/'.$carousel_slider->image) }}" width="100%" height="100%" alt="">
+                            <div class="container">
+                                <div class="carousel-caption">
+                                    <h1>{{ $carousel_slider->title }}</h1>
+                                    <p>{!! $carousel_slider->description !!}</p>
+                                    @if ($carousel_slider->link != '#')
+                                        <a class="btn btn-lg btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
+                                    @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </a>
             </div>
-            <a class="carousel-control-prev" href="#myCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </a>
-        </div>
+        @endif
         <!-- carousel - end -->
 
 
@@ -147,7 +151,7 @@
                             <a class="nav-link" id="seller-job-tab" data-bs-toggle="tab" href="#seller-job" role="tab" aria-controls="seller-job" aria-selected="false">Job</a>
                         </li>
                     </ul>
-                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-content home-tab-content" id="sellerTabContent">
                         <div class="tab-pane fade show active" id="seller-general" role="tabpanel" aria-labelledby="seller-general-tab">
                             @if(count($seller_general_ads) > 0)
                                 <div id="seller_general_owl" class="owl-carousel owl-theme">
@@ -259,7 +263,7 @@
                             <a class="nav-link" id="wants-job-tab" data-bs-toggle="tab" href="#wants-job" role="tab" aria-controls="wants-job" aria-selected="false">Job</a>
                         </li>
                     </ul>
-                    <div class="tab-content" id="myTabContent">
+                    <div class="tab-content home-tab-content" id="buyerTabContent">
                         <div class="tab-pane fade show active" id="wants-general" role="tabpanel" aria-labelledby="wants-general-tab">
                             @if(count($buyer_general_ads) > 0)
                                 <div class="owl-carousel owl-theme">

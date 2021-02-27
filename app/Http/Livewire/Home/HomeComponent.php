@@ -22,7 +22,7 @@ class HomeComponent extends Component
         $buyer_property_ads = BuyerAd::where('ad_type', 'buyer-property')->latest()->limit(7)->get();
         $buyer_job_ads = BuyerAd::where('ad_type', 'buyer-job')->latest()->limit(7)->get();
 
-        $carousel_sliders = CarouselSlider::all();
+        $carousel_sliders = CarouselSlider::latest()->get();
 
         return view('livewire.home.home-component', ['seller_ads'=>$seller_ads, 'buyer_ads'=>$buyer_ads, 'seller_general_ads'=>$seller_general_ads, 'seller_property_ads'=>$seller_property_ads, 'seller_job_ads'=>$seller_job_ads, 'buyer_general_ads'=>$buyer_general_ads, 'buyer_property_ads'=>$buyer_property_ads, 'buyer_job_ads'=>$buyer_job_ads, 'carousel_sliders'=>$carousel_sliders])->layout('layouts.base');
     }

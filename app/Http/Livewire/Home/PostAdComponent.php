@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Home;
 use App\Models\BuyerAd;
 use App\Models\Category;
 use App\Models\SellerAd;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
@@ -236,7 +237,7 @@ class PostAdComponent extends Component
                 $new_seller_general_ad_other_images = json_encode($other_images_array);
             }
 
-            SellerAd::create([
+            $seller_ad = SellerAd::create([
                 'user_id' => Auth::user()->id,
                 'user_first_name' =>$this->seller_user_first_name,
                 'user_last_name' =>$this->seller_user_last_name,
@@ -254,13 +255,16 @@ class PostAdComponent extends Component
                 'ad_price' =>$this->seller_general_ad_price,
                 'ad_short_description' =>$this->seller_general_ad_short_description,
                 'ad_description' =>$this->seller_general_ad_description,
+                'expired_at'=> Carbon::now()->addDays(7),
             ]);
 
             $this->clearSellerAdData();
 
             $this->emit('seller-general-summernote');
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Seller General Advertisement Created Successfully.']);
+            session()->flash('message', 'Seller General Advertisement Created Successfully.');
+
+            return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
 
         } 
         elseif ($this->seller_ad_type == 'seller-property') {
@@ -339,7 +343,7 @@ class PostAdComponent extends Component
                 $new_seller_property_ad_other_images = json_encode($other_images);
             }
 
-            SellerAd::create([
+            $seller_ad = SellerAd::create([
                 'user_id' => Auth::user()->id,
                 'user_first_name' =>$this->seller_user_first_name,
                 'user_last_name' =>$this->seller_user_last_name,
@@ -356,13 +360,16 @@ class PostAdComponent extends Component
                 'ad_price' =>$this->seller_property_ad_price,
                 'ad_short_description' =>$this->seller_property_ad_short_description,
                 'ad_description' =>$this->seller_property_ad_description,
+                'expired_at'=> Carbon::now()->addDays(7),
             ]);
 
             $this->clearSellerAdData();
 
             $this->emit('seller-property-summernote');
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Property Advertisement Created Successfully.']);
+            session()->flash('message', 'Seller Property Advertisement Created Successfully.');
+
+            return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
 
         }
         elseif ($this->seller_ad_type == 'seller-job') {
@@ -409,7 +416,7 @@ class PostAdComponent extends Component
                  $new_seller_job_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
             }
 
-            SellerAd::create([
+            $seller_ad = SellerAd::create([
                 'user_id' => Auth::user()->id,
                 'user_first_name' =>$this->seller_user_first_name,
                 'user_last_name' =>$this->seller_user_last_name,
@@ -426,13 +433,16 @@ class PostAdComponent extends Component
                 'ad_education_level' =>$this->seller_job_ad_education_level,
                 'ad_short_description' =>$this->seller_job_ad_short_description,
                 'ad_description' =>$this->seller_job_ad_description,
+                'expired_at'=> Carbon::now()->addDays(7),
             ]);
 
             $this->clearSellerAdData();
 
             $this->emit('seller-job-summernote');
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Seller Job Advertisement Created Successfully.']);
+            session()->flash('message', 'Seller Job Advertisement Created Successfully.');
+
+            return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
 
         }
     }
@@ -462,7 +472,7 @@ class PostAdComponent extends Component
                 'buyer_general_ad_description' => 'required|min:100',
             ]);
 
-            BuyerAd::create([
+            $buyer_ad = BuyerAd::create([
                 'user_id' => Auth::user()->id,
                 'user_first_name' => $this->buyer_user_first_name,
                 'user_last_name' => $this->buyer_user_last_name,
@@ -478,13 +488,16 @@ class PostAdComponent extends Component
                 'ad_ex_max_price' => $this->buyer_general_ad_ex_max_price,
                 'ad_short_description' => $this->buyer_general_ad_short_description,
                 'ad_description' => $this->buyer_general_ad_description,
+                'expired_at'=> Carbon::now()->addDays(7),
             ]);
 
             $this->clearBuyerAdData();
 
             $this->emit('buyer-general-summernote');
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer General Advertisement Created Successfully.']);
+            session()->flash('message', 'Buyer General Advertisement Created Successfully.');
+
+            return redirect()->route('buyer_ad.details',['buyer_ad_id'=>$buyer_ad->id]);
 
         } 
         elseif ($this->buyer_ad_type == 'buyer-property') 
@@ -499,7 +512,7 @@ class PostAdComponent extends Component
                 'buyer_property_ad_description' => 'required|min:100',
             ]); 
             
-            BuyerAd::create([
+            $buyer_ad = BuyerAd::create([
                 'user_id' => Auth::user()->id,
                 'user_first_name' => $this->buyer_user_first_name,
                 'user_last_name' => $this->buyer_user_last_name,
@@ -514,13 +527,16 @@ class PostAdComponent extends Component
                 'ad_ex_max_price' => $this->buyer_property_ad_ex_max_price,
                 'ad_short_description' => $this->buyer_property_ad_short_description,
                 'ad_description' => $this->buyer_property_ad_description,
+                'expired_at'=> Carbon::now()->addDays(7),
             ]);
 
             $this->clearBuyerAdData();
 
             $this->emit('buyer-property-summernote');
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Property Advertisement Created Successfully.']);
+            session()->flash('message', 'Buyer Property Advertisement Created Successfully.');
+
+            return redirect()->route('buyer_ad.details',['buyer_ad_id'=>$buyer_ad->id]);
 
         }
         elseif ($this->buyer_ad_type == 'buyer-job') 
@@ -531,11 +547,11 @@ class PostAdComponent extends Component
                 'buyer_job_ad_ex_district' => 'required',
                 'buyer_job_ad_ex_job_type' => 'required',
                 'buyer_job_ad_ex_education_level' => 'required',
-                'buyer_job_ad_short_description' => 'required|max:130',
+                'buyer_job_ad_short_description' => 'required|max:200',
                 'buyer_job_ad_description' => 'required|min:100',
             ]);
 
-            BuyerAd::create([
+            $buyer_ad = BuyerAd::create([
                 'user_id' => Auth::user()->id,
                 'user_first_name' => $this->buyer_user_first_name,
                 'user_last_name' => $this->buyer_user_last_name,
@@ -550,13 +566,16 @@ class PostAdComponent extends Component
                 'ad_ex_education_level' => $this->buyer_job_ad_ex_education_level,
                 'ad_short_description' => $this->buyer_job_ad_short_description,
                 'ad_description' => $this->buyer_job_ad_description,
+                'expired_at'=> Carbon::now()->addDays(7),
             ]);
 
             $this->clearBuyerAdData();
 
             $this->emit('buyer-job-summernote');
 
-            $this->emit('alert', ['type' => 'success', 'message' => 'Buyer Job Advertisement Created Successfully.']);
+            session()->flash('message', 'Buyer Job Advertisement Created Successfully.');
+
+            return redirect()->route('buyer_ad.details',['buyer_ad_id'=>$buyer_ad->id]);
 
         }
         

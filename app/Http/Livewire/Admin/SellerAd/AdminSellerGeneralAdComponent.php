@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Admin\SellerAd;
 
 use App\Models\SellerAd;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -32,6 +33,21 @@ class AdminSellerGeneralAdComponent extends Component
     public function DeleteSellerGeneralAd($seller_general_ad_id) {
         if($seller_general_ad_id){
             $seller_general_ad = SellerAd::where('id', $seller_general_ad_id)->first();
+
+            $thumbnail_image = $seller_general_ad->ad_thumbnail_image;
+
+            $other_images = $seller_general_ad->ad_images;
+
+            if ($thumbnail_image) {
+                Storage::disk('public')->delete($thumbnail_image);
+            }
+
+            if ($other_images) {
+                foreach (json_decode($other_images) as $image) {
+                    Storage::disk('public')->delete($image);
+                }
+            }
+
             $seller_general_ad->delete();
 
             $this->emit('alert', ['type' => 'success', 'message' => 'General Advertisement Deleted Successfully.']);

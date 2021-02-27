@@ -227,11 +227,12 @@
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: '{!! Session::get('message') !!}',
+                title: "{{Session::get('message')}}",
                 showConfirmButton: false,
                 timer: 1500
-            })  
-
+            }).then((value) => {
+                location.reload();
+            }).catch(swal.noop);  
         @endif
     </script>
     

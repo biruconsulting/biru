@@ -30,7 +30,7 @@ class SellerAdFactory extends Factory
             'user_email'=>$this->faker->unique()->safeEmail,
             'user_phone_number'=>'0764524354',
             'user_district'=>$this->faker->text(5),
-            'ad_type'=>'seller-job',
+            'ad_type'=>'seller-property',
             'ad_title'=>$this->faker->unique()->words($nb=2, $asText=true),
             'ad_category'=>$this->faker->numberBetween(1, 20),
             'ad_thumbnail_image'=> 'images/general_ad/general_'. $this->faker->unique()->numberBetween(1, 22).'.jpg',
@@ -40,7 +40,7 @@ class SellerAdFactory extends Factory
             'ad_price'=>$this->faker->numberBetween(1000, 20000),
             'ad_short_description'=>$this->faker->text(100),
             'ad_description'=>$this->faker->text(500),
-            'expired_at'=> Carbon::now()->addMinutes(1),
+            'expired_at'=> Carbon::now()->addDays(7),
         ];
     }
 }
