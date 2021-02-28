@@ -55,7 +55,7 @@ body {
 
 /* header - search - section */
 .header-search-bar {
-    border: 3px solid #f11712;
+    border: 3px solid #00917c;
     border-radius: 30px;
     margin-top: 5px;
     width: 600px;
@@ -194,7 +194,7 @@ body {
 }
 
 .navbar ul li a.active, .navbar ul li a:hover {
-    background-color: rgb(241, 23, 18, 0.9);
+    background-color: #00917c;
     transition: .5s;
 }
 
@@ -531,7 +531,7 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card .card-header {
-   background-color: #f11712;
+   background-color: #00917c;
    color: #fff;
    font-weight: 600;
 }
@@ -819,7 +819,7 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card-body .nav-tabs .nav-item .active {
-    color: #f11712;
+    color: #00917c;
 }
 
 
@@ -876,7 +876,7 @@ body {
 }
 
 .main-bar-header {
-    background-color: #f11712;
+    background-color: #00917c;
     color: white;
     padding: 10px;
     font-weight: 500;

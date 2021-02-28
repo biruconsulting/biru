@@ -30,7 +30,7 @@ class BuyerAdFactory extends Factory
             'user_email'=>$this->faker->unique()->safeEmail,
             'user_phone_number'=>'0764524354',
             'user_district'=>$this->faker->text(5),
-            'ad_type'=>'buyer-job',
+            'ad_type'=>'buyer-general',
             'ad_title'=>$this->faker->unique()->words($nb=2, $asText=true),
             'ad_category'=>$this->faker->numberBetween(1, 20),
             'ad_ex_district'=>$this->faker->text(5),

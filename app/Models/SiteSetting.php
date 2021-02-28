@@ -10,7 +10,6 @@ class SiteSetting extends Model
     use HasFactory;
 
     protected $fillable = [
-        'site_logo',
         'site_about_us',
         'site_contact_num',
         'site_email',

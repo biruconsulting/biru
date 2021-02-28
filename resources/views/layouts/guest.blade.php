@@ -87,7 +87,7 @@
             <div class="header-mid-section">
                 <div class="row">
                     <div class="d-flex justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">   
-                        <img src="{{ asset('storage/'. $site_setting->site_logo) }}" alt="Logo" height="50">
+                        <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" height="50">
                     </div>
                     <div class="d-flex justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
                         @livewire('home.header-search-component')
@@ -227,11 +227,12 @@
             Swal.fire({
                 position: 'top-end',
                 icon: 'success',
-                title: '{!! Session::get('message') !!}',
+                title: "{{Session::get('message')}}",
                 showConfirmButton: false,
                 timer: 1500
-            })  
-
+            }).then((value) => {
+                location.reload();
+            }).catch(swal.noop);  
         @endif
     </script>
     

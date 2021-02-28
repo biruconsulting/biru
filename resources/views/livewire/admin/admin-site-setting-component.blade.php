@@ -12,16 +12,6 @@
                     <textarea class="form-control" id="site_about_us" rows="3" wire:model.defer="site_about_us"></textarea>
                     @error('site_about_us') <span class="error text-danger" style="font-size: 16px;">{{ $message }}</span> @enderror
                 </div>
-                <div class="form-group">
-                    <label for="site_logo">Existing Site Logo</label>
-                    @if ($existing_site_logo)
-                        <img src="{{ asset('storage/'.$existing_site_logo) }}" height="50" alt="Existing Site Logo">
-                    @endif
-                </div>
-                <div class="form-group">
-                    <label for="site_logo">New Site Logo (If you want to change*)</label>
-                    <input type="file" class="form-control-file" id="site_logo"  wire:model.defer="site_logo">
-                </div>
                 <div class="row mt-4">
                     <div class="col-12 col-md-6">
                        <label for="site_contact_number">Site Contact Number</label>
