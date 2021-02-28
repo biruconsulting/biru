@@ -88,7 +88,16 @@
 
               <div class="form-group">
                   <label for="carousel_link">Carousel Link</label>
-                  <input type="text" class="form-control" id="carousel_link" placeholder="Carousel Link" wire:model.defer="carousel_link">
+                  <select class="custom-select" id="carousel_link" wire:model.defer="carousel_link">
+                    <option selected>Choose the navigation page</option>
+                    <option value="seller_ad">Seller Advertisements Page</option>
+                    <option value="buyer_ad">Buyer Advertisements Page</option>
+                    <option value="post_ad">Post Advertisement Page</option>
+                    <option value="contact_us">Contact Us Page</option>
+                    <option value="profile">User Profile Page</option>
+                    <option value="profile.change_password">Change Password Page</option>
+                    <option value="#">No need navigation button</option>
+                  </select>
                   @error('carousel_link') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
               </div>
 
