@@ -644,9 +644,12 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body {
-    min-height: 230px;
     padding: 0;
     padding-top: 15px;
+}
+
+.ad-quickview-card-bar .bar-card-body .seller-ad .card-body .card-text {
+    min-height: 120px;
 }
 
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body h6 {
@@ -717,6 +720,10 @@ body {
 
 .ad-quickview-card-bar .bar-card-body .buyer-ad .card-body{
     min-height: 260px;
+}
+
+.ad-quickview-card-bar .bar-card-body .buyer-ad .card-body .card-text{
+    min-height: 120px;
 }
 
 .ad-quickview-card-bar .bar-card-body .buyer-ad:hover .card-body{
@@ -886,6 +893,10 @@ body {
     padding: 13px 9px;
 }
 
+.main-bar .seller-ad .card-body .card-text{
+    min-height: 100px;
+}
+
 .main-bar .seller-ad:hover {
     border-color: #f11712;
 }
@@ -1009,6 +1020,10 @@ body {
 ***************************************************************************************************************/
 .main-bar .buyer-ad {
     padding: 13px 9px;
+}
+
+.main-bar .buyer-ad .card-body .card-text {
+    min-height: 100px;
 }
 
 .main-bar .buyer-ad .price-header {
@@ -1261,6 +1276,7 @@ body {
 
 .main-detail .product-detail .product-detail-left .card-wrapper .fixed-price span {
     color: #f11712;
+    font-weight: 600;
 }
 
 .main-detail .product-detail .product-detail-left .card-wrapper .product-detail ul {

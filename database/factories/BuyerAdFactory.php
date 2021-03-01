@@ -30,7 +30,7 @@ class BuyerAdFactory extends Factory
             'user_email'=>$this->faker->unique()->safeEmail,
             'user_phone_number'=>'0764524354',
             'user_district'=>$this->faker->text(5),
-            'ad_type'=>'buyer-general',
+            'ad_type'=>'buyer-job',
             'ad_title'=>$this->faker->unique()->words($nb=2, $asText=true),
             'ad_category'=>$this->faker->numberBetween(1, 20),
             'ad_ex_district'=>$this->faker->text(5),
@@ -40,7 +40,7 @@ class BuyerAdFactory extends Factory
             'ad_ex_max_price'=>$this->faker->numberBetween(20000, 30000),
             'ad_ex_job_type'=>'full time',
             'ad_ex_education_level'=>$this->faker->text(5),
-            'ad_short_description'=>$this->faker->text(200),
+            'ad_short_description'=>$this->faker->text(100),
             'ad_description'=>$this->faker->text(500),
             'expired_at'=> Carbon::now()->addDays(7),
         ];

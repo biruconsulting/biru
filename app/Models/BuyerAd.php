@@ -16,7 +16,6 @@ class BuyerAd extends Model
         'user_email',
         'user_phone_number',
         'user_district',
-        'ad_available',
         'ad_type',
         'ad_title',
         'ad_category',

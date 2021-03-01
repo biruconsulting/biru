@@ -164,7 +164,7 @@ class PostAdComponent extends Component
         if ($this->seller_ad_type == 'seller-general') {
 
             $this->validate([
-                'seller_general_ad_title' => 'required|min:5',
+                'seller_general_ad_title' => 'required|min:5|max:15',
                 'seller_general_ad_category' => 'required',
                 'seller_general_ad_thumbnail_image' => 'required|image',
                 'seller_general_ad_other_images.*' => 'required|image',
@@ -270,7 +270,7 @@ class PostAdComponent extends Component
         elseif ($this->seller_ad_type == 'seller-property') {
 
             $this->validate([
-                'seller_property_ad_title' => 'required|min:5',
+                'seller_property_ad_title' => 'required|min:5|max:15',
                 'seller_property_ad_category' => 'required',
                 'seller_property_ad_thumbnail_image' => 'required|image',
                 'seller_property_ad_other_images.*' => 'required|image',
@@ -375,7 +375,7 @@ class PostAdComponent extends Component
         elseif ($this->seller_ad_type == 'seller-job') {
 
             $this->validate([
-                'seller_job_ad_title' => 'required|min:5',
+                'seller_job_ad_title' => 'required|min:5|max:15',
                 'seller_job_ad_category' => 'required',
                 'seller_job_ad_thumbnail_image' => 'required|image',
                 'seller_job_ad_job_type' => 'required',
@@ -462,7 +462,7 @@ class PostAdComponent extends Component
         if ($this->buyer_ad_type == 'buyer-general') {
             
             $this->validate([
-                'buyer_general_ad_title' => 'required|min:5',
+                'buyer_general_ad_title' => 'required|min:5|max:15',
                 'buyer_general_ad_category' => 'required',
                 'buyer_general_ad_brand' => 'required',
                 'buyer_general_ad_model' => 'required',
@@ -503,7 +503,7 @@ class PostAdComponent extends Component
         elseif ($this->buyer_ad_type == 'buyer-property') 
         {
             $this->validate([
-                'buyer_property_ad_title' => 'required|min:5',
+                'buyer_property_ad_title' => 'required|min:5|max:15',
                 'buyer_property_ad_category' => 'required',
                 'buyer_property_ad_ex_district' => 'required',
                 'buyer_property_ad_ex_min_price' => 'required|numeric',
@@ -542,7 +542,7 @@ class PostAdComponent extends Component
         elseif ($this->buyer_ad_type == 'buyer-job') 
         {
             $this->validate([
-                'buyer_job_ad_title' => 'required|min:5',
+                'buyer_job_ad_title' => 'required|min:5|max:15',
                 'buyer_job_ad_category' => 'required',
                 'buyer_job_ad_ex_district' => 'required',
                 'buyer_job_ad_ex_job_type' => 'required',

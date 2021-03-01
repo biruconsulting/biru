@@ -21,7 +21,6 @@ class CreateSellerAdsTable extends Migration
             $table->string('user_email');
             $table->string('user_phone_number');
             $table->string('user_district');
-            $table->boolean('ad_available')->default(true);
             $table->string('ad_type');
             $table->string('ad_title');
             $table->string('ad_category');

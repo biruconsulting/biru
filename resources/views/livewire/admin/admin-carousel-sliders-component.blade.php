@@ -41,6 +41,10 @@
                   <td>{{ $carousel_slider->link }}</td>
                   <td>{!! $carousel_slider->description !!}</td>
                   <td>
+                      <button class="btn btn-info btn-circle" title="Edit" type="button" data-toggle="modal" data-target="#editCarouselSlider" wire:click.prevent="editCarouselSlider({{ $carousel_slider->id }})">
+                        <i class="fas fa-pen"></i>
+                      </button>
+
                       <a href="#" class="btn btn-danger btn-circle" wire:click.prevent="carouselSliderDeleteConfirmation({{ $carousel_slider->id }})" title="Delete">
                           <i class="fas fa-trash"></i>
                       </a>
@@ -87,9 +91,9 @@
               </div>
 
               <div class="form-group">
-                  <label for="carousel_link">Carousel Link</label>
+                  <label for="carousel_link">Carousel Navigation Link</label>
                   <select class="custom-select" id="carousel_link" wire:model.defer="carousel_link">
-                    <option selected>Choose the navigation page</option>
+                    <option value="">Choose the navigation page</option>
                     <option value="seller_ad">Seller Advertisements Page</option>
                     <option value="buyer_ad">Buyer Advertisements Page</option>
                     <option value="post_ad">Post Advertisement Page</option>
@@ -126,6 +130,86 @@
       </div>
     </div>
 
+    <!-- Modal for Edit -->
+    <div wire:ignore.self class="modal fade" id="editCarouselSlider" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editCategoryLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Update Carousel Slider</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form wire:submit.prevent="updateCarouselSlider({{ $edit_carousel_id }})">
+
+            <input type="hidden" wire:model.defer="edit_carousel_id">
+
+            <div class="modal-body">   
+              <div class="form-group">
+                  <label for="carousel_title">Carousel Title</label>
+                  <input type="text" class="form-control" id="carousel_title" placeholder="Carousel Slider Title" wire:model.defer="edit_carousel_title">
+                  @error('edit_carousel_title') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="form-group">
+                <label for="carousel_title">Existing Carousel Image</label>
+                <div class="col-12 my-2">
+                  <img src="{{ asset('storage/'.$existing_carousel_image) }}" height="50" alt="Existing Carousel Image">
+                </div>
+              </div>
+
+              <div class="form-group">
+                  <label for="carousel_image">New Carousel Image (If need to change*)</label>
+                  <div class="col-12 my-2">
+                    @if ($edit_carousel_image)
+                        <img src="{{ $edit_carousel_image->temporaryUrl() }}" height="70">
+                    @endif
+                  </div>
+                  <input type="file" class="form-control-file" id="carousel_image" wire:model.defer="edit_carousel_image">
+                  @error('edit_carousel_image') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="form-group">
+                  <label for="carousel_link">Carousel Navigation Link</label>
+                  <select class="custom-select" id="carousel_link" wire:model.defer="edit_carousel_link">
+                    <option value="">Choose the navigation page</option>
+                    <option value="seller_ad">Seller Advertisements Page</option>
+                    <option value="buyer_ad">Buyer Advertisements Page</option>
+                    <option value="post_ad">Post Advertisement Page</option>
+                    <option value="contact_us">Contact Us Page</option>
+                    <option value="profile">User Profile Page</option>
+                    <option value="profile.change_password">Change Password Page</option>
+                    <option value="#">No need navigation button</option>
+                  </select>
+                  @error('edit_carousel_link') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="form-group">
+                  <div wire:ignore>
+                      <label for="edit_carousel_description">New Carousel Description</label>
+                      <textarea class="form-control" id="edit_carousel_description" wire:model.defer="edit_carousel_description"></textarea>
+                  </div>
+                  @error('edit_carousel_description') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
+              </div>
+              
+            </div>
+            <div class="modal-footer">
+              <div wire:loading.remove wire:target="updateCarouselSlider">
+                <button class="btn btn-primary" type="submit">Update Carousel Slider</button>
+              </div>
+              <div wire:loading wire:target="updateCarouselSlider">
+                  <button class="btn btn-primary" type="button" disabled>
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      Updating Carousel Slider
+                  </button>
+              </div>
+            </div>
+
+        </form>
+        </div>
+      </div>
+    </div>
+
   </div>
 
 
@@ -144,6 +228,23 @@
             callbacks: {
                 onChange: function(contents, $editable) {
                     @this.set('carousel_description', contents);
+                }
+            }
+        });
+
+        $('#edit_carousel_description').summernote({
+            tabsize: 2,
+            height: 120,
+            toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ],
+            callbacks: {
+                onChange: function(contents, $editable) {
+                    @this.set('edit_carousel_description', contents);
                 }
             }
         });

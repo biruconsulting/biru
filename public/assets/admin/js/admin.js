@@ -100,4 +100,10 @@ window.livewire.on('addCategory', param => {
   $('#addCategory').modal('hide');
 });
 
+window.livewire.on('editCarouselSlider', param => {
+  $('#editCarouselSlider').modal('hide');
+  // Clear summernote
+  $('#edit_carousel_description').summernote('code', null);
+});
+
 
