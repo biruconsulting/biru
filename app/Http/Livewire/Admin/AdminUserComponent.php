@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Admin;
 
+use App\Mail\UserDeletedInfoMail;
 use App\Models\User;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -64,8 +66,14 @@ class AdminUserComponent extends Component
 
     public function DeleteUser($user_id) {
         if($user_id){
-            $user = User::where('id', $user_id);
+            $user = User::where('id', $user_id)->first();
             $user->delete();
+
+            $userMailDetails = [
+                'user_name' => $user->name,
+            ];
+
+            Mail::to($user->email)->send(new UserDeletedInfoMail($userMailDetails));
 
             $this->emit('alert', ['type' => 'success', 'message' => 'User Deleted Successfully.']);
         }

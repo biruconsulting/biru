@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Admin\SellerAd;
 
+use App\Mail\AdDeletedInfoMail;
 use App\Models\SellerAd;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -49,6 +51,15 @@ class AdminSellerGeneralAdComponent extends Component
             }
 
             $seller_general_ad->delete();
+
+            $adMailDetails = [
+                'user_first_name' => $seller_general_ad->user_first_name,
+                'user_last_name' => $seller_general_ad->user_last_name,
+                'ad_title' => $seller_general_ad->ad_title,
+                'created_at' => $seller_general_ad->created_at,
+            ];
+
+            Mail::to($seller_general_ad->user_email)->send(new AdDeletedInfoMail($adMailDetails));
 
             $this->emit('alert', ['type' => 'success', 'message' => 'General Advertisement Deleted Successfully.']);
         }

@@ -86,13 +86,13 @@
         <div class="container">
             <div class="header-mid-section">
                 <div class="row">
-                    <div class="d-flex justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">   
-                        <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" height="50">
+                    <div class="d-flex align-items-center justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">   
+                        <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" height="100">
                     </div>
-                    <div class="d-flex justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
+                    <div class="d-flex align-items-center justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
                         @livewire('home.header-search-component')
                     </div>
-                    <div class="d-flex justify-content-lg-end justify-content-center col-lg-3 col-12 right-mid-section">
+                    <div class="d-flex align-items-center justify-content-lg-end justify-content-center col-lg-3 col-12 right-mid-section">
                         <a href="{{ route('post_ad') }}" class="btn-grad"><b>POST YOUR AD</b></a>
                     </div>
                 </div>

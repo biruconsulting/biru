@@ -2,7 +2,9 @@
 
 namespace App\Http\Livewire\Admin\BuyerAd;
 
+use App\Mail\AdDeletedInfoMail;
 use App\Models\BuyerAd;
+use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -33,6 +35,15 @@ class AdminBuyerGeneralAdComponent extends Component
         if($buyer_general_ad_id){
             $buyer_general_ad = BuyerAd::where('id', $buyer_general_ad_id)->first();
             $buyer_general_ad->delete();
+
+            $adMailDetails = [
+                'user_first_name' => $buyer_general_ad->user_first_name,
+                'user_last_name' => $buyer_general_ad->user_last_name,
+                'ad_title' => $buyer_general_ad->ad_title,
+                'created_at' => $buyer_general_ad->created_at,
+            ];
+
+            Mail::to($buyer_general_ad->user_email)->send(new AdDeletedInfoMail($adMailDetails));
 
             $this->emit('alert', ['type' => 'success', 'message' => 'General Advertisement Deleted Successfully.']);
         }
