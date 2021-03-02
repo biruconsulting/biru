@@ -8,6 +8,7 @@ use App\Models\SellerAd;
 use App\Models\User;
 use Livewire\Component;
 
+
 class AdminDashboardComponent extends Component
 {
     public function render()
