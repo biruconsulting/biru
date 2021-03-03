@@ -43,7 +43,7 @@ class AdminBuyerGeneralAdComponent extends Component
                 'created_at' => $buyer_general_ad->created_at,
             ];
 
-            Mail::to($buyer_general_ad->user_email)->send(new AdDeletedInfoMail($adMailDetails));
+            Mail::to($buyer_general_ad->user->email)->send(new AdDeletedInfoMail($adMailDetails));
 
             $this->emit('alert', ['type' => 'success', 'message' => 'General Advertisement Deleted Successfully.']);
         }

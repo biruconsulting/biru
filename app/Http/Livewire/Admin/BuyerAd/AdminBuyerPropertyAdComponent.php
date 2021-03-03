@@ -43,7 +43,7 @@ class AdminBuyerPropertyAdComponent extends Component
                 'created_at' => $buyer_property_ad->created_at,
             ];
 
-            Mail::to($buyer_property_ad->user_email)->send(new AdDeletedInfoMail($adMailDetails));
+            Mail::to($buyer_property_ad->user->email)->send(new AdDeletedInfoMail($adMailDetails));
 
             $this->emit('alert', ['type' => 'success', 'message' => 'Property Advertisement Deleted Successfully.']);
         }

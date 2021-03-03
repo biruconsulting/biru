@@ -59,7 +59,7 @@ class AdminSellerJobAdComponent extends Component
                 'created_at' => $seller_job_ad->created_at,
             ];
 
-            Mail::to($seller_job_ad->user_email)->send(new AdDeletedInfoMail($adMailDetails));
+            Mail::to($seller_job_ad->user->email)->send(new AdDeletedInfoMail($adMailDetails));
 
             $this->emit('alert', ['type' => 'success', 'message' => 'Job Advertisement Deleted Successfully.']);
         }

@@ -785,26 +785,26 @@
 
                                     <div class="col-12 col-md-6">
                                         <label for="seller_general_thumbnail" class="form-label">Main Thumbnail Image</label>
-                                        <div class="col-12 mb-2 d-flex justify-content-center">
-                                            @if ($seller_general_ad_thumbnail_image)
+                                        @if ($seller_general_ad_thumbnail_image)
+                                            <div class="col-12 mb-2 d-flex justify-content-center">
                                                 <img src="{{ $seller_general_ad_thumbnail_image->temporaryUrl() }}" height="70">
-                                            @endif
-                                        </div>
+                                            </div>
+                                        @endif
                                         <input class="form-control" type="file" id="seller_general_thumbnail" wire:model.defer="seller_general_ad_thumbnail_image">
                                         @error('seller_general_ad_thumbnail_image') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="col-12 col-md-6">
                                         <label for="seller_general_images" class="form-label">Other Images (3)</label>
-                                        <div class="col-12 mb-2 d-flex justify-content-center row">
-                                            @if ($seller_general_ad_other_images)
+                                        @if ($seller_general_ad_other_images)
+                                            <div class="col-12 mb-2 d-flex justify-content-center row">
                                                 @foreach ($seller_general_ad_other_images as $general_image)   
                                                     <div class="col d-flex justify-content-center">
                                                         <img src="{{ $general_image->temporaryUrl() }}" height="70">
                                                     </div>
                                                 @endforeach
-                                            @endif
-                                        </div>
+                                            </div>
+                                        @endif
                                         <input class="form-control" type="file" id="seller_general_images" wire:model.defer="seller_general_ad_other_images" multiple>
                                         @error('seller_general_ad_other_images.*') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
@@ -873,26 +873,26 @@
 
                                     <div class="col-12 col-md-6">
                                         <label for="seller_property_thumbnail" class="form-label">Main Thumbnail Image</label>
-                                        <div class="col-12 mb-2 d-flex justify-content-center">
-                                            @if ($seller_property_ad_thumbnail_image)
+                                        @if ($seller_property_ad_thumbnail_image)
+                                            <div class="col-12 mb-2 d-flex justify-content-center">
                                                 <img src="{{ $seller_property_ad_thumbnail_image->temporaryUrl() }}" height="70">
-                                            @endif
-                                        </div>
+                                            </div>
+                                        @endif
                                         <input class="form-control" type="file" id="seller_property_thumbnail" wire:model.defer="seller_property_ad_thumbnail_image">
                                         @error('seller_property_ad_thumbnail_image') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
                                     <div class="col-12 col-md-6">
                                         <label for="seller_property_images" class="form-label">Other Images (3)</label>
-                                        <div class="col-12 mb-2 d-flex justify-content-center row">
-                                            @if ($seller_property_ad_other_images)
+                                        @if ($seller_property_ad_other_images)
+                                            <div class="col-12 mb-2 d-flex justify-content-center row">
                                                 @foreach ($seller_property_ad_other_images as $property_image)   
                                                     <div class="col d-flex justify-content-center">
                                                         <img src="{{ $property_image->temporaryUrl() }}" height="70">
                                                     </div>
                                                 @endforeach
-                                            @endif
-                                        </div>
+                                            </div>
+                                        @endif
                                         <input class="form-control" type="file" id="seller_property_images" wire:model.defer="seller_property_ad_other_images" multiple>
                                         @error('seller_property_ad_other_images.*') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
@@ -910,7 +910,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="seller_property_price" class="form-label">Price</label>
+                                        <label for="seller_property_price" class="form-label">Amount (If rent / lease: Amount Per Month*)</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Rs</span>
                                             <input type="text" class="form-control" id="seller_property_price" placeholder="Your property price" wire:model.defer="seller_property_ad_price">
@@ -955,12 +955,12 @@
                                     </div>
 
                                     <div class="col-12 col-md-6">
-                                        <label for="seller_job_thumbnail" class="form-label">Main Thumbnail Image (Work Place / Company Logo ...)</label>
-                                        <div class="col-12 mb-2 d-flex justify-content-center">
-                                            @if ($seller_job_ad_thumbnail_image)
+                                        <label for="seller_job_thumbnail" class="form-label">Main Thumbnail Image (Work Place / Company Logo)</label>
+                                        @if ($seller_job_ad_thumbnail_image)
+                                            <div class="col-12 mb-2 d-flex justify-content-center">
                                                 <img src="{{ $seller_job_ad_thumbnail_image->temporaryUrl() }}" height="70">
-                                            @endif
-                                        </div>
+                                            </div>
+                                        @endif
                                         <input class="form-control" type="file" id="seller_job_thumbnail" wire:model.defer="seller_job_ad_thumbnail_image">
                                         @error('seller_job_ad_thumbnail_image') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
@@ -1201,10 +1201,10 @@
                                         @error('buyer_property_ad_category') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-12">
                                         <label for="buyer_property_address" class="form-label">Expected District</label>
                                         <select class="form-select" id="buyer_property_address" wire:model.defer="buyer_property_ad_ex_district">
-                                            <option selected>Select your district</option>
+                                            <option selected>Select expected district</option>
                                             <option value="Ampara">Ampara</option>
                                             <option value="Anuradhapura">Anuradhapura</option>
                                             <option value="Badulla">Badulla</option>
@@ -1235,7 +1235,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="buyer_property_min_price" class="form-label">Expected Minimum Price</label>
+                                        <label for="buyer_property_min_price" class="form-label">Expected Minimum Amount (If rent / lease: Amount Per Month*)</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Rs</span>
                                             <input type="text" class="form-control" id="buyer_property_min_price" placeholder="Minimum price" wire:model.defer="buyer_property_ad_ex_min_price">
@@ -1245,7 +1245,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="buyer_property_max_price" class="form-label">Expected Maximum Price</label>
+                                        <label for="buyer_property_max_price" class="form-label">Expected Maximum Amount (If rent / lease: Amount Per Month*)</label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Rs</span>
                                             <input type="text" class="form-control" id="buyer_property_max_price" placeholder="Maximum price" wire:model.defer="buyer_property_ad_ex_max_price">
