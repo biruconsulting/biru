@@ -587,6 +587,7 @@ body {
 .home-tab-content .tab-pane {
     display: block;
     height: 0;
+    overflow:hidden;
 }
 
 .home-tab-content .active {
