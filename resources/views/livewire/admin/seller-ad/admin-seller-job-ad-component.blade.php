@@ -32,12 +32,6 @@
                 <td>{{ $seller_job_ad->ad_title }}</td>
                 <td>{{ $seller_job_ad->created_at }}</td>
                 <td>
-                  {{-- <a href="#" class="btn btn-danger btn-icon-split"  wire:click.prevent="userDeleteConfirmation({{ $seller_general_ad->id }})">
-                    <span class="icon text-white-50">
-                      <i class="fas fa-trash"></i>
-                    </span>
-                    <span class="text">Delete</span>
-                  </a> --}}
                   <a href="{{ route('seller_ad.details', ['seller_ad_id'=>$seller_job_ad->id]) }}" class="btn btn-success btn-circle" title="View">
                     <i class="fas fa-eye"></i>
                   </a>

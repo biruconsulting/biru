@@ -87,7 +87,7 @@
             <div class="header-mid-section">
                 <div class="row">
                     <div class="d-flex align-items-center justify-content-lg-start justify-content-center col-lg-3 col-12 left-mid-section">   
-                        <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" height="100">
+                        <img src="{{ asset('storage/images/logo.png') }}" alt="Logo" height="70">
                     </div>
                     <div class="d-flex align-items-center justify-content-lg-center justify-content-center col-lg-6 col-12 center-mid-section">
                         @livewire('home.header-search-component')

@@ -40,7 +40,7 @@ class SellerAdFactory extends Factory
             'ad_price'=>$this->faker->numberBetween(1000, 20000),
             'ad_short_description'=>$this->faker->text(100),
             'ad_description'=>$this->faker->text(500),
-            'expired_at'=> Carbon::now()->addDays(7),
+            'expired_at'=> Carbon::now()->addMinutes(1),
         ];
     }
 }
