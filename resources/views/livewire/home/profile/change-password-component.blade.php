@@ -42,7 +42,7 @@
                                     {!! $errors->first('password_confirmation', '<p class="help-block text-danger">:message</p>') !!}
 
                                     <div class="form-group mt-4">
-                                        <button type="submit" class="btn btn-primary">Update Password</button>
+                                        <button type="submit" class="btn btn-primary update-password-btn">Update Password</button>
                                     </div>
                                 </form>
 

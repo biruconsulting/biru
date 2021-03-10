@@ -55,6 +55,7 @@ class AdminBuyerJobAdComponent extends Component
 
         $buyer_job_ads = BuyerAd::where('ad_type', 'buyer-job')
                         ->where('ad_title', 'LIKE', $searchTerm)
+                        ->latest()
                         ->paginate(10);
 
         return view('livewire.admin.buyer-ad.admin-buyer-job-ad-component', ['buyer_job_ads'=>$buyer_job_ads])->layout('layouts.admin');

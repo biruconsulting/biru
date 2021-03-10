@@ -71,6 +71,7 @@ class AdminSellerJobAdComponent extends Component
 
         $seller_job_ads = SellerAd::where('ad_type', 'seller-job')
                         ->where('ad_title', 'LIKE', $searchTerm)
+                        ->latest()
                         ->paginate(10);
 
         return view('livewire.admin.seller-ad.admin-seller-job-ad-component', ['seller_job_ads'=>$seller_job_ads])->layout('layouts.admin');

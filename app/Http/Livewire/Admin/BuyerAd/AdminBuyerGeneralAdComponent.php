@@ -55,6 +55,7 @@ class AdminBuyerGeneralAdComponent extends Component
 
         $buyer_general_ads = BuyerAd::where('ad_type', 'buyer-general')
                             ->where('ad_title', 'LIKE', $searchTerm)
+                            ->latest()
                             ->paginate(10);
 
         return view('livewire.admin.buyer-ad.admin-buyer-general-ad-component', ['buyer_general_ads'=>$buyer_general_ads])->layout('layouts.admin');

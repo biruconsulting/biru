@@ -71,6 +71,7 @@ class AdminSellerPropertyAdComponent extends Component
 
         $seller_property_ads = SellerAd::where('ad_type', 'seller-property')
                             ->where('ad_title', 'LIKE', $searchTerm)
+                            ->latest()
                             ->paginate(10);
 
         return view('livewire.admin.seller-ad.admin-seller-property-ad-component', ['seller_property_ads'=>$seller_property_ads])->layout('layouts.admin');

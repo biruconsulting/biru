@@ -71,6 +71,7 @@ class AdminSellerGeneralAdComponent extends Component
 
         $seller_general_ads = SellerAd::where('ad_type', 'seller-general')
                             ->where('ad_title', 'LIKE', $searchTerm)
+                            ->latest()
                             ->paginate(10);
 
         return view('livewire.admin.seller-ad.admin-seller-general-ad-component', ['seller_general_ads'=>$seller_general_ads])->layout('layouts.admin');

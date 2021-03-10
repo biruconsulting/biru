@@ -41,7 +41,7 @@ class ProfileMyBuyerAdComponent extends Component
     {
         $user_id = Auth::user()->id;
 
-        $user_buyer_ads = BuyerAd::where('user_id', $user_id)->paginate(5);
+        $user_buyer_ads = BuyerAd::where('user_id', $user_id)->latest()->paginate(5);
         
         return view('livewire.home.profile.profile-my-buyer-ad-component', ['user_buyer_ads'=>$user_buyer_ads]);
     }

@@ -183,7 +183,7 @@ body {
 .navbar {
     font-size: 14px;
     padding: 10px;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .navbar ul li a {
@@ -658,7 +658,7 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body h6 span {
-    color: #f11712;
+    color: #00917c;
 }
 
  /* Medium devices (tablets, less than 992px) */
@@ -756,7 +756,7 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card-body .buyer-ad .buyer-ad-price {
-    color: #f11712;
+    color: #00917c;
     font-weight: 600;
     font-size: 14px;
 }
@@ -947,7 +947,7 @@ body {
 }
 
 .main-bar .seller-ad .card-body h6 span {
-    color: #f11712;
+    color: #00917c;
 }
 
 .main-bar .main-bar-pagination ul li a {
@@ -1064,7 +1064,7 @@ body {
 }
 
 .main-bar .buyer-ad .buyer-ad-price {
-    color: #f11712;
+    color: #00917c;
     font-weight: 600;
 }
 
@@ -1439,7 +1439,7 @@ body {
 }
 
 .post-ad .tab-content h2 span {
-    color: #f11712;
+    color: #00917c;
 }
  
 .post-ad .tab-content .form-section {
@@ -1544,13 +1544,13 @@ body {
 }
 
 .user-profile-section .profile-sidebar .card .card-header {
-    background-color: #f11712;
+    background-color: #00917c;
     color: #fff;
     font-weight: 600;
 }
 
 .user-profile-section .profile-sidebar .card .card-body .fas {
-    color: rgb(71, 71, 71);
+    color: #313131;
 }
 
 .user-profile-section .profile-sidebar .card .card-body h5 {
@@ -1562,7 +1562,7 @@ body {
 }
 
 .user-profile-section .profile-mainbar .card .card-header {
-    background-color: #f11712;
+    background-color: #00917c;
     color: #fff;
     font-weight: 600;
 }
@@ -1596,6 +1596,17 @@ body {
     #0099f7 0%,
      #f11712 100%);
 
+}
+
+.user-profile-section .update-password-btn, .user-profile-section .update-password-btn:active {        
+	font-size: 16px;
+	font-weight: bold;
+	background: #f11712 !important;
+	border: none;
+	min-width: 140px;
+}
+.user-profile-section .update-password-btn:hover, .user-profile-section .update-password-btn:focus {
+	background: #0099f7 !important;
 }
 
  /* delete button styles */

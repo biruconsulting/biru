@@ -55,6 +55,7 @@ class AdminBuyerPropertyAdComponent extends Component
 
         $buyer_property_ads = BuyerAd::where('ad_type', 'buyer-property')
                             ->where('ad_title', 'LIKE', $searchTerm)
+                            ->latest()
                             ->paginate(10);
 
         return view('livewire.admin.buyer-ad.admin-buyer-property-ad-component', ['buyer_property_ads'=>$buyer_property_ads])->layout('layouts.admin');

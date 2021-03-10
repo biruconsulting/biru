@@ -43,15 +43,24 @@ class SellerAdComponent extends Component
 
         if ($general_category_term) 
         {
-            $seller_ads = SellerAd::where('ad_type', 'seller-general')->where('ad_category', $general_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'seller-general')
+                        ->where('ad_category', $general_category_term)
+                        ->latest()
+                        ->paginate(9);
         } 
         elseif ($property_category_term)
         {
-            $seller_ads = SellerAd::where('ad_type', 'seller-property')->where('ad_category', $property_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'seller-property')
+                        ->where('ad_category', $property_category_term)
+                        ->latest()
+                        ->paginate(9);
         }
         elseif ($job_category_term)
         {
-            $seller_ads = SellerAd::where('ad_type', 'seller-job')->where('ad_category', $job_category_term)->paginate(9);
+            $seller_ads = SellerAd::where('ad_type', 'seller-job')
+                        ->where('ad_category', $job_category_term)
+                        ->latest()
+                        ->paginate(9);
         }
         elseif ($latest_post_term)
         {
@@ -63,12 +72,15 @@ class SellerAdComponent extends Component
         }
         elseif ($selected_location_term)
         {
-            $seller_ads = SellerAd::where('user_district', 'LIKE', $selected_location_term)->paginate(9);
+            $seller_ads = SellerAd::where('user_district', 'LIKE', $selected_location_term)
+                        ->latest()
+                        ->paginate(9);
         }
         else 
         {
             $seller_ads = SellerAd::where('ad_title', 'LIKE', $searchTerm)                   
                         ->orWhere('ad_brand', 'LIKE', $searchTerm)
+                        ->latest()
                         ->paginate(9);
         }
 

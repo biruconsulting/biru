@@ -58,7 +58,7 @@ class ProfileMySellerAdComponent extends Component
     {
         $user_id = Auth::user()->id;
 
-        $user_seller_ads = SellerAd::where('user_id', $user_id)->paginate(5);
+        $user_seller_ads = SellerAd::where('user_id', $user_id)->latest()->paginate(5);
         
         return view('livewire.home.profile.profile-my-seller-ad-component', ['user_seller_ads'=>$user_seller_ads]);
     }
