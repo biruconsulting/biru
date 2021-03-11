@@ -536,8 +536,9 @@ body {
    font-weight: 600;
 }
 
-.ad-quickview-card-bar .bar-card .card-footer {
+.ad-quickview-card-bar .bar-card .bar-card-footer {
     background-color: white;
+    padding-right: 33px;
  }
 
  .ad-quickview-card-bar .bar-card .card-footer .seller-ad-footer-button {
@@ -654,7 +655,7 @@ body {
 }
 
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body h6 {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .ad-quickview-card-bar .bar-card-body .seller-ad .card-body h6 span {
@@ -757,7 +758,7 @@ body {
 
 .ad-quickview-card-bar .bar-card-body .buyer-ad .buyer-ad-price {
     color: #00917c;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 14px;
 }
 
@@ -794,7 +795,7 @@ body {
     }
 
     .ad-quickview-card-bar .bar-card-body .buyer-ad .buyer-ad-quickview {
-        top: 85%;
+        top: 90%;
     }
 }
 
@@ -943,7 +944,7 @@ body {
 }
 
 .main-bar .seller-ad .card-body h6 {
-    font-weight: 600;
+    font-weight: 700;
 }
 
 .main-bar .seller-ad .card-body h6 span {
@@ -1065,7 +1066,7 @@ body {
 
 .main-bar .buyer-ad .buyer-ad-price {
     color: #00917c;
-    font-weight: 600;
+    font-weight: 700;
 }
 
 
@@ -1276,8 +1277,8 @@ body {
 }
 
 .main-detail .product-detail .product-detail-left .card-wrapper .fixed-price span {
-    color: #f11712;
-    font-weight: 600;
+    color: #00917c;
+    font-weight: 700;
 }
 
 .main-detail .product-detail .product-detail-left .card-wrapper .product-detail ul {

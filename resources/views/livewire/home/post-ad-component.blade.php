@@ -137,7 +137,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6">
-                                        <label for="seller_general_images" class="form-label">Other Images (Minimum 3)</label>
+                                        <label for="seller_general_images" class="form-label">Other Images <small class="text-muted">(Minimum 3*)</small></label>
                                         @if ($seller_general_ad_other_images)
                                             <div class="col-12 mb-2 d-flex justify-content-center row">
                                                 @foreach ($seller_general_ad_other_images as $general_image)   
@@ -170,7 +170,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="seller_general_model" class="form-label">Model</label>
+                                        <label for="seller_general_model" class="form-label">Model <small class="text-muted">(Not Mandatory*)</small></label>
                                         <input type="text" class="form-control" id="seller_general_model" placeholder="Model name" wire:model.defer="seller_general_ad_model">
                                         @error('seller_general_ad_model') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
@@ -231,7 +231,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6">
-                                        <label for="seller_property_images" class="form-label">Other Images (Minimum 3)</label>
+                                        <label for="seller_property_images" class="form-label">Other Images <small class="text-muted">(Minimum 3*)</small></label>
                                         @if ($seller_property_ad_other_images)
                                             <div class="col-12 mb-2 d-flex justify-content-center row">
                                                 @foreach ($seller_property_ad_other_images as $property_image)   
@@ -264,7 +264,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="seller_property_price" class="form-label">Amount (If rent / lease: Amount Per Month*)</label>
+                                        <label for="seller_property_price" class="form-label">Amount <small class="text-muted">(If rent / lease: Amount Per Month*)</small></label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Rs</span>
                                             <input type="text" class="form-control" id="seller_property_price" placeholder="Your property price" wire:model.defer="seller_property_ad_price">
@@ -309,7 +309,7 @@
                                     </div>
 
                                     <div class="col-12 col-md-6">
-                                        <label for="seller_job_thumbnail" class="form-label">Main Thumbnail Image (Work Place / Company Logo)</label>
+                                        <label for="seller_job_thumbnail" class="form-label">Main Thumbnail Image <small class="text-muted">(Work Place / Company Logo*)</small></label>
                                         @if ($seller_job_ad_thumbnail_image)
                                             <div class="col-12 mb-2 d-flex justify-content-center">
                                                 <img src="{{ $seller_job_ad_thumbnail_image->temporaryUrl() }}" height="70">
@@ -502,7 +502,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="buyer_general_model" class="form-label">Model</label>
+                                        <label for="buyer_general_model" class="form-label">Model <small class="text-muted">(Not Mandatory*)</small></label>
                                         <input type="text" class="form-control" id="buyer_general_model" placeholder="Expected Model name" wire:model.defer="buyer_general_ad_model">
                                         @error('buyer_general_ad_model') <span class="error text-danger">{{ $message }}</span> @enderror
                                     </div>
@@ -596,7 +596,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="buyer_property_min_price" class="form-label">Expected Minimum Amount (If rent / lease: Amount Per Month*)</label>
+                                        <label for="buyer_property_min_price" class="form-label">Expected Minimum Amount <small class="text-muted">(If rent / lease: Amount Per Month*)</small></label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Rs</span>
                                             <input type="text" class="form-control" id="buyer_property_min_price" placeholder="Minimum price" wire:model.defer="buyer_property_ad_ex_min_price">
@@ -606,7 +606,7 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <label for="buyer_property_max_price" class="form-label">Expected Maximum Amount (If rent / lease: Amount Per Month*)</label>
+                                        <label for="buyer_property_max_price" class="form-label">Expected Maximum Amount <small class="text-muted">(If rent / lease: Amount Per Month*)</small></label>
                                         <div class="input-group mb-3">
                                             <span class="input-group-text">Rs</span>
                                             <input type="text" class="form-control" id="buyer_property_max_price" placeholder="Maximum price" wire:model.defer="buyer_property_ad_ex_max_price">

@@ -83,7 +83,7 @@ class AdminCarouselSlidersComponent extends Component
                 'edit_carousel_title' => 'required|min:5',
                 'edit_carousel_image' => 'required',
                 'edit_carousel_link' => 'required',
-                'edit_carousel_description' => 'required|min:100|max:1000',
+                'edit_carousel_description' => 'required|min:100|max:300',
             ]);
 
             if ($this->existing_carousel_image) {
@@ -132,7 +132,7 @@ class AdminCarouselSlidersComponent extends Component
             $this->validate([
                 'edit_carousel_title' => 'required|min:5',
                 'edit_carousel_link' => 'required',
-                'edit_carousel_description' => 'required|min:100|max:1000',
+                'edit_carousel_description' => 'required|min:100|max:300',
             ]);
 
             $carousel_slider->update([
@@ -151,7 +151,7 @@ class AdminCarouselSlidersComponent extends Component
         'carousel_title' => 'required|min:5',
         'carousel_image' => 'required',
         'carousel_link' => 'required',
-        'carousel_description' => 'required|min:100|max:1000',
+        'carousel_description' => 'required|min:100|max:300',
     ];
 
     public function createCarouselSlider() {

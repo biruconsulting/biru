@@ -17,7 +17,7 @@
                                     <h1>{{ $carousel_slider->title }}</h1>
                                     <p>{!! $carousel_slider->description !!}</p>
                                     @if ($carousel_slider->link != '#')
-                                        <a class="btn btn-lg btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
+                                        <a class="btn btn-md btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
                                     @endif
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="card-footer">
+                <div class="bar-card-footer card-footer">
                     <a href="{{ route('seller_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
                 </div>
             </div>
@@ -126,7 +126,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="card-footer">
+                <div class="bar-card-footer card-footer">
                     <a href="{{ route('buyer_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
                 </div>
             </div>
@@ -238,7 +238,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="bar-card-footer card-footer">
                     <a href="{{ route('seller_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
                 </div>
             </div>
@@ -348,7 +348,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="card-footer">
+                <div class="bar-card-footer card-footer">
                     <a href="{{ route('buyer_ad') }}" class="btn seller-ad-footer-button">SEE MORE &nbsp;<i class="fas fa-angle-double-right"></i></a>
                 </div>
             </div>
