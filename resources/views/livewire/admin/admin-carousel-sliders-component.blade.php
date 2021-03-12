@@ -41,11 +41,11 @@
                   <td>{{ $carousel_slider->link }}</td>
                   <td>{!! $carousel_slider->description !!}</td>
                   <td>
-                      <button class="btn btn-info btn-circle" title="Edit" type="button" data-toggle="modal" data-target="#editCarouselSlider" wire:click.prevent="editCarouselSlider({{ $carousel_slider->id }})">
+                      <button class="btn btn-info btn-circle m-1" title="Edit" type="button" data-toggle="modal" data-target="#editCarouselSlider" wire:click.prevent="editCarouselSlider({{ $carousel_slider->id }})">
                         <i class="fas fa-pen"></i>
                       </button>
 
-                      <a href="#" class="btn btn-danger btn-circle" wire:click.prevent="carouselSliderDeleteConfirmation({{ $carousel_slider->id }})" title="Delete">
+                      <a href="#" class="btn btn-danger btn-circle m-1" wire:click.prevent="carouselSliderDeleteConfirmation({{ $carousel_slider->id }})" title="Delete">
                           <i class="fas fa-trash"></i>
                       </a>
                   </td>
@@ -107,7 +107,7 @@
 
               <div class="form-group">
                   <label for="carousel_description">Carousel Description</label>
-                  <textarea class="form-control" wire:model.defer="carousel_description"></textarea>
+                  <textarea class="form-control" rows="5" wire:model.defer="carousel_description"></textarea>
                   @error('carousel_description') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
               </div>
             </div>
@@ -184,7 +184,7 @@
 
               <div class="form-group">
                   <label for="edit_carousel_description">New Carousel Description</label>
-                  <textarea class="form-control" wire:model.defer="edit_carousel_description"></textarea>
+                  <textarea class="form-control" rows="5" wire:model.defer="edit_carousel_description"></textarea>
                   @error('edit_carousel_description') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
               </div>
               

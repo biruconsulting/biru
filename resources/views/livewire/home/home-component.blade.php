@@ -17,7 +17,7 @@
                                     <h1>{{ $carousel_slider->title }}</h1>
                                     <p>{!! $carousel_slider->description !!}</p>
                                     @if ($carousel_slider->link != '#')
-                                        <a class="btn btn-md btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
+                                        <a class="btn btn-lg btn-primary" href="{{ $carousel_slider->link }}" role="button">See more</a>
                                     @endif
                                 </div>
                             </div>
