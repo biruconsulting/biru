@@ -339,11 +339,6 @@
     <script src="{{ asset('assets/admin/js/admin.min.js') }}"></script>
     <script src="{{ asset('assets/admin/js/admin.js') }}"></script>
 
-    <!-- Chart scripts -->
-    <script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/demo/chart-area.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/demo/chart-pie.js') }}"></script>
-
     <!-- summer note -->
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
 

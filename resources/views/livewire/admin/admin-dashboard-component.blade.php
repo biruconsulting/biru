@@ -81,7 +81,7 @@
 
     <!-- Content Row -->
 
-    <div class="w-100">
+    {{-- <div class="w-100">
 
         <!-- Area Chart -->
         <div>
@@ -99,5 +99,5 @@
             </div>
         </div>
 
-    </div>
+    </div> --}}
 </div>
