@@ -171,7 +171,7 @@ class PostAdComponent extends Component
                 'seller_general_ad_condition' => 'required',
                 'seller_general_ad_brand' => 'required',
                 'seller_general_ad_price' => 'required|numeric',
-                'seller_general_ad_short_description' => 'required|max:130',
+                'seller_general_ad_short_description' => 'required|min:80|max:130',
                 'seller_general_ad_description' => 'required|min:100',
             ]);
 
@@ -276,7 +276,7 @@ class PostAdComponent extends Component
                 'seller_property_ad_property_address' => 'required|min:5',
                 'seller_property_ad_condition' => 'required',
                 'seller_property_ad_price' => 'required|numeric',
-                'seller_property_ad_short_description' => 'required|max:130',
+                'seller_property_ad_short_description' => 'required|min:80|max:130',
                 'seller_property_ad_description' => 'required|min:100',
             ]);
 
@@ -381,7 +381,7 @@ class PostAdComponent extends Component
                 'seller_job_ad_work_address' => 'required|min:5',
                 'seller_job_ad_salary' => 'required|numeric',
                 'seller_job_ad_education_level' => 'required',
-                'seller_job_ad_short_description' => 'required|max:130',
+                'seller_job_ad_short_description' => 'required|min:80|max:130',
                 'seller_job_ad_description' => 'required|min:100',
             ]);
 
@@ -466,7 +466,7 @@ class PostAdComponent extends Component
                 'buyer_general_ad_brand' => 'required',
                 'buyer_general_ad_ex_min_price' => 'required|numeric',
                 'buyer_general_ad_ex_max_price' => 'required|numeric',
-                'buyer_general_ad_short_description' => 'required|max:130',
+                'buyer_general_ad_short_description' => 'required|min:80|max:130',
                 'buyer_general_ad_description' => 'required|min:100',
             ]);
 
@@ -506,7 +506,7 @@ class PostAdComponent extends Component
                 'buyer_property_ad_ex_district' => 'required',
                 'buyer_property_ad_ex_min_price' => 'required|numeric',
                 'buyer_property_ad_ex_max_price' => 'required|numeric',
-                'buyer_property_ad_short_description' => 'required|max:130',
+                'buyer_property_ad_short_description' => 'required|min:80|max:130',
                 'buyer_property_ad_description' => 'required|min:100',
             ]); 
             
@@ -545,7 +545,7 @@ class PostAdComponent extends Component
                 'buyer_job_ad_ex_district' => 'required',
                 'buyer_job_ad_ex_job_type' => 'required',
                 'buyer_job_ad_ex_education_level' => 'required',
-                'buyer_job_ad_short_description' => 'required|max:200',
+                'buyer_job_ad_short_description' => 'required|min:80|max:200',
                 'buyer_job_ad_description' => 'required|min:100',
             ]);
 

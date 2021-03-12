@@ -106,10 +106,8 @@
               </div>
 
               <div class="form-group">
-                  <div wire:ignore>
-                      <label for="carousel_description">Carousel Description</label>
-                      <textarea class="form-control" id="carousel_description" wire:model.defer="carousel_description"></textarea>
-                  </div>
+                  <label for="carousel_description">Carousel Description</label>
+                  <textarea class="form-control" wire:model.defer="carousel_description"></textarea>
                   @error('carousel_description') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
               </div>
             </div>
@@ -185,10 +183,8 @@
               </div>
 
               <div class="form-group">
-                  <div wire:ignore>
-                      <label for="edit_carousel_description">New Carousel Description</label>
-                      <textarea class="form-control" id="edit_carousel_description" wire:model.defer="edit_carousel_description"></textarea>
-                  </div>
+                  <label for="edit_carousel_description">New Carousel Description</label>
+                  <textarea class="form-control" wire:model.defer="edit_carousel_description"></textarea>
                   @error('edit_carousel_description') <span class="error text-danger" style="font-size: 15px;">{{ $message }}</span> @enderror
               </div>
               
@@ -212,41 +208,3 @@
 
   </div>
 
-
-  <script>
-    document.addEventListener('livewire:load', function () {
-        $('#carousel_description').summernote({
-            tabsize: 2,
-            height: 120,
-            toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ],
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    @this.set('carousel_description', contents);
-                }
-            }
-        });
-
-        $('#edit_carousel_description').summernote({
-            tabsize: 2,
-            height: 120,
-            toolbar: [
-            ['style', ['style']],
-            ['font', ['bold', 'underline', 'clear']],
-            ['color', ['color']],
-            ['para', ['ul', 'ol', 'paragraph']],
-            ['table', ['table']],
-            ],
-            callbacks: {
-                onChange: function(contents, $editable) {
-                    @this.set('edit_carousel_description', contents);
-                }
-            }
-        });
-    })
-</script>
