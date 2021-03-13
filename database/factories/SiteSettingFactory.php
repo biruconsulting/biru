@@ -22,10 +22,10 @@ class SiteSettingFactory extends Factory
     public function definition()
     {
         return [
-            'site_about_us' => 'site_about_us',
+            'site_about_us' => 'ClassiHut is a classifieds site with millions of live ads in a wide range of categories - cars, housing, jobs and everything in between. We’re proud to provide a platform that connects Sri Lankans, helping them to buy great items in their community, make money off unused possessions cluttering up houses, and help the country waste less.',
             'site_contact_num' => 'site_contact_num',
-            'site_email' => 'site_email',
-            'site_location' => 'site_location',
+            'site_email' => ' classihut@gmail.com',
+            'site_location' => 'Canada',
         ];
     }
 }
