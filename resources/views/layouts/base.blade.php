@@ -194,7 +194,7 @@
             <div class="container">
                 <div class="row">
                     <div class="d-flex justify-content-lg-start justify-content-center col-md-6 col-12">
-                        © Copyright: MDBootstrap.com
+                        © Copyright: ClassiHut.com
                     </div>
                     <div class="d-flex justify-content-lg-end justify-content-center col-md-6 col-12">
                         <div class="scroll-to-top-button" title="Go Up">

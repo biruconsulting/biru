@@ -9,10 +9,10 @@
     <body>
         <p>Hello {{ $adMailDetails['user_first_name'] }} {{ $adMailDetails['user_last_name'] }},</p> 
 
-        <p>We are pleased to inform that your <b>{{ $adMailDetails['ad_title'] }}</b> advertisement which was <b>posted at {{ $adMailDetails['created_at'] }}</b>, was deleted by ClassiHut team for some reason. Please stay tuned with us.</p>
-
-        <p>Contact us for more details.</p>
+        <p>We are pleased to inform you that your <b>{{ $adMailDetails['ad_title'] }}</b> advertisement which was <b>posted on {{ $adMailDetails['created_at'] }}</b>, was deleted by ClassiHut team. Please contact us if you have any questions.</p>
 
         <p>Thank You.</p>
+
+        <p>ClassiHut Team</p>
     </body>
 </html>

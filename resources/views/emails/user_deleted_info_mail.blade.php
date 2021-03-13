@@ -9,10 +9,10 @@
     <body>
         <p>Hello {{ $userMailDetails['user_name'] }},</p> 
 
-        <p>We are pleased to inform that your account was deleted by ClassiHut team for some reason. Please create new account to access our website.</p>
-
-        <p>Contact us for more details.</p>
+        <p>We are pleased to inform you that your account was deleted by ClassiHut team. Please create a new account to access our website in future.</p>
 
         <p>Thank You.</p>
+
+        <p>ClassiHut Team</p>
     </body>
 </html>
