@@ -54,7 +54,7 @@
                                 @error('seller_user_phone_number') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <label for="city" class="form-label">Town / City</label>
                                 <select class="form-select" aria-label="City select" id="city" wire:model.defer="seller_user_district" required>
                                     <option selected>Select your district</option>
@@ -424,7 +424,7 @@
                                 @error('buyer_user_phone_number') <span class="error text-danger">{{ $message }}</span> @enderror
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-12">
                                 <label for="city" class="form-label">Town / City</label>
                                 <select class="form-select" aria-label="City select" id="city" wire:model.defer="buyer_user_district" required>
                                     <option selected>Select your district</option>

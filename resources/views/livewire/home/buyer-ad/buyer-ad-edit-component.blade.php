@@ -76,7 +76,7 @@
 
             @if ($buyer_ad_type == 'buyer-general')
 
-                <div class="row g-3">
+                <div class="row g-2 g-md-3">
                     <div class="col-md-6">
                         <label for="buyer_general_name" class="form-label">Title</label>
                         <input type="text" class="form-control" id="buyer_general_name" placeholder="Expected product name" wire:model.defer="buyer_general_ad_title">
@@ -144,7 +144,7 @@
 
             @elseif ($buyer_ad_type == 'buyer-property')
 
-                <div class="row g-3">
+                <div class="row g-2 g-md-3">
                     <div class="col-md-6">
                         <label for="buyer_property_name" class="form-label">Title</label>
                         <input type="text" class="form-control" id="buyer_property_name" placeholder="Expected Property name" wire:model.defer="buyer_property_ad_title">
@@ -233,7 +233,7 @@
 
             @elseif ($buyer_ad_type == 'buyer-job')
 
-                <div class="row g-3">
+                <div class="row g-2 g-md-3">
                     <div class="col-md-6">
                         <label for="buyer_job_name" class="form-label">Title</label>
                         <input type="text" class="form-control" id="buyer_job_name" placeholder="Expected job name" wire:model.defer="buyer_job_ad_title">

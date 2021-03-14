@@ -190,7 +190,7 @@
                     </div>
                 </div>
             @elseif ($seller_ad_type == 'seller-property')
-                <div class="row g-3">
+                <div class="row g-2 g-md-3">
                     <div class="col-md-6">
                         <label for="seller_property_name" class="form-label">Title</label>
                         <input type="text" class="form-control" id="seller_property_name" placeholder="Your Property name" wire:model.defer="seller_property_ad_title">
@@ -299,7 +299,7 @@
 
                 </div>
             @elseif ($seller_ad_type == 'seller-job')
-                <div class="row g-3">
+                <div class="row g-2 g-md-3">
                     <div class="col-md-6">
                         <label for="seller_job_name" class="form-label">Title</label>
                         <input type="text" class="form-control" id="seller_job_name" placeholder="Job name" wire:model.defer="seller_job_ad_title">

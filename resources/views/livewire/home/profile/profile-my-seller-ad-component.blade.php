@@ -22,6 +22,9 @@
                                 <a href="{{ route('seller_ad.details', ['seller_ad_id'=>$user_seller_ad->id]) }}" class="btn btn-success btn-circle" title="View">
                                     <i class="fas fa-eye"></i>
                                 </a>
+                                <a href="{{ route('seller_ad.edit', ['seller_ad_id'=>$user_seller_ad->id]) }}" class="btn btn-primary btn-circle" title="Edit">
+                                    <i class="fas fa-pen"></i>
+                                </a>
                                 <a href="#" class="btn btn-danger btn-circle" wire:click.prevent="sellerAdDeleteConfirmation({{ $user_seller_ad->id }})" title="Delete">
                                     <i class="fas fa-trash"></i>
                                 </a>

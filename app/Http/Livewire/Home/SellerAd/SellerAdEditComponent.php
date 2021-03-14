@@ -165,11 +165,11 @@ class SellerAdEditComponent extends Component
 
             if ($new_seller_general_ad_thumbnail_image || $new_seller_general_ad_other_images) {
 
-                if ($this->seller_general_existing_ad_thumbnail_image) {
+                if ($this->seller_general_ad_thumbnail_image) {
                     Storage::disk('public')->delete($this->seller_general_existing_ad_thumbnail_image);
                 }
 
-                if ($this->seller_general_existing_ad_other_images) {
+                if ($this->seller_general_ad_other_images) {
                     foreach (json_decode($this->seller_general_existing_ad_other_images) as $image) {
                         Storage::disk('public')->delete($image);
                     }
