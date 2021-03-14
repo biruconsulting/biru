@@ -51,7 +51,27 @@
                                 </div>
                                 <!-- card right -->
                                 <div class="product-content">
-                                    <h2 class="product-title">{{ $seller_ad->ad_title }}</h2>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h2 class="product-title">{{ $seller_ad->ad_title }}</h2>
+                                        </div>
+                                        <div style="margin-top: 22px;">
+                                            @auth
+                                                @if ($seller_ad->user_id == Auth::user()->id)
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v fa-2x"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                                                            <li><a href="{{ route('seller_ad.edit',['seller_ad_id'=>$seller_ad->id]) }}" class="dropdown-item"><i class="fas fa-pen"></i> &nbsp;<b>Edit Advertisement</b></a></li>
+                                                            <li><hr class="dropdown-divider"></li>
+                                                            <li><a class="dropdown-item" href="#" wire:click.prevent="sellerAdDeleteConfirmation({{ $seller_ad->id }})"><i class="fas fa-trash"></i> &nbsp;<b>Delete Advertisement</b></a></li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
+                                            @endauth
+                                        </div>
+                                    </div>
                                     <p><i>{{ 'Posted '.$seller_ad->created_at->diffForHumans() }}, {{ 'From '.$seller_ad->user_district }}</i></p>
                                     <div class="product-price">
                                         @if ($seller_ad->ad_type == 'seller-general')
@@ -73,7 +93,9 @@
                                                 @endif
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Condition: <span>{{ $seller_ad->ad_condition }}</span></li>
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Brand: <span>{{ $seller_ad->ad_brand }}</span></li>
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Model: <span>{{ $seller_ad->ad_model }}</span></li>
+                                                @if ($seller_ad->ad_model)
+                                                    <li><i class="fas fa-check-circle"></i> &nbsp;Model: <span>{{ $seller_ad->ad_model }}</span></li>
+                                                @endif
                                             @elseif ($seller_ad->ad_type == 'seller-property')
                                                 @if ($seller_category)
                                                     <li><i class="fas fa-check-circle"></i> &nbsp;Category: <span>{{ $seller_category->name }}</span></li>
@@ -105,18 +127,6 @@
                 <!-- right-side -->
                 <div class="col-12 col-lg-3">
                     <div class="product-detail-right">
-                        @auth
-                            @if ($seller_ad->user_id == Auth::user()->id)
-                                <div class="text-center mb-3">
-                                    <a href="#" class="btn btn-danger btn-icon-split" wire:click.prevent="sellerAdDeleteConfirmation({{ $seller_ad->id }})" title="Delete">
-                                        <span class="icon text-white-50">
-                                        <i class="fas fa-trash"></i>
-                                        </span>
-                                        <span class="text"><b>Delete Advertisement</b></span>
-                                    </a>
-                                </div>
-                            @endif
-                        @endauth
                         <div class="card">
                             <div class="card-header">
                                 Seller Details
@@ -135,3 +145,4 @@
         </div>
     </div>
 </div>
+

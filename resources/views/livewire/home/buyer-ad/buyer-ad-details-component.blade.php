@@ -20,7 +20,27 @@
                         <div class="card-wrapper">
                             <div class="card buyer_ad_detail_card">
                                 <div class="product-content">
-                                    <h2 class="product-title">{{ $buyer_ad->ad_title }}</h2>
+                                    <div class="d-flex justify-content-between">
+                                        <div>
+                                            <h2 class="product-title">{{ $buyer_ad->ad_title }}</h2>
+                                        </div>
+                                        <div style="margin-top: 22px;">
+                                            @auth
+                                                @if ($buyer_ad->user_id == Auth::user()->id)
+                                                    <div class="dropdown">
+                                                        <button type="button" class="btn" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <i class="fas fa-ellipsis-v fa-2x"></i>
+                                                        </button>
+                                                        <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
+                                                            <li><a class="dropdown-item" href="#"><i class="fas fa-pen"></i> &nbsp;<b>Edit Advertisement</b></a></li>
+                                                            <li><hr class="dropdown-divider"></li>
+                                                            <li><a class="dropdown-item" href="#" wire:click.prevent="buyerAdDeleteConfirmation({{ $buyer_ad->id }})"><i class="fas fa-trash"></i> &nbsp;<b>Delete Advertisement</b></a></li>
+                                                        </ul>
+                                                    </div>
+                                                @endif
+                                            @endauth
+                                        </div>
+                                    </div>
                                     <p><i>{{ 'Posted '.$buyer_ad->created_at->diffForHumans() }}, {{ 'From '.$buyer_ad->user_district }}</i></p>
                                     <div class="product-price">
                                         @if ($buyer_ad->ad_type != 'buyer-job')
@@ -71,20 +91,7 @@
 
                 <!-- right-side -->
                 <div class="col-12 col-lg-3">
-                    <div class="product-detail-right">
-                        @auth
-                            @if ($buyer_ad->user_id == Auth::user()->id)
-                                <div class="text-center mb-3">
-                                    <a href="#" class="btn btn-danger btn-icon-split" wire:click.prevent="buyerAdDeleteConfirmation({{ $buyer_ad->id }})" title="Delete">
-                                        <span class="icon text-white-50">
-                                        <i class="fas fa-trash"></i>
-                                        </span>
-                                        <span class="text"><b>Delete Advertisement</b></span>
-                                    </a>
-                                </div>
-                            @endif
-                        @endauth
-                        
+                    <div class="product-detail-right">    
                         <div class="card">
                             <div class="card-header">
                                 Buyer Details

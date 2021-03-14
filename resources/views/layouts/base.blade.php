@@ -222,6 +222,8 @@
     <script src="{{ asset('assets/lib/summernote/summernote-lite.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
+    @stack('scripts')
+
     <script>
         @if (Session::has('message'))
             Swal.fire({

@@ -743,8 +743,8 @@
     </div>
 </div>
 
-<script>
-    document.addEventListener('livewire:load', function () {
+@push('scripts')
+    <script>
         $('#seller-general-summernote').summernote({
             tabsize: 2,
             height: 120,
@@ -796,11 +796,7 @@
             }
         });
 
-    })
-</script>
 
- <script>
-    document.addEventListener('livewire:load', function () {
         $('#buyer-general-summernote').summernote({
             tabsize: 2,
             height: 120,
@@ -851,6 +847,6 @@
                 }
             }
         });
-    })
-</script>
 
+    </script>
+@endpush

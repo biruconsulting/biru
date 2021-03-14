@@ -31,6 +31,7 @@ class SellerAdDetailsComponent extends Component
         ]);
     }
 
+
     public function DeleteSellerAd($seller_ad_id) {
         if($seller_ad_id){
 
@@ -62,6 +63,7 @@ class SellerAdDetailsComponent extends Component
     {
         $seller_ad = SellerAd::where('id', $this->seller_ad_id)->first();
         $seller_category = Category::where('id', $seller_ad->ad_category)->first();
+
         return view('livewire.home.seller-ad.seller-ad-details-component', ['seller_ad'=>$seller_ad, 'seller_category'=>$seller_category])->layout('layouts.base');
     }
 }

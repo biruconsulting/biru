@@ -25,6 +25,7 @@ use App\Http\Livewire\Home\HomeComponent;
 use App\Http\Livewire\Home\PostAdComponent;
 use App\Http\Livewire\Home\SellerAd\SellerAdComponent;
 use App\Http\Livewire\Home\SellerAd\SellerAdDetailsComponent;
+use App\Http\Livewire\Home\SellerAd\SellerAdEditComponent;
 use App\Http\Livewire\Home\SellerAd\SellerAdHeaderSearchComponent;
 use Illuminate\Support\Facades\Route;
 
@@ -49,6 +50,8 @@ Route::get('/buyer_ad', BuyerAdComponent::class)->name('buyer_ad');
 Route::get('/contact_us', ContactUsComponent::class)->name('contact_us');
 
 Route::get('/seller_ad/{seller_ad_id}', SellerAdDetailsComponent::class)->name('seller_ad.details'); 
+
+Route::get('/seller_ad/edit/{seller_ad_id}', SellerAdEditComponent::class)->name('seller_ad.edit'); 
 
 Route::get('/buyer_ad/{buyer_ad_id}', BuyerAdDetailsComponent::class)->name('buyer_ad.details');
 
