@@ -17,6 +17,7 @@ use App\Http\Livewire\Admin\SellerAd\AdminSellerJobAdComponent;
 use App\Http\Livewire\Admin\SellerAd\AdminSellerPropertyAdComponent;
 use App\Http\Livewire\Home\BuyerAd\BuyerAdComponent;
 use App\Http\Livewire\Home\BuyerAd\BuyerAdDetailsComponent;
+use App\Http\Livewire\Home\BuyerAd\BuyerAdEditComponent;
 use App\Http\Livewire\Home\BuyerAd\BuyerAdHeaderSearchComponent;
 use App\Http\Livewire\Home\Profile\ChangePasswordComponent;
 use App\Http\Livewire\Home\ContactUsComponent;
@@ -54,6 +55,8 @@ Route::get('/seller_ad/{seller_ad_id}', SellerAdDetailsComponent::class)->name('
 Route::get('/seller_ad/edit/{seller_ad_id}', SellerAdEditComponent::class)->name('seller_ad.edit'); 
 
 Route::get('/buyer_ad/{buyer_ad_id}', BuyerAdDetailsComponent::class)->name('buyer_ad.details');
+
+Route::get('/buyer_ad/edit/{buyer_ad_id}', BuyerAdEditComponent::class)->name('buyer_ad.edit');
 
 Route::get('/search/buyer_ad', BuyerAdHeaderSearchComponent::class)->name('search.buyer_ad');
 

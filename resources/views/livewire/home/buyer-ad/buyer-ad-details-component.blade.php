@@ -32,7 +32,7 @@
                                                             <i class="fas fa-ellipsis-v fa-2x"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end">
-                                                            <li><a class="dropdown-item" href="#"><i class="fas fa-pen"></i> &nbsp;<b>Edit Advertisement</b></a></li>
+                                                            <li><a class="dropdown-item" href="{{ route('buyer_ad.edit',['buyer_ad_id'=>$buyer_ad->id]) }}"><i class="fas fa-pen"></i> &nbsp;<b>Edit Advertisement</b></a></li>
                                                             <li><hr class="dropdown-divider"></li>
                                                             <li><a class="dropdown-item" href="#" wire:click.prevent="buyerAdDeleteConfirmation({{ $buyer_ad->id }})"><i class="fas fa-trash"></i> &nbsp;<b>Delete Advertisement</b></a></li>
                                                         </ul>
@@ -61,7 +61,9 @@
                                                     <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
                                                 @endif
                                                 <li><i class="fas fa-check-circle"></i> &nbsp;Expected Brand: <span>{{ $buyer_ad->ad_brand }}</span></li>
-                                                <li><i class="fas fa-check-circle"></i> &nbsp;Expected Model: <span>{{ $buyer_ad->ad_model }}</span></li>
+                                                @if ($buyer_ad->ad_model)
+                                                    <li><i class="fas fa-check-circle"></i> &nbsp;Expected Model: <span>{{ $buyer_ad->ad_model }}</span></li>
+                                                @endif
                                             @elseif ($buyer_ad->ad_type == 'buyer-property')
                                                 @if ($buyer_category)
                                                     <li><i class="fas fa-check-circle"></i> &nbsp;Expected Category: <span>{{ $buyer_category->name }}</span></li>
