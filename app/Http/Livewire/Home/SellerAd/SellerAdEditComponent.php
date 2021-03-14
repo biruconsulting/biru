@@ -163,7 +163,7 @@ class SellerAdEditComponent extends Component
 
             $new_seller_general_ad_other_images = $this->seller_general_ad_other_images;
 
-            if ($new_seller_general_ad_thumbnail_image || $new_seller_general_ad_other_images) {
+            if ($new_seller_general_ad_thumbnail_image && $new_seller_general_ad_other_images) {
 
                 if ($this->seller_general_ad_thumbnail_image) {
                     Storage::disk('public')->delete($this->seller_general_existing_ad_thumbnail_image);
@@ -174,7 +174,7 @@ class SellerAdEditComponent extends Component
                         Storage::disk('public')->delete($image);
                     }
                 }
-                
+
                 $this->validate([
                     'seller_general_ad_title' => 'required|min:5|max:20',
                     'seller_general_ad_category' => 'required',
@@ -191,61 +191,64 @@ class SellerAdEditComponent extends Component
                 $other_images = $this->seller_general_ad_other_images;
     
                 if ($thumbnail_image && $other_images) {
-                    // for thumbnail image 
-                    // Get filename with extension
-                    $filenameWithExt_thumbnail_image = $thumbnail_image->getClientOriginalName();
-    
-                    // Get file path
-                    $filename_thumbnail_image = pathinfo($filenameWithExt_thumbnail_image, PATHINFO_FILENAME);
-    
-                    // Remove unwanted characters
-                    $filename_thumbnail_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_thumbnail_image);
-                    $filename_thumbnail_image = preg_replace("/\s+/", '-', $filename_thumbnail_image);
-    
-                    // Get the original image extension
-                    $extension_thumbnail_image = $thumbnail_image->getClientOriginalExtension();
-    
-                    // Create unique file name
-                    $fileNameToStore_thumbnail_image = $filename_thumbnail_image . '_' . time() . '.' . $extension_thumbnail_image;
-    
-                    $resize_thumbnail_image = Image::make($thumbnail_image)->resize(300, null, function ($constraint) {
-                        $constraint->aspectRatio();
-                    })->encode('jpg');
-    
-                    Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
-    
-                    $new_seller_general_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
-    
-    
-                    // for other images
-                    $other_images_array = array();
-    
-                    foreach ($this->seller_general_ad_other_images as $image) {
+
+                        // for thumbnail image 
                         // Get filename with extension
-                        $filenameWithExt_image = $image->getClientOriginalName();
-    
+                        $filenameWithExt_thumbnail_image = $thumbnail_image->getClientOriginalName();
+        
                         // Get file path
-                        $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
-    
+                        $filename_thumbnail_image = pathinfo($filenameWithExt_thumbnail_image, PATHINFO_FILENAME);
+        
                         // Remove unwanted characters
-                        $filename_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_image);
-                        $filename_image = preg_replace("/\s+/", '-', $filename_image);
-    
+                        $filename_thumbnail_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_thumbnail_image);
+                        $filename_thumbnail_image = preg_replace("/\s+/", '-', $filename_thumbnail_image);
+        
                         // Get the original image extension
-                        $extension_image = $image->getClientOriginalExtension();
-    
+                        $extension_thumbnail_image = $thumbnail_image->getClientOriginalExtension();
+        
                         // Create unique file name
-                        $fileNameToStore_image = $filename_image . '_' . time() . '.' . $extension_image;
-    
-                        $resize_image = Image::make($image)->resize(300, null, function ($constraint) {
+                        $fileNameToStore_thumbnail_image = $filename_thumbnail_image . '_' . time() . '.' . $extension_thumbnail_image;
+        
+                        $resize_thumbnail_image = Image::make($thumbnail_image)->resize(300, null, function ($constraint) {
                             $constraint->aspectRatio();
                         })->encode('jpg');
-    
-                        Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
-                        
-                        $other_images_array[] = 'images/general_ad/' . $fileNameToStore_image; 
-                    }
-                    $new_seller_general_ad_other_images = json_encode($other_images_array);
+        
+                        Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
+        
+                        $new_seller_general_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
+
+
+                        // for other images
+                        $other_images_array = array();
+        
+                        foreach ($this->seller_general_ad_other_images as $image) {
+                            // Get filename with extension
+                            $filenameWithExt_image = $image->getClientOriginalName();
+        
+                            // Get file path
+                            $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
+        
+                            // Remove unwanted characters
+                            $filename_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_image);
+                            $filename_image = preg_replace("/\s+/", '-', $filename_image);
+        
+                            // Get the original image extension
+                            $extension_image = $image->getClientOriginalExtension();
+        
+                            // Create unique file name
+                            $fileNameToStore_image = $filename_image . '_' . time() . '.' . $extension_image;
+        
+                            $resize_image = Image::make($image)->resize(300, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                            })->encode('jpg');
+        
+                            Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
+                            
+                            $other_images_array[] = 'images/general_ad/' . $fileNameToStore_image; 
+                        }
+                        $new_seller_general_ad_other_images = json_encode($other_images_array);
+        
+
                 }
     
                 $seller_ad->update([
@@ -274,6 +277,163 @@ class SellerAdEditComponent extends Component
     
                 return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
 
+            }
+            else if ($new_seller_general_ad_thumbnail_image) {
+
+                if ($this->seller_general_ad_thumbnail_image) {
+                    Storage::disk('public')->delete($this->seller_general_existing_ad_thumbnail_image);
+                }
+
+                $this->validate([
+                    'seller_general_ad_title' => 'required|min:5|max:20',
+                    'seller_general_ad_category' => 'required',
+                    'seller_general_ad_thumbnail_image' => 'required|image',
+                    'seller_general_ad_condition' => 'required',
+                    'seller_general_ad_brand' => 'required',
+                    'seller_general_ad_price' => 'required|numeric',
+                    'seller_general_ad_short_description' => 'required|min:80|max:130',
+                    'seller_general_ad_description' => 'required|min:100',
+                ]);
+    
+                $thumbnail_image = $this->seller_general_ad_thumbnail_image;
+    
+                if ($thumbnail_image) {
+
+                        // for thumbnail image 
+                        // Get filename with extension
+                        $filenameWithExt_thumbnail_image = $thumbnail_image->getClientOriginalName();
+        
+                        // Get file path
+                        $filename_thumbnail_image = pathinfo($filenameWithExt_thumbnail_image, PATHINFO_FILENAME);
+        
+                        // Remove unwanted characters
+                        $filename_thumbnail_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_thumbnail_image);
+                        $filename_thumbnail_image = preg_replace("/\s+/", '-', $filename_thumbnail_image);
+        
+                        // Get the original image extension
+                        $extension_thumbnail_image = $thumbnail_image->getClientOriginalExtension();
+        
+                        // Create unique file name
+                        $fileNameToStore_thumbnail_image = $filename_thumbnail_image . '_' . time() . '.' . $extension_thumbnail_image;
+        
+                        $resize_thumbnail_image = Image::make($thumbnail_image)->resize(300, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        })->encode('jpg');
+        
+                        Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
+        
+                        $new_seller_general_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
+        
+                
+
+                }
+    
+                $seller_ad->update([
+                    'user_first_name' =>$this->seller_user_first_name,
+                    'user_last_name' =>$this->seller_user_last_name,
+                    'user_email' =>$this->seller_user_email,
+                    'user_phone_number' =>$this->seller_user_phone_number,
+                    'user_district' =>$this->seller_user_district,
+                    'ad_title' =>$this->seller_general_ad_title,
+                    'ad_category' =>$this->seller_general_ad_category,
+                    'ad_thumbnail_image' =>$new_seller_general_ad_thumbnail_image,
+                    'ad_condition' =>$this->seller_general_ad_condition,
+                    'ad_brand' =>$this->seller_general_ad_brand,
+                    'ad_model' =>$this->seller_general_ad_model,
+                    'ad_price' =>$this->seller_general_ad_price,
+                    'ad_short_description' =>$this->seller_general_ad_short_description,
+                    'ad_description' =>$this->seller_general_ad_description,
+                ]);
+    
+                $this->clearSellerAdData();
+    
+                $this->emit('seller-general-summernote');
+    
+                session()->flash('message', 'Seller General Advertisement Updated Successfully.');
+    
+                return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
+
+            }
+            else if ($new_seller_general_ad_other_images){
+
+                if ($this->seller_general_ad_other_images) {
+                    foreach (json_decode($this->seller_general_existing_ad_other_images) as $image) {
+                        Storage::disk('public')->delete($image);
+                    }
+                }
+
+                $this->validate([
+                    'seller_general_ad_title' => 'required|min:5|max:20',
+                    'seller_general_ad_category' => 'required',
+                    'seller_general_ad_other_images.*' => 'required|image',
+                    'seller_general_ad_condition' => 'required',
+                    'seller_general_ad_brand' => 'required',
+                    'seller_general_ad_price' => 'required|numeric',
+                    'seller_general_ad_short_description' => 'required|min:80|max:130',
+                    'seller_general_ad_description' => 'required|min:100',
+                ]);
+    
+                $other_images = $this->seller_general_ad_other_images;
+    
+                if ($other_images) {
+
+                        // for other images
+                        $other_images_array = array();
+        
+                        foreach ($this->seller_general_ad_other_images as $image) {
+                            // Get filename with extension
+                            $filenameWithExt_image = $image->getClientOriginalName();
+        
+                            // Get file path
+                            $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
+        
+                            // Remove unwanted characters
+                            $filename_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_image);
+                            $filename_image = preg_replace("/\s+/", '-', $filename_image);
+        
+                            // Get the original image extension
+                            $extension_image = $image->getClientOriginalExtension();
+        
+                            // Create unique file name
+                            $fileNameToStore_image = $filename_image . '_' . time() . '.' . $extension_image;
+        
+                            $resize_image = Image::make($image)->resize(300, null, function ($constraint) {
+                                $constraint->aspectRatio();
+                            })->encode('jpg');
+        
+                            Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
+                            
+                            $other_images_array[] = 'images/general_ad/' . $fileNameToStore_image; 
+                        }
+                        $new_seller_general_ad_other_images = json_encode($other_images_array);
+                
+                }
+    
+                $seller_ad->update([
+                    'user_first_name' =>$this->seller_user_first_name,
+                    'user_last_name' =>$this->seller_user_last_name,
+                    'user_email' =>$this->seller_user_email,
+                    'user_phone_number' =>$this->seller_user_phone_number,
+                    'user_district' =>$this->seller_user_district,
+                    'ad_title' =>$this->seller_general_ad_title,
+                    'ad_category' =>$this->seller_general_ad_category,
+                    'ad_images' =>$new_seller_general_ad_other_images,
+                    'ad_condition' =>$this->seller_general_ad_condition,
+                    'ad_brand' =>$this->seller_general_ad_brand,
+                    'ad_model' =>$this->seller_general_ad_model,
+                    'ad_price' =>$this->seller_general_ad_price,
+                    'ad_short_description' =>$this->seller_general_ad_short_description,
+                    'ad_description' =>$this->seller_general_ad_description,
+                ]);
+    
+                $this->clearSellerAdData();
+    
+                $this->emit('seller-general-summernote');
+    
+                session()->flash('message', 'Seller General Advertisement Updated Successfully.');
+    
+                return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
+                
             }
             else {
 
@@ -320,13 +480,13 @@ class SellerAdEditComponent extends Component
 
             $new_seller_property_ad_other_images = $this->seller_property_ad_other_images;
 
-            if ($new_seller_property_ad_thumbnail_image || $new_seller_property_ad_other_images) {
+            if ($new_seller_property_ad_thumbnail_image && $new_seller_property_ad_other_images) {
 
-                if ($this->seller_property_existing_ad_thumbnail_image) {
+                if ($this->seller_property_ad_thumbnail_image) {
                     Storage::disk('public')->delete($this->seller_property_existing_ad_thumbnail_image);
                 }
 
-                if ($this->seller_property_existing_ad_other_images) {
+                if ($this->seller_property_ad_other_images) {
                     foreach (json_decode($this->seller_property_existing_ad_other_images) as $image) {
                         Storage::disk('public')->delete($image);
                     }
@@ -373,8 +533,162 @@ class SellerAdEditComponent extends Component
                     Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
     
                     $new_seller_property_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
+
+                    
+                    // for other images
+                    $other_images = array();
+                    
+                    foreach ($this->seller_property_ad_other_images as $image) {
+                        // Get filename with extension
+                        $filenameWithExt_image = $image->getClientOriginalName();
     
+                        // Get file path
+                        $filename_image = pathinfo($filenameWithExt_image, PATHINFO_FILENAME);
     
+                        // Remove unwanted characters
+                        $filename_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_image);
+                        $filename_image = preg_replace("/\s+/", '-', $filename_image);
+    
+                        // Get the original image extension
+                        $extension_image = $image->getClientOriginalExtension();
+    
+                        // Create unique file name
+                        $fileNameToStore_image = $filename_image . '_' . time() . '.' . $extension_image;
+    
+                        $resize_image = Image::make($image)->resize(300, null, function ($constraint) {
+                            $constraint->aspectRatio();
+                        })->encode('jpg');
+    
+                        Storage::put("public/images/general_ad/{$fileNameToStore_image}", $resize_image->__toString());
+    
+                        $other_images[] = 'images/general_ad/' . $fileNameToStore_image; 
+                    }
+                    $new_seller_property_ad_other_images = json_encode($other_images);
+    
+                }
+    
+                $seller_ad->update([
+                    'user_first_name' =>$this->seller_user_first_name,
+                    'user_last_name' =>$this->seller_user_last_name,
+                    'user_email' =>$this->seller_user_email,
+                    'user_phone_number' =>$this->seller_user_phone_number,
+                    'user_district' =>$this->seller_user_district,
+                    'ad_title' =>$this->seller_property_ad_title,
+                    'ad_category' =>$this->seller_property_ad_category,
+                    'ad_thumbnail_image' =>$new_seller_property_ad_thumbnail_image,
+                    'ad_images' =>$new_seller_property_ad_other_images,
+                    'ad_condition' =>$this->seller_property_ad_condition,
+                    'ad_property_address' =>$this->seller_property_ad_property_address,
+                    'ad_price' =>$this->seller_property_ad_price,
+                    'ad_short_description' =>$this->seller_property_ad_short_description,
+                    'ad_description' =>$this->seller_property_ad_description,
+                ]);
+    
+                $this->clearSellerAdData();
+    
+                $this->emit('seller-property-summernote');
+    
+                session()->flash('message', 'Seller Property Advertisement Updated Successfully.');
+    
+                return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
+
+            }
+            else if ($new_seller_property_ad_thumbnail_image) {
+
+                if ($this->seller_property_ad_thumbnail_image) {
+                    Storage::disk('public')->delete($this->seller_property_existing_ad_thumbnail_image);
+                }
+
+                $this->validate([
+                    'seller_property_ad_title' => 'required|min:5|max:20',
+                    'seller_property_ad_category' => 'required',
+                    'seller_property_ad_thumbnail_image' => 'required|image',
+                    'seller_property_ad_property_address' => 'required|min:5',
+                    'seller_property_ad_condition' => 'required',
+                    'seller_property_ad_price' => 'required|numeric',
+                    'seller_property_ad_short_description' => 'required|min:80|max:130',
+                    'seller_property_ad_description' => 'required|min:100',
+                ]);
+    
+                $thumbnail_image = $this->seller_property_ad_thumbnail_image;
+    
+                if($thumbnail_image)
+                {
+                    // for thumbnail image   
+                    // Get filename with extension
+                    $filenameWithExt_thumbnail_image = $thumbnail_image->getClientOriginalName();
+    
+                    // Get file path
+                    $filename_thumbnail_image = pathinfo($filenameWithExt_thumbnail_image, PATHINFO_FILENAME);
+    
+                    // Remove unwanted characters
+                    $filename_thumbnail_image = preg_replace("/[^A-Za-z0-9 ]/", '', $filename_thumbnail_image);
+                    $filename_thumbnail_image = preg_replace("/\s+/", '-', $filename_thumbnail_image);
+    
+                    // Get the original image extension
+                    $extension_thumbnail_image = $thumbnail_image->getClientOriginalExtension();
+    
+                    // Create unique file name
+                    $fileNameToStore_thumbnail_image = $filename_thumbnail_image . '_' . time() . '.' . $extension_thumbnail_image;
+    
+                    $resize_thumbnail_image = Image::make($thumbnail_image)->resize(300, null, function ($constraint) {
+                        $constraint->aspectRatio();
+                    })->encode('jpg');
+    
+                    Storage::put("public/images/general_ad/{$fileNameToStore_thumbnail_image}", $resize_thumbnail_image->__toString());
+    
+                    $new_seller_property_ad_thumbnail_image = 'images/general_ad/' . $fileNameToStore_thumbnail_image;
+    
+                }
+    
+                $seller_ad->update([
+                    'user_first_name' =>$this->seller_user_first_name,
+                    'user_last_name' =>$this->seller_user_last_name,
+                    'user_email' =>$this->seller_user_email,
+                    'user_phone_number' =>$this->seller_user_phone_number,
+                    'user_district' =>$this->seller_user_district,
+                    'ad_title' =>$this->seller_property_ad_title,
+                    'ad_category' =>$this->seller_property_ad_category,
+                    'ad_thumbnail_image' =>$new_seller_property_ad_thumbnail_image,
+                    'ad_condition' =>$this->seller_property_ad_condition,
+                    'ad_property_address' =>$this->seller_property_ad_property_address,
+                    'ad_price' =>$this->seller_property_ad_price,
+                    'ad_short_description' =>$this->seller_property_ad_short_description,
+                    'ad_description' =>$this->seller_property_ad_description,
+                ]);
+    
+                $this->clearSellerAdData();
+    
+                $this->emit('seller-property-summernote');
+    
+                session()->flash('message', 'Seller Property Advertisement Updated Successfully.');
+    
+                return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
+
+            }
+            else if ($new_seller_property_ad_other_images) {
+
+                if ($this->seller_property_ad_other_images) {
+                    foreach (json_decode($this->seller_property_existing_ad_other_images) as $image) {
+                        Storage::disk('public')->delete($image);
+                    }
+                }
+
+                $this->validate([
+                    'seller_property_ad_title' => 'required|min:5|max:20',
+                    'seller_property_ad_category' => 'required',
+                    'seller_property_ad_other_images.*' => 'required|image',
+                    'seller_property_ad_property_address' => 'required|min:5',
+                    'seller_property_ad_condition' => 'required',
+                    'seller_property_ad_price' => 'required|numeric',
+                    'seller_property_ad_short_description' => 'required|min:80|max:130',
+                    'seller_property_ad_description' => 'required|min:100',
+                ]);
+    
+                $other_images = $this->seller_property_ad_other_images;
+    
+                if($other_images)
+                {
                     // for other images
                     $other_images = array();
                     
@@ -414,7 +728,6 @@ class SellerAdEditComponent extends Component
                     'user_district' =>$this->seller_user_district,
                     'ad_title' =>$this->seller_property_ad_title,
                     'ad_category' =>$this->seller_property_ad_category,
-                    'ad_thumbnail_image' =>$new_seller_property_ad_thumbnail_image,
                     'ad_images' =>$new_seller_property_ad_other_images,
                     'ad_condition' =>$this->seller_property_ad_condition,
                     'ad_property_address' =>$this->seller_property_ad_property_address,
@@ -430,6 +743,7 @@ class SellerAdEditComponent extends Component
                 session()->flash('message', 'Seller Property Advertisement Updated Successfully.');
     
                 return redirect()->route('seller_ad.details', ['seller_ad_id'=>$seller_ad->id]);
+
             }
             else {
 
